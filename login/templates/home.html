@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Redressed&display=swap" rel="stylesheet">
+    <style>
+        /* Add your CSS styles here */
+        /* Example: 
+        body {
+            font-family: Arial, sans-serif;
+        }
+        */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            width: 40px;
+            /* Adjust as needed */
+            height: auto;
+            /* Maintain aspect ratio */
+        }
+
+        .logo-name {
+            font-size: 20px;
+            margin-left: 10px;
+            font-weight: bold;
+            font-family: "Redressed", cursive;
+            color:brown;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .center-right-image {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            width: 180px;
+            height: 180px;
+            transform: translateY(-50%);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="{% static 'logo1.png' %}" alt="Logo" class="logo">
+            <span class="logo-name">LadyLeads</span>
+        </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./login.html">Blog</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="/signup.html">Sign In</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Your main content goes here -->
+    </main>
+
+    <footer>
+        <!-- Your footer content goes here -->
+    </footer>
+
+    <!-- Center-right image -->
+    <img src="{% static 'women.png' %}" alt="Center Right Image" class="center-right-image">
+</body>
+
+</html>

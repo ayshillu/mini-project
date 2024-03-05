@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+</head>
+<body>
+
+    <h3>lady leads</h3>
+
+    <button type="submit"> <a href="/signup">SignUp</a></button>
+    <button type="submit"> <a href="/signin">SignIn</a></button>
+    <button type="submit"> <a href="/signout">SignOut</a></button>
+    
+</body>
+</html>
+
+
+signup
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h3>Sign Up</h3>
+
+    <form action="/signup" method="post">
+    {% csrf_token %}    
+        <label for="">Username</label>
+        <input type="text" id="username" name="username" placeholder="Create a username (only letters and numbers)" Required>
+        <br>
+
+        <label for="">First Name</label>
+        <input type="text" id="fname" name="fname" placeholder="Enter Your First Name" Required>
+        <br>
+
+        <label for="">Last Name</label>
+        <input type="text" id="lname" name="lname" placeholder="Enter Your Last Name" Required>
+        <br>
+
+        <label for="">Email Id</label>
+        <input type="email" id="email" name="email" placeholder="Enter Your Email Address" Required>
+        <br>
+
+        <label for="">Password</label>
+        <input type="password" id="pass1" name="pass1" placeholder="Create a Password" Required>
+        <br>
+
+        <button type="submit">Sign Up</button>
+    </form>
+</body>
+</html>
+
+signin
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h3>Sign In</h3>
+
+    <form action="/signin" method="post">
+    {% csrf_token %}    
+        <label for="">Username</label>
+        <input type="text" id="username" name="username" placeholder="Enter username" Required>
+        <br>
+
+        <label for="">Password</label>
+        <input type="password" id="pass1" name="pass1" placeholder="Enter Password" Required>
+        <br>
+
+        <button type="submit">Sign In</button>
+    </form>
+</body>
+</html>
+
+
+
+login
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background-color: #68b898;
+            padding: 70px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .container h3 {
+            margin-bottom: 20px;
+        }
+        .btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn + .btn {
+            margin-left: 10px;
+        }
+        .login {
+            color: rgb(255, 255, 255);
+        }
+        .signup_button {
+
+
+            padding-top: 0px;
+            padding-bottom: 0px;
+            padding-left: 15px;
+            padding-right: 15px;
+            border-radius: 50px;
+        }
+
+        .signin_button {
+
+
+            padding-top: 0px;
+            padding-bottom: 0px;
+            padding-left: 15px;
+            padding-right: 15px;
+            border-radius: 50px;
+        }
+
+        .signup_text {
+            font-weight: bolder;
+            font-family: Arial;
+            color: black;
+        }
+        .signin_text {
+            font-weight: bolder;
+            font-family: Arial;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+       
+    <h3 class="login">Welcome to LadyLeads</h3>
+
+    <button class="signup_button" type="submit"> <a href="signup"><p class="signup_text">SignUp</p></a></button>
+    <button class="signin_button" type="submit"> <a href="/signin"><p class="signin_text">SignIn</p></a></button>
+    </div>
+</body>
+</html>
+
+
+sign up
+
+def signup(request):
+
+    if request.method == "POST":
+      username = request.POST['username']
+      fname = request.POST['fname']
+      lname = request.POST['lname']
+      email = request.POST['email']
+      pass1 = request.POST['pass1']
+    
+      myuser = User.objects.create_user(username, email, pass1)
+      myuser.first_name = fname
+      myuser.last_name = lname
+
+      myuser.save()
+
+      messages.success(request, "Your Account has been successfully created. ")
+
+      return redirect('signin')
+
+
+
+
+      signup
+
+
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .container h3 {
+            margin-bottom: 20px;
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+        .btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn + .btn {
+            margin-left: 10px;
+        }
+        .user_box {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>Sign Up</h3>
+        <form action="/signup" method="post">
+            {% csrf_token %}    
+            <label for="">Username</label>
+            <input class="user_box" type="text" id="username" name="username" placeholder="Create a username (only letters and numbers)" Required>
+            <br>
+
+            <label for="">First Name</label>
+            <input type="text" id="fname" name="fname" placeholder="Enter Your First Name" Required oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');">
+            <br>
+
+            <label for="">Last Name</label>
+            <input type="text" id="lname" name="lname" placeholder="Enter Your Last Name" Required oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');" >
+            <br>
+
+            <label for="">Email Id</label>
+            <input type="email" id="email" name="email" placeholder="Enter Your Email Address" Required>
+            <br>
+
+            <label for="">Password</label>
+            <input type="password" id="pass1" name="pass1" placeholder="Create a Password" minlength="8"
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$]).{8,}"
+             title="Password must be at least 8 characters long, include uppercase and lowercase letters, a number, and special characters like @#$"
+             required>
+             <br>
+
+            <button type="submit" class="btn">Register</button>
+        </form>
+    </div>
+</body>
+</html>
+
+
+
+home.html<!DOCTYPE html>
+<html>
+
+<head>
+    {% load static %}
+    <title>LADY LEADS</title>
+    <style>
+        body {
+            background-repeat: no-repeat;
+            background-size: cover;
+            text-align: center;
+            font-weight: bolder;
+            font-family: Arial;
+            font-size: 25px;
+            margin-top: 70px;
+        }
+
+        .main_text {
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            margin-top: 10px; /* Adjusted margin */
+        }
+
+        .button1 {
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+            border: 2px solid white;
+            box-shadow: 3px 1px 1px rgb(248, 247, 247);
+        }
+
+        .button2 {
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+            border: 10px;
+            border: 2px solid white;
+            box-shadow: 3px 1px 1px rgb(248, 247, 247);
+        }
+
+        .text1 {
+            margin-top: 0px;
+            font-size: 25px;
+            font-weight: bolder;
+            font-family: Arial;
+            cursor: cell;
+            text-align: center;
+            color: brown;
+        }
+
+        .text2 {
+            margin-top: 0px;
+            font-size: 25px;
+            font-weight: bolder;
+            font-family: Arial;
+            cursor: cell;
+            text-align: center;
+            color: brown;
+
+        }
+
+        .inner {
+            justify-content: space-around;
+            align-items: center;
+            top: 50%;
+            transform: translate(50%, 25%);
+            left: 50%;
+            display: flex;
+            height: 50%;
+            width: 50%;
+        }
+        .main {
+            height: 400px;
+            width: 400px;
+            margin-top: 90px;
+            margin-left: 550px;
+        }
+        .seek {
+            margin-right: 130px;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="{% static 'logo.png' %}">
+    <div class="main">
+        <div class="blank_text">
+        </div>
+        <div class="second">
+            <div class="inner">
+                <div class="seek">
+                    <div class="seek_image">
+                        <a href="login">
+                            <img class="button1" src="{% static 'IMG_2742.JPG' %}">
+                        </a>
+                    </div>
+                    <div class="seek_text">
+                        <p class="text1"> Home</p>
+                    </div>
+                </div>
+                <div class="provider">
+                    <div class="provider_image">
+                        <a href="login">
+                            <img class="button2" src="{% static 'IMG_2741.JPG' %}">
+                        </a>
+                    </div>
+                    <div class="provider_text">
+                        <p class="text2"> About</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
