@@ -10,18 +10,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Redressed&display=swap" rel="stylesheet">
     <style>
-        /* Add your CSS styles here */
-        /* Example: 
-        body {
-            font-family: Arial, sans-serif;
-        }
-        */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px;
-            background-color: #f0f0f0;
         }
 
         .logo-container {
@@ -31,7 +24,6 @@
 
         .logo {
             width: 40px;
-            /* Adjust as needed */
             height: auto;
             /* Maintain aspect ratio */
         }
@@ -41,7 +33,7 @@
             margin-left: 10px;
             font-weight: bold;
             font-family: "Redressed", cursive;
-            color:brown;
+            color: brown;
         }
 
         nav ul {
@@ -49,23 +41,41 @@
             margin: 0;
             padding: 0;
             display: flex;
+            align-items: center; /* Align items vertically */
         }
 
         nav ul li {
-            margin-right: 20px;
+            margin-right: 5px; /* Reduce margin-right */
+        }
+
+        nav ul li:last-child {
+            margin-right: 0; /* Remove margin-right for the last item */
         }
 
         nav ul li a {
             text-decoration: none;
             color: black;
+            padding: 10px; /* Add padding to links */
+        }
+
+        .signin1 {
+            display: inline-block;
+            padding: 5px 10px; /* Adjust padding as needed */
+            background-color: brown; /* Add border-radius for rounded corners */
+        }
+
+        .signuptext {
+            color: #ffffff;
+            text-align: center;
+            margin: 0; /* Remove margin */
         }
 
         .center-right-image {
             position: absolute;
-            top: 50%;
+            top: 35%;
             right: 0;
-            width: 180px;
-            height: 180px;
+            width: 350px; /* Maintain the same width */
+            height: 350px; /* Maintain the same height */
             transform: translateY(-50%);
         }
     </style>
@@ -77,14 +87,13 @@
             <img src="{% static 'logo1.png' %}" alt="Logo" class="logo">
             <span class="logo-name">LadyLeads</span>
         </div>
-        </div>
         <nav>
             <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="./about.html">About</a></li>
-                <li><a href="./login.html">Blog</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="/signup.html">Sign In</a></li>
+                <li><a href="/"><p class="home_text">Home</p></a></li>
+                <li><a href="about"><p class="about_text">About</p></a></li>
+                <li><a href="login"><p class="blog_text">Blog</p></a></li>
+                <li><a href="#"><p class="contact_text">Contact</p></a></li>
+                <li><a class="signin1" href="signin"><p class="signuptext">Sign In</p></a></li>
             </ul>
         </nav>
     </header>
