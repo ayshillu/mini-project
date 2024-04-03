@@ -9,105 +9,246 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Redressed&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&display=swap"
+        rel="stylesheet">
     <style>
+        body {
+            background-color: #F2F0E4;
+        }
+
         header {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
+            justify-content: ;
+            align-items: flex-start;
+            /* Align items to the top */
+            padding: 10px 20px;
+            /* Adjust padding */
         }
 
         .logo-container {
             display: flex;
             align-items: center;
+            justify-content: space-between;
         }
 
         .logo {
-            width: 40px;
+            width: 30px;
             height: auto;
+            padding: 0px;
             /* Maintain aspect ratio */
         }
 
         .logo-name {
-            font-size: 20px;
+            font-size: 30px;
             margin-left: 10px;
-            font-weight: bold;
-            font-family: "Redressed", cursive;
-            color: brown;
+            font-weight: 300;
+            font-family: "Archivo";
+            color: #000000;
         }
 
         nav ul {
             list-style-type: none;
             margin: 0;
-            padding: 0;
+            padding: 0px;
             display: flex;
-            align-items: center; /* Align items vertically */
+            align-items: center;
+            /* Align items vertically */
         }
 
         nav ul li {
-            margin-right: 5px; /* Reduce margin-right */
+            margin-right: 20px;
+            /* Reduce margin-right */
         }
 
         nav ul li:last-child {
-            margin-right: 0; /* Remove margin-right for the last item */
+            margin-right: 0;
+            /* Remove margin-right for the last item */
         }
 
         nav ul li a {
             text-decoration: none;
             color: black;
-            padding: 10px; /* Add padding to links */
+            padding: 0px;
+            /* Add padding to links */
         }
 
         .signin1 {
             display: inline-block;
-            padding: 5px 10px; /* Adjust padding as needed */
-            background-color: brown; /* Add border-radius for rounded corners */
+            padding: 12px 20px;
+            /* Adjust padding as needed */
+            background-color: #000000;
+            /* Add border-radius for rounded corners */
+            font-size: 20px;
+            border-radius: 30px;
+            margin-right: 40px;
         }
 
-        .signuptext {
+        .signintext {
+            font-family: "Archivo";
             color: #ffffff;
             text-align: center;
-            margin: 0; /* Remove margin */
+            margin: 0;
+            /* Remove margin */
         }
 
-        .center-right-image {
-            position: absolute;
-            top: 35%;
-            right: 0;
-            width: 350px; /* Maintain the same width */
-            height: 350px; /* Maintain the same height */
+        .signin1:hover::before {
+            transform: scaleX(1);
+            color: #fff !important;
+            z-index: -1
+        }
+
+        .home_text {
+            font-family: "Archivo";
+            font-size: 20px;
+            margin-right: 40px;
+            color:#DE7044 ;
+        }
+
+
+        .contact_text {
+            font-family: "Archivo";
+            font-size: 20px;
+            margin-right: 40px;
+        }
+
+        .about_text {
+            font-family: "Archivo";
+            font-size: 20px;
+            margin-right: 40px;
+        }
+
+        .blog_text {
+            font-family: "Archivo";
+            font-size: 20px;
+            margin-right: 40px;
+        }
+
+        .rectbox {
+            width: 100px;
+            height: 100px;
+
+        }
+
+        .second_box {
+            width: 100%;
+            height: 500px;
+            color: rgb(87, 87, 8);
+        }
+
+        
+
+        .main_description {
+            font-family: "Archivo";
+            font-weight: ;
+            font-size: 20px;
+            margin-top: 3%;
+            color: #000000;
+        }
+
+        .description {
+            width: 650px;
+            height: 75px;
+            margin-left: 55%;
+            margin-top: 1%;
+            transform: translateY(-70%);
+        }
+
+        .header1 {
+            font-weight: 400;
+            font-family: "Archivo";
+            font-size: 143px;
+            margin-top: 3%;
+            margin-left: 1.5%;
+        }
+
+        .contact_button {
+            padding: 12px 20px;
+            border-radius: 30px;
+            background-color: #F2F0E4;
+            border-color: #000000;
+            border-width: 2px;
+            cursor: pointer;
+            color: #000000;
+            font-family: "Archivo";
+            margin-left: 90%;
             transform: translateY(-50%);
+        }
+
+        .heroin {
+            transform: translateY(-120%);
+            margin-left: 1.5%;
+            border-radius: 20px;
         }
     </style>
 </head>
 
 <body>
-    <header>
+    <nav style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+
         <div class="logo-container">
-            <img src="{% static 'logo1.png' %}" alt="Logo" class="logo">
             <span class="logo-name">LadyLeads</span>
         </div>
-        <nav>
+        <div>
             <ul>
-                <li><a href="/"><p class="home_text">Home</p></a></li>
-                <li><a href="about"><p class="about_text">About</p></a></li>
-                <li><a href="login"><p class="blog_text">Blog</p></a></li>
-                <li><a href="#"><p class="contact_text">Contact</p></a></li>
-                <li><a class="signin1" href="signin"><p class="signuptext">Sign In</p></a></li>
+                <li><a href="/">
+                        <p class="home_text">Home</p>
+                    </a></li>
+                <li><a href="about">
+                        <p class="about_text">About</p>
+                    </a></li>
+                <li><a href="blog">
+                        <p class="blog_text">Blog</p>
+                    </a></li>
+                <li><a href="#">
+                        <p class="contact_text">Contact</p>
+                    </a></li>
+                <li><a class="signin1" href="signin">
+                        <p class="signintext">Sign In</p>
+                    </a></li>
             </ul>
-        </nav>
-    </header>
+        </div>
+    </nav>
+
 
     <main>
         <!-- Your main content goes here -->
+        <h1 class="header1">World's female canvas.</h1>
+        <div class="description">
+            <p class="main_description">
+                "Empowering women globally to lead, innovate, and inspire change, fostering a brighter, more inclusive
+                future in every corner of the world, through leadership development, innovation support, and advocacy
+                for gender equality and equity."
+            </p>
+        </div>
     </main>
-
-    <footer>
+    <button class="contact_button">Contact us</button>
+    <footer class="foot">
         <!-- Your footer content goes here -->
-    </footer>
+        <div class="second_box">
 
+        </div>
+    </footer>
+    <img src="{% static 'heroin.png' %}" alt="Center Right Image" class="heroin">
     <!-- Center-right image -->
-    <img src="{% static 'women.png' %}" alt="Center Right Image" class="center-right-image">
 </body>
 
 </html>

@@ -2,6 +2,8 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -62,3 +64,16 @@ def signout(request):
 
 def about(request):
     return render(request, 'about.html')
+
+def profile(request):
+    return render(request, 'profile.html')
+
+def blog(request):
+    return render(request, 'blog.html')
+
+def workers(request):
+    return render(request, 'workers.html')
+
+@login_required
+def profile(request):
+    return render(request, 'profile.html', {'user': request.user})

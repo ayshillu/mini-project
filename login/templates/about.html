@@ -1,11 +1,324 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html class="no-js" lang="zxx">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title> AboutUs </title>
+    {% load static %}
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            background-color: #F2F0E4;
+        }
+
+        header {
+            display: flex;
+            justify-content: ;
+            align-items: flex-start;
+            /* Align items to the top */
+            padding: 40px 20px;
+            /* Adjust padding */
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            width: 30px;
+            height: auto;
+            padding: 0px;
+            /* Maintain aspect ratio */
+        }
+
+        .logo-name {
+            font-size: 30px;
+            margin-left: 10px;
+            font-weight: 300;
+            font-family: "Archivo";
+            color: #000000;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0px;
+            display: flex;
+            align-items: center;
+            /* Align items vertically */
+        }
+
+        nav ul li {
+            margin-right: 20px;
+            /* Reduce margin-right */
+        }
+
+        nav ul li:last-child {
+            margin-right: 0;
+            /* Remove margin-right for the last item */
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: black;
+            padding: 0px;
+            /* Add padding to links */
+        }
+
+        .signin1 {
+            display: inline-block;
+            padding: 12px 20px;
+            /* Adjust padding as needed */
+            background-color: #000000;
+            /* Add border-radius for rounded corners */
+            font-size: 20px;
+            border-radius: 30px;
+            margin-right: 40px;
+        }
+
+        .signintext {
+            font-family: "Archivo";
+            color: #ffffff;
+            text-align: center;
+            margin: 0;
+            /* Remove margin */
+        }
+
+        .home_text {
+            font-family: "Archivo";
+            font-size: 20px;
+            margin-right: 40px;
+        }
+
+
+        .contact_text {
+            font-family: "Archivo";
+            font-size: 20px;
+            margin-right: 40px;
+        }
+
+        .about_text {
+            font-family: "Archivo";
+            font-size: 20px;
+            margin-right: 40px;
+            color: #DE7044;
+        }
+
+        .blog_text {
+            font-family: "Archivo";
+            font-size: 20px;
+            margin-right: 40px;
+        }
+
+        .rectbox {
+            width: 100px;
+            height: 100px;
+
+        }
+
+        .second_box {
+            width: 100%;
+            height: 500px;
+            color: rgb(87, 87, 8);
+        }
+
+        .foot {}
+
+        .main_description {
+            font-family: "Archivo";
+            font-weight: ;
+            font-size: 20px;
+            margin-top: 3%;
+            color: #000000;
+        }
+
+        .contact_button {
+            padding: 12px 20px;
+            border-radius: 30px;
+            background-color: #F2F0E4;
+            border-color: #000000;
+            border-width: 2px;
+            cursor: pointer;
+            color: #000000;
+            font-family: "Archivo";
+            margin-left: 90%;
+            transform: translateY(-50%);
+        }
+
+        .aboutus_text {
+            color: #000000;
+            font-family: "Archivo";
+            font-size: 80px;
+            margin-top: 5%;
+
+        }
+
+        .description {
+            margin-right: 45%;
+            padding: 4%;
+            background-color: #ffffff;
+            margin-top: 6%;
+            margin-left: -2%;
+        }
+
+        .description1{
+            color: #000000;
+            margin-left: 10%;
+
+        }
+
+        
+        .heroin {
+            position: absolute;
+            top: 55%;
+            right: 10%;
+            width: 390px; /* Maintain the same width */
+            height: 430px; /* Maintain the same height */
+            transform: translateY(-50%);
+            border-radius: 5px;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>About</h1>
+    <nav style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+
+        <div class="logo-container">
+            <span class="logo-name">LadyLeads</span>
+        </div>
+        <div>
+            <ul>
+                <li><a href="/">
+                        <p class="home_text">Home</p>
+                    </a></li>
+                <li><a href="about">
+                        <p class="about_text">About</p>
+                    </a></li>
+                <li><a href="blog">
+                        <p class="blog_text">Blog</p>
+                    </a></li>
+                <li><a href="#">
+                        <p class="contact_text">Contact</p>
+                    </a></li>
+                <li><a class="signin1" href="signin">
+                        <p class="signintext">Sign In</p>
+                    </a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <main>
+        <!-- Your main content goes here -->
+        <div class="description">
+            <div class="page_image">
+                <!--<img src="{% static '.jpg' %}" alt="Logo" class="logo">-->
+            </div>
+            <div class="description1">
+                <h2 class="aboutus_text">About Us</h2>
+                <p>
+                    At LadyLeads, we believe in the power of empowerment and community building. Founded with a vision
+                    to create a more inclusive society, LadyLeads serves as a platform that connects women with
+                    opportunities, supports skilled professionals, and fosters artisan communities.
+                    Driven by the belief that every woman deserves economic independence and the opportunity to showcase
+                    her talents, LadyLeads empowers job seekers by matching them with tailored employment opportunities
+                    that align with their skills and aspirations.
+                    Whether it's finding a job in tailoring, housekeeping, childcare, nursing, gardening, or any other
+                    profession, LadyLeads is dedicated to ensuring that every woman has access to meaningful work.
+
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!--<footer>
+        <div class="footer-wrappr">
+            <div class="footer-top">
+                
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-wrapper">
+                                    <div class="row ">
+                                        <div class="col-xl-12">
+                                            <div class="small-tittle mb-30">
+                                                <h4>Contact Us</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <form id="contact-form" action="#" method="POST">
+                                        {% csrf_token %}
+                                        <div class="row">
+                                            <div class="col-lg-4 col-md-6">
+                                                <div class="form-box user-icon mb-25">
+                                                    <input type="text" name="name" placeholder="Your name">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-6">
+                                                <div class="form-box email-icon mb-25">
+                                                    <input type="text" name="email" placeholder="Email">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-6">
+                                                <div class="form-box email-icon mb-25">
+                                                    <input type="text" name="email" placeholder="Subject">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="form-box message-icon mb-25">
+                                                    <textarea name="message" id="message"
+                                                        placeholder="Message"></textarea>
+                                                </div>
+                                                <div class="submit-info">
+                                                    <button class="submit-btn2" type="submit">Send Message</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            
+            <div class="footer-bottom-area">
+                <div class="container">
+                    <div class="footer-border">
+                        <div class="row align-items-center">
+                            <div class="col-xl-4 col-lg-4">
+                                <div class="footer-social">
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="https://bit.ly/sai4ull"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                                    <a href="#"><i class="fas fa-globe"></i></a>
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+   
+    <div id="back-top">
+        <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+    </div>-->
+    <img src="{% static 'pizza.jpg' %}" alt="Center Right Image" class="heroin">
+
 </body>
+
 </html>
