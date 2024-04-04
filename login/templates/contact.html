@@ -1,29 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Contact Us</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: #F2F0E4;
+            background-color: #011F13;
+            color: #F2F2F2;
+            font-family: "Archivo", sans-serif;
         }
 
-        header {
-            display: flex;
-            justify-content: ;
-            align-items: flex-start;
-            /* Align items to the top */
-            padding: 10px 20px;
-            /* Adjust padding */
+        .header,
+        h1,
+        h2,
+        p,
+        .subscribe-input,
+        .contact-button,
+        .subscribe-button {
+            font-family: "Archivo";
         }
+
+        .header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 20px;
+            font-size: 24px;
+            text-decoration: none;
+            color: #F2F0E4;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: #011F13;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .subscribe-form {
+            margin-top: 80px;
+        }
+
+        .subscribe-input {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid gray;
+            border-radius: 5px;
+            font-size: 16px;
+            line-height: 1.5;
+            background-color: #F2F0E4;
+            color: #011F13;
+        }
+
+        .subscribe-button,
+        .contact-button {
+            display: block;
+            width: 200px;
+            height: 50px;
+            background-color: #F2F0E4;
+            color: #011F13;
+            border: none;
+            border-radius: 5px;
+            margin: 0 auto;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            /* Added box-shadow transition */
+            font-weight: bold;
+            /* Adding bold font weight */
+        }
+
+        .subscribe-button:hover,
+        .contact-button:hover {
+            background-color: #F2F0E4;
+            box-shadow: 0px 0px 7px 3px #F2F0E4;
+            /* Added extra shadow on hover */
+        }
+
+        .contact-info {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .contact-info p {
+            margin-bottom: 5px;
+        }
+
+        .contact-info a {
+            color: #F2F0E4;
+            /* Changing email color to #F2F0E4 */
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
 
         .logo-container {
             display: flex;
@@ -43,7 +121,7 @@
             margin-left: 10px;
             font-weight: 300;
             font-family: "Archivo";
-            color: #000000;
+            color: #F2F0E4;
         }
 
         nav ul {
@@ -76,16 +154,18 @@
             display: inline-block;
             padding: 12px 20px;
             /* Adjust padding as needed */
-            background-color: #000000;
+            background-color: #F2F0E4;
             /* Add border-radius for rounded corners */
             font-size: 20px;
             border-radius: 30px;
             margin-right: 40px;
         }
 
+        
+
         .signintext {
             font-family: "Archivo";
-            color: #ffffff;
+            color: #000000;
             text-align: center;
             margin: 0;
             /* Remove margin */
@@ -94,14 +174,16 @@
         .signin1:hover::before {
             transform: scaleX(1);
             color: #fff !important;
-            z-index: -1
+            z-index: -1;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .home_text {
             font-family: "Archivo";
             font-size: 20px;
             margin-right: 40px;
-            color:#DE7044 ;
+            color: #F2F0E4;
+           
         }
 
 
@@ -109,18 +191,21 @@
             font-family: "Archivo";
             font-size: 20px;
             margin-right: 40px;
+            color: #DE7044;
         }
 
         .about_text {
             font-family: "Archivo";
             font-size: 20px;
             margin-right: 40px;
+            color: #F2F0E4;
         }
 
         .blog_text {
             font-family: "Archivo";
             font-size: 20px;
             margin-right: 40px;
+            color: #F2F0E4;
         }
 
         .rectbox {
@@ -134,55 +219,12 @@
             height: 500px;
             color: rgb(87, 87, 8);
         }
-
-        
-
-        .main_description {
-            font-family: "Archivo";
-            font-weight: ;
-            font-size: 20px;
-            margin-top: 3%;
-            color: #000000;
-        }
-
-        .description {
-            width: 650px;
-            height: 75px;
-            margin-left: 55%;
-            margin-top: 1%;
-            transform: translateY(-70%);
-        }
-
-        .header1 {
-            font-weight: 400;
-            font-family: "Archivo";
-            font-size: 143px;
-            margin-top: 3%;
-            margin-left: 1.5%;
-        }
-
-        .contact_button {
-            padding: 12px 20px;
-            border-radius: 30px;
-            background-color: #F2F0E4;
-            border-color: #000000;
-            border-width: 2px;
-            cursor: pointer;
-            color: #000000;
-            font-family: "Archivo";
-            margin-left: 90%;
-            transform: translateY(-50%);
-        }
-
-        .heroin {
-            transform: translateY(-120%);
-            margin-left: 1.5%;
-            border-radius: 20px;
-        }
     </style>
 </head>
 
 <body>
+
+
     <nav style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
 
         <div class="logo-container">
@@ -210,26 +252,23 @@
     </nav>
 
 
-    <main>
-        <!-- Your main content goes here -->
-        <h1 class="header1">World's female canvas.</h1>
-        <div class="description">
-            <p class="main_description">
-                "Empowering women globally to lead, innovate, and inspire change, fostering a brighter, more inclusive
-                future in every corner of the world, through leadership development, innovation support, and advocacy
-                for gender equality and equity."
-            </p>
-        </div>
-    </main>
-    <button class="contact_button">Contact us</button>
-    <footer class="foot">
-        <!-- Your footer content goes here -->
-        <div class="second_box">
+    <div class="container">
+        <h1>Contact Us</h1>
+        <p>If you have any questions or concerns, please don't hesitate to contact us.</p>
+        <button class="contact-button" onclick="window.location.href='mailto:youremail@example.com'">Contact Us</button>
 
+        <div class="subscribe-form">
+            <h2>Subscribe to our newsletter</h2>
+            <p>Get updates on new products, promotions, and more.</p>
+            <input type="email" class="subscribe-input" placeholder="Enter your email address">
+            <button class="subscribe-button">Subscribe</button>
         </div>
-    </footer>
-    <img src="{% static 'heroin.png' %}" alt="Center Right Image" class="heroin">
-    <!-- Center-right image -->
+
+        <div class="contact-info">
+            <p>Email: <a href="mailto:ladyleads@example.com">ladyleads@example.com</a></p>
+            <p>Phone: +1 123-456-7890</p>
+        </div>
+    </div>
 </body>
 
 </html>

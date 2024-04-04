@@ -34,9 +34,11 @@ def signup(request):
     
     
     
-    return render(request, 'signup.html')
+    return render(request, 'signup.html', {'user': request.user})
 
 def signin(request):
+
+    
 
     if request.method == 'POST':
         username = request.POST['username']
@@ -74,6 +76,21 @@ def blog(request):
 def workers(request):
     return render(request, 'workers.html')
 
-@login_required
-def profile(request):
-    return render(request, 'profile.html', {'user': request.user})
+
+def contact(request):
+    return render(request, 'contact.html')
+
+def selman(request):
+    return render(request, 'selman.html')
+
+
+def submit(request):
+    # view to load all recievers detail page
+    user_name=request.user
+    count = 1
+
+    context = {
+        'user' : user_name,
+    }
+
+    return render(request, 'profile.html', context)

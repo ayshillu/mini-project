@@ -15,5 +15,7 @@ urlpatterns = [
     path('profile', views.profile , name="profile"),
     path('blog', views.blog , name="blog"),
     path('workers', views.workers , name="workers"),
+    path('contact', views.contact , name="contact"),
+    path('selman', views.selman , name="selman"),
 ]
 
