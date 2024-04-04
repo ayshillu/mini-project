@@ -1,10 +1,12 @@
+from multiprocessing import context
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-
+from .models import EditProfile
+from .models import  UserProfile
 
 # Create your views here.
 
@@ -49,11 +51,11 @@ def signin(request):
         if user is not None:
             login(request, user)
             fname = user.first_name
-            return render(request,"login.html", {'fname': fname})
+            return render(request,"workers.html", {'fname': fname})
         
         else:
             messages.error(request, "Bad Credential")
-            return redirect('login')
+            return redirect('workers')
 
     return render(request, 'signin.html')
 
@@ -68,7 +70,14 @@ def about(request):
     return render(request, 'about.html')
 
 def profile(request):
-    return render(request, 'profile.html')
+    me = request.user
+
+    context = {
+        'user' : User,
+        'me': me,
+
+    }
+    return render(request, 'profile.html', context)
 
 def blog(request):
     return render(request, 'blog.html')
@@ -80,17 +89,11 @@ def workers(request):
 def contact(request):
     return render(request, 'contact.html')
 
-def selman(request):
-    return render(request, 'selman.html')
-
-
-def submit(request):
-    # view to load all recievers detail page
-    user_name=request.user
-    count = 1
-
-    context = {
-        'user' : user_name,
-    }
-
-    return render(request, 'profile.html', context)
+@login_required
+def editprofile(request):
+   
+    return render(request, 'editprofile.html', {'user': request.user})
+ 
+ 
+def chatprofile(request):
+      return render(request, 'chatprofile.html')

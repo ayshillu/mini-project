@@ -74,8 +74,8 @@
 <body>
     <div class="container">
         <h3>Sign In</h3>
-
-        <form action="/signin" method="post">
+        {% csrf_token %}
+        <form action="signin" method="post">
             {% csrf_token %}    
             <div class="form-group">
                 <label for="username">Username</label>

@@ -1,12 +1,238 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
     {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>scroll</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <title>Search Page</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: 'Archivo', sans-serif;
+            margin-top: ;
+        }
+
+        /* form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+            width: 50%;
+        }*/
+
+        input[type="search"] {
+            all: unset;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        button {
+            all: unset;
+            background-color: #4CAF50;
+            color: #fff;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .page-title {
+            margin: 0;
+            margin-left: 20px;
+            margin-top: 20px;
+        }
+
+        .suggestions {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+
+        }
+
+        .main_div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .suggestions {
+            display: none;
+            margin: 0 auto;
+        }
+
+        .main_div {
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+            width: 450px;
+            margin: 0 auto;
+        }
+
+
+        .search {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 450px;
+            margin: 0 auto;
+            justify-content: space-evenly;
+        }
+
+        .main_cont {
+            padding: 1rem;
+            width: 60%;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            text-align: center;
+        }
+
+        .profileicon {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .profile-icon {
+            width: 50px;
+            /* Adjust size as needed */
+            height: 50px;
+            /* Adjust size as needed */
+        }
+    </style>
 </head>
+
 <body>
-    
+    <div class="main_cont">
+
+
+        <div class="page-title">
+            <h1>Lady leads</h1>
+        </div>
+        <form>
+            <div class="main_div">
+                <div class="search">
+                    <input type="search" id="search-box" placeholder="What are you looking for?"
+                        oninput="filterSuggestions()">
+                    <button type="submit">Search</button>
+                </div>
+
+                <div id="suggestions" class="suggestions">
+                    <p>Tailor</p>
+                    <p>Gardener</p>
+                    <p>Home nurse</p>
+                    <p>Henna</p>
+                    <p>Cake maker</p>
+                </div>
+
+            </div>
+            <!-- Profile icon linked to profile page -->
+            <div class="profileicon">
+                <a href="{% url 'profile' %}">
+                    <img src="{% static 'profile.png' %}" alt="Profile Icon" class="profile-icon">
+                </a>
+            </div>
+
+    </div>
+
+    </form>
+
+    </div>
+    <div class="container">
+        <div class="slide active">
+            <div class="page-title">
+                <h1>Container 1</h1>
+            </div>
+            <p>Content for container 1 goes here.</p>
+        </div>
+        <div class="slide">
+            <div class="page-title">
+                <h1>Container 2</h1>
+            </div>
+            <p>Content for container 2 goes here.</p>
+        </div>
+        <div class="slide active">
+            <div class="page-title">
+                <h1>Container 3</h1>
+            </div>
+            <p>Content for container 1 goes here.</p>
+        </div>
+        <div class="slide">
+            <div class="page-title">
+                <h1>Container 4</h1>
+            </div>
+            <p>Content for container 2 goes here.</p>
+        </div>
+    </div>
+
+
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+
+        function goToSlide(index) {
+            slides.forEach((slide, slideIndex) => {
+                slide.classList.remove('active');
+                if (index === slideIndex) {
+                    slide.classList.add('active');
+                }
+            });
+        }
+
+        function handleArrowKey(event) {
+            if (event.key === 'ArrowLeft') {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            } else if (event.key === 'ArrowRight') {
+                currentSlide = (currentSlide + 1) % slides.length;
+            }
+            goToSlide(currentSlide);
+        }
+
+        slides.forEach((slide, index) => {
+            slide.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    goToSlide(index);
+                }
+            });
+        });
+
+        document.addEventListener('keydown', handleArrowKey);
+        goToSlide(currentSlide);
+        function filterSuggestions() {
+            var input = document.getElementById('search-box');
+            var filter = input.value.toUpperCase();
+            var suggestions = document.getElementById('suggestions');
+            if (filter.length > 0) {
+                suggestions.style.display = 'block';
+                var p = suggestions.getElementsByTagName('p');
+                for (var i = 0; i < p.length; i++) {
+                    if (p[i].textContent.toUpperCase().indexOf(filter) > -1) {
+                        p[i].style.display = 'block';
+                    } else {
+                        p[i].style.display = 'none';
+                    }
+                }
+            } else {
+                suggestions.style.display = 'none';
+            }
+        }
+    </script>
 </body>
+
 </html>

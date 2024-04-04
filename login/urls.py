@@ -2,7 +2,6 @@ from django.contrib import admin
 from django.urls import path, include
 from login import views
 
-
 # Define urlpatterns
 urlpatterns = [
     path('', views.home, name='home'),
@@ -16,6 +15,8 @@ urlpatterns = [
     path('blog', views.blog , name="blog"),
     path('workers', views.workers , name="workers"),
     path('contact', views.contact , name="contact"),
-    path('selman', views.selman , name="selman"),
+    path('editprofile', views.editprofile, name='editprofile'),
+    path('chatprofile', views.chatprofile , name="chatprofile"),
+
 ]
 

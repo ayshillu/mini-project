@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Box</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar {
+            width: 250px;
+            border-right: 1px solid #ccc;
+            padding-right: 20px;
+            margin-right: 20px;
+        }
+
+        .search-bar input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+
+        .chat-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .chat-list li {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            cursor: pointer;
+        }
+
+        .chat-list li:hover {
+            background-color: #f2f2f2;
+        }
+
+        .chat-box {
+            flex-grow: 1;
+            overflow-y: scroll;
+            height: 300px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .message {
+            background-color: #f2f2f2;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .user-message {
+            background-color: #dcf8c6;
+            text-align: right;
+        }
+
+        .other-message {
+            background-color: #e6e6e6;
+            text-align: left;
+        }
+
+        .input-box {
+            display: flex;
+        }
+
+        .input-box input[type="text"] {
+            flex-grow: 1;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-right: 10px;
+        }
+
+        .input-box button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+            </div>
+            <ul class="chat-list">
+                <li>Person 1</li>
+                <li>Person 2</li>
+                <li>Person 3</li>
+                <!-- Add more persons here -->
+            </ul>
+        </div>
+        <div class="chat-box" id="chat-box">
+            <div class="message user-message">
+                Hello! How can I help you?
+            </div>
+            <div class="message other-message">
+                Hi there! I have a question about your services.
+            </div>
+            <!-- Add more messages here -->
+        </div>
+    </div>
+    <div class="input-box">
+        <input type="text" id="message-input" placeholder="Type your message...">
+        <button id="send-button">Send</button>
+    </div>
+
+    <script>
+        document.getElementById("send-button").addEventListener("click", function () {
+            var messageInput = document.getElementById("message-input");
+            var message = messageInput.value.trim();
+            if (message !== "") {
+                var chatBox = document.getElementById("chat-box");
+                var newMessage = document.createElement("div");
+                newMessage.className = "message user-message";
+                newMessage.textContent = message;
+                chatBox.appendChild(newMessage);
+                messageInput.value = "";
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }
+        });
+    </script>
+</body>
+
+</html>
