@@ -15,21 +15,11 @@
             flex-direction: column;
             align-items: center;
             height: 100vh;
-            background-color: #f0f0f0;
+            background-color: #011F1F;
+            color: #F2F2F2;
             font-family: 'Archivo', sans-serif;
             margin-top: ;
         }
-
-        /* form {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-            width: 50%;
-        }*/
 
         input[type="search"] {
             all: unset;
@@ -42,8 +32,9 @@
 
         button {
             all: unset;
-            background-color: #4CAF50;
-            color: #fff;
+            background-color: #F2F2F2;
+            color: #011F1F;
+            ;
             border-radius: 5px;
             padding: 10px;
             font-size: 16px;
@@ -61,7 +52,8 @@
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
-
+            max-height: 100px;
+            overflow-y: auto;
         }
 
         .main_div {
@@ -89,6 +81,7 @@
             align-items: center;
             width: 450px;
             margin: 0 auto;
+            color: #011F1F;
             justify-content: space-evenly;
         }
 
@@ -100,6 +93,55 @@
 
         .page-title {
             text-align: center;
+        }
+
+        .container1 {
+            width: 250px;
+            height: 250px;
+            background-color: #F2F2F2;
+            color: #011F1F;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .container2 {
+            width: 250px;
+            height: 250px;
+            background-color: #F2F2F2;
+            color: #011F1F;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .container3 {
+            width: 250px;
+            height: 250px;
+            background-color: #F2F2F2;
+            color: #011F1F;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .container4 {
+            width: 250px;
+            height: 250px;
+            background-color: #F2F2F2;
+            color: #011F13;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            width: 100%;
+            margin-top: 10%;
+        }
+
+        .suggestions {
+            cursor: pointer;
+            width: 400px;
         }
 
         .profileicon {
@@ -118,6 +160,11 @@
 </head>
 
 <body>
+    <div class="profileicon">
+        <a href="{% url 'profile' %}">
+            <img src="{% static 'profile.png' %}" alt="Profile Icon" class="profile-icon">
+        </a>
+    </div>
     <div class="main_cont">
 
 
@@ -141,38 +188,30 @@
                 </div>
 
             </div>
-            <!-- Profile icon linked to profile page -->
-            <div class="profileicon">
-                <a href="{% url 'profile' %}">
-                    <img src="{% static 'profile.png' %}" alt="Profile Icon" class="profile-icon">
-                </a>
-            </div>
 
-    </div>
-
-    </form>
+        </form>
 
     </div>
     <div class="container">
-        <div class="slide active">
+        <div class="container1">
             <div class="page-title">
                 <h1>Container 1</h1>
             </div>
             <p>Content for container 1 goes here.</p>
         </div>
-        <div class="slide">
+        <div class="container2">
             <div class="page-title">
                 <h1>Container 2</h1>
             </div>
             <p>Content for container 2 goes here.</p>
         </div>
-        <div class="slide active">
+        <div class="container3">
             <div class="page-title">
                 <h1>Container 3</h1>
             </div>
             <p>Content for container 1 goes here.</p>
         </div>
-        <div class="slide">
+        <div class="container4">
             <div class="page-title">
                 <h1>Container 4</h1>
             </div>
@@ -214,16 +253,21 @@
 
         document.addEventListener('keydown', handleArrowKey);
         goToSlide(currentSlide);
+
         function filterSuggestions() {
             var input = document.getElementById('search-box');
             var filter = input.value.toUpperCase();
             var suggestions = document.getElementById('suggestions');
+            var p = suggestions.getElementsByTagName('p');
             if (filter.length > 0) {
                 suggestions.style.display = 'block';
-                var p = suggestions.getElementsByTagName('p');
                 for (var i = 0; i < p.length; i++) {
                     if (p[i].textContent.toUpperCase().indexOf(filter) > -1) {
                         p[i].style.display = 'block';
+                        p[i].addEventListener('click', function () {
+                            input.value = this.textContent;
+                            suggestions.style.display = 'none';
+                        });
                     } else {
                         p[i].style.display = 'none';
                     }

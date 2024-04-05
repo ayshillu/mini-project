@@ -2765,3 +2765,23 @@ def submit(request):
     }
 
     return render(request, 'profile.html', context)
+
+
+
+    <div class="profileicon">
+        <a href="{% url 'profile' %}">
+            <img src="{% static 'profile.png' %}" alt="Profile Icon" class="profile-icon">
+        </a>
+    </div>
+
+
+    .profileicon {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+    }
+
+    .profile-icon {
+        width: 50px; /* Adjust size as needed */
+        height: 50px; /* Adjust size as needed */
+    }
