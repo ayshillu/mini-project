@@ -2,10 +2,16 @@
 <html class="no-js" lang="zxx">
 
 <head>
+    {% load static %}
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title> AboutUs </title>
-    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'font-awesome.css' %}">
+    <link rel="stylesheet" href="{% static 'templatemo-hexashop.css' %}">
+    <link rel="stylesheet" href="{% static 'owl-carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'lightbox.css' %}">
+
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -17,65 +23,13 @@
         href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&display=swap"
         rel="stylesheet">
     <style>
-        body {
-            background-color: #F2F0E4;
-        }
-
-        header {
-            display: flex;
-            justify-content: ;
-            align-items: flex-start;
-            /* Align items to the top */
-            padding: 40px 20px;
-            /* Adjust padding */
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            width: 30px;
-            height: auto;
-            padding: 0px;
-            /* Maintain aspect ratio */
-        }
-
-        .logo-name {
-            font-size: 30px;
-            margin-left: 10px;
-            font-weight: 300;
+        .heading {
             font-family: "Archivo";
-            color: #000000;
+            position: absolute;
+            top: 20px;
+            left: 20px;
         }
 
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0px;
-            display: flex;
-            align-items: center;
-            /* Align items vertically */
-        }
-
-        nav ul li {
-            margin-right: 20px;
-            /* Reduce margin-right */
-        }
-
-        nav ul li:last-child {
-            margin-right: 0;
-            /* Remove margin-right for the last item */
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: black;
-            padding: 0px;
-            /* Add padding to links */
-        }
 
         .signin1 {
             display: inline-block;
@@ -96,73 +50,12 @@
             /* Remove margin */
         }
 
-        .home_text {
-            font-family: "Archivo";
-            font-size: 20px;
-            margin-right: 40px;
-        }
-
-
-        .contact_text {
-            font-family: "Archivo";
-            font-size: 20px;
-            margin-right: 40px;
-        }
-
-        .about_text {
-            font-family: "Archivo";
-            font-size: 20px;
-            margin-right: 40px;
-            color: #DE7044;
-        }
-
-        .blog_text {
-            font-family: "Archivo";
-            font-size: 20px;
-            margin-right: 40px;
-        }
-
-        .rectbox {
-            width: 100px;
-            height: 100px;
-
-        }
-
-        .second_box {
-            width: 100%;
-            height: 500px;
-            color: rgb(87, 87, 8);
-        }
-
-        .foot {}
-
         .main_description {
             font-family: "Archivo";
             font-weight: ;
             font-size: 20px;
             margin-top: 3%;
             color: #000000;
-        }
-
-        .contact_button {
-            padding: 12px 20px;
-            border-radius: 30px;
-            background-color: #F2F0E4;
-            border-color: #000000;
-            border-width: 2px;
-            cursor: pointer;
-            color: #000000;
-            font-family: "Archivo";
-            margin-left: 90%;
-            transform: translateY(-50%);
-        }
-
-        .aboutus_text {
-            color: #000000;
-            font-family: "Archivo";
-            font-size: 80px;
-            margin-top: 5%;
-
         }
 
         .description {
@@ -173,59 +66,89 @@
             margin-left: -2%;
         }
 
-        .description1{
+        .description1 {
+            margin-top: 100px;
             color: #000000;
             margin-left: 10%;
 
         }
 
-        
+
         .heroin {
             position: absolute;
             top: 55%;
-            right: 10%;
-            width: 390px; /* Maintain the same width */
-            height: 470px; /* Maintain the same height */
+            right: 15%;
+            width: 320px;
+            height: 420px;
+            /* Maintain the same height */
             transform: translateY(-51%);
             border-radius: 5px;
+        }
+
+
+
+        .container {
+            font-family: "Archivo";
         }
     </style>
 </head>
 
 <body>
-    <nav style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
 
-        <div class="logo-container">
-            <span class="logo-name">LadyLeads</span>
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
-        <div>
-            <ul>
-                <li><a href="/">
-                        <p class="home_text">Home</p>
-                    </a></li>
-                <li><a href="about">
-                        <p class="about_text">About</p>
-                    </a></li>
-                <li><a href="blog">
-                        <p class="blog_text">Blog</p>
-                    </a></li>
-                <li><a href="contact">
-                        <p class="contact_text">Contact</p>
-                    </a></li>
-                <li><a class="signin1" href="signin">
-                        <p class="signintext">Sign In</p>
-                    </a></li>
-            </ul>
+    </div>
+
+    <header class="header-area header-sticky" style="background-color: #ffffff;">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <H1 class="heading">
+                            LadyLeads
+                        </H1>
+                        <ul class="nav">
+                            <li class="scroll-to-section"><a href="{% url 'home'%}" class="active">Home</a></li>
+                            <li class="scroll-to-section"><a href="{% url 'about'%}">About</a></li>
+                            <li class="scroll-to-section"><a href="{% url 'blog'%}">Blog</a></li>
+                            <li class="scroll-to-section"><a href="{% url 'contact'%}">Contact</a></li>
+                            <li class="submenu">
+                                <a href="javascript:;">Pages</a>
+                                <ul>
+                                    <li><a href="{% url 'home' %}">Home</a></li>
+                                    <li><a href="{% url 'about' %}">About Us</a></li>
+                                    <li><a href="{% url 'blog' %}">Blog</a></li>
+                                    <li><a href="{% url 'contact' %}">contact</a></li>
+
+                                </ul>
+                            </li>
+                            <li class="submenu">
+                                <a href="javascript:;">Features</a>
+                                <ul>
+                                    <li><a href="#">Features Page 1</a></li>
+                                    <li><a href="#">Features Page 2</a></li>
+                                    <li><a href="#">Features Page 3</a></li>
+                                    <li><a rel="nofollow" href="" target="_blank">Template Page 4</a></li>
+                                </ul>
+                            </li>
+                            <li class="scroll-to-section"><a href="#explore">Explore</a></li>
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                    </nav>
+                </div>
+            </div>
         </div>
-    </nav>
+    </header>
 
 
     <main>
-        <!-- Your main content goes here -->
         <div class="description">
-            <div class="page_image">
-                <!--<img src="{% static '.jpg' %}" alt="Logo" class="logo">-->
-            </div>
             <div class="description1">
                 <h2 class="aboutus_text">About Us</h2>
                 <p>
@@ -242,82 +165,39 @@
             </div>
         </div>
     </main>
+    <img src="{% static 'plant.jpeg' %}" alt="Center Right Image" class="heroin">
 
-    <!--<footer>
-        <div class="footer-wrappr">
-            <div class="footer-top">
-                
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="form-wrapper">
-                                    <div class="row ">
-                                        <div class="col-xl-12">
-                                            <div class="small-tittle mb-30">
-                                                <h4>Contact Us</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <form id="contact-form" action="#" method="POST">
-                                        {% csrf_token %}
-                                        <div class="row">
-                                            <div class="col-lg-4 col-md-6">
-                                                <div class="form-box user-icon mb-25">
-                                                    <input type="text" name="name" placeholder="Your name">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-6">
-                                                <div class="form-box email-icon mb-25">
-                                                    <input type="text" name="email" placeholder="Email">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-6">
-                                                <div class="form-box email-icon mb-25">
-                                                    <input type="text" name="email" placeholder="Subject">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <div class="form-box message-icon mb-25">
-                                                    <textarea name="message" id="message"
-                                                        placeholder="Message"></textarea>
-                                                </div>
-                                                <div class="submit-info">
-                                                    <button class="submit-btn2" type="submit">Send Message</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-            
-            <div class="footer-bottom-area">
-                <div class="container">
-                    <div class="footer-border">
-                        <div class="row align-items-center">
-                            <div class="col-xl-4 col-lg-4">
-                                <div class="footer-social">
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="https://bit.ly/sai4ull"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                                    <a href="#"><i class="fas fa-globe"></i></a>
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
+    <script src="{% static 'jquery-2.1.0.min.js' %}"></script>
+    <script src="{% static 'popper.js' %}"></script>
+    <script src="{% static 'bootstrap.min.js' %}"></script>
+    <script src="{% static 'owl-carousel.js' %}"></script>
+    <script src="{% static 'accordions.js' %}"></script>
+    <script src="{% static 'datepicker.js' %}"></script>
+    <script src="{% static 'scrollreveal.min.js' %}"></script>
+    <script src="{% static 'waypoints.min.js' %}"></script>
+    <script src="{% static 'jquery.counterup.min.js' %}"></script>
+    <script src="{% static 'imgfix.min.js' %}"></script>
+    <script src="{% static 'slick.js' %}"></script>
+    <script src="{% static 'lightbox.js' %}"></script>
+    <script src="{% static 'isotope.js' %}"></script>
+    <script src="{% static 'custom.js' %}"></script>
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-   
-    <div id="back-top">
-        <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
-    </div>-->
-    <img src="{% static 'pizza.jpg' %}" alt="Center Right Image" class="heroin">
+
+    <script>
+        $(function () {
+            var selectedClass = "";
+            $("p").click(function () {
+                selectedClass = $(this).attr("data-rel");
+                $("#portfolio").fadeTo(50, 0.1);
+                $("#portfolio div").not("." + selectedClass).fadeOut();
+                setTimeout(function () {
+                    $("." + selectedClass).fadeIn();
+                    $("#portfolio").fadeTo(50, 1);
+                }, 500);
+
+            });
+        });
+    </script>
 
 </body>
 

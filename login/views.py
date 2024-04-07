@@ -5,6 +5,8 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 from .models import EditProfile
 from .models import  UserProfile
 
@@ -71,10 +73,17 @@ def about(request):
 
 def profile(request):
     me = request.user
+    try:
+        profile = EditProfile.objects.get(user=request.user)
+    except:
+        profile = EditProfile(user=request.user)
+
+    # print(profile)
 
     context = {
         'user' : User,
         'me': me,
+        'profile' : profile,
 
     }
     return render(request, 'profile.html', context)
@@ -91,8 +100,36 @@ def contact(request):
 
 @login_required
 def editprofile(request):
+    try:
+        profile = EditProfile.objects.get(user=request.user)
+    except:
+        profile = EditProfile(user=request.user)
+
+    context={
+        'profile':profile,
+    }
+
+    if request.method == 'POST':
+        job = request.POST['job']
+        location = request.POST['location']
+        year = request.POST['year']
+
+        # print(job,location,year)
+        try:
+            profile = EditProfile.objects.get(user=request.user)
+        except:
+            profile = EditProfile(user=request.user)
+
+        profile.job = job
+        profile.location = location
+        profile.Yearofexp = year
+
+        profile.save()
+
+
+        return HttpResponseRedirect(reverse("profile"))
    
-    return render(request, 'editprofile.html', {'user': request.user})
+    return render(request, 'editprofile.html', context)
  
  
 def chatprofile(request):

@@ -1,1297 +1,1036 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login</title>
-</head>
-<body>
-
-    <h3>lady leads</h3>
-
-    <button type="submit"> <a href="/signup">SignUp</a></button>
-    <button type="submit"> <a href="/signin">SignIn</a></button>
-    <button type="submit"> <a href="/signout">SignOut</a></button>
-    
-</body>
-</html>
-
-
-signup
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-    <h3>Sign Up</h3>
-
-    <form action="/signup" method="post">
-    {% csrf_token %}    
-        <label for="">Username</label>
-        <input type="text" id="username" name="username" placeholder="Create a username (only letters and numbers)" Required>
-        <br>
-
-        <label for="">First Name</label>
-        <input type="text" id="fname" name="fname" placeholder="Enter Your First Name" Required>
-        <br>
-
-        <label for="">Last Name</label>
-        <input type="text" id="lname" name="lname" placeholder="Enter Your Last Name" Required>
-        <br>
-
-        <label for="">Email Id</label>
-        <input type="email" id="email" name="email" placeholder="Enter Your Email Address" Required>
-        <br>
-
-        <label for="">Password</label>
-        <input type="password" id="pass1" name="pass1" placeholder="Create a Password" Required>
-        <br>
-
-        <button type="submit">Sign Up</button>
-    </form>
-</body>
-</html>
-
-signin
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-    <h3>Sign In</h3>
-
-    <form action="/signin" method="post">
-    {% csrf_token %}    
-        <label for="">Username</label>
-        <input type="text" id="username" name="username" placeholder="Enter username" Required>
-        <br>
-
-        <label for="">Password</label>
-        <input type="password" id="pass1" name="pass1" placeholder="Enter Password" Required>
-        <br>
-
-        <button type="submit">Sign In</button>
-    </form>
-</body>
-</html>
-
-
-
-login
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .container {
-            text-align: center;
-            background-color: #68b898;
-            padding: 70px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .container h3 {
-            margin-bottom: 20px;
-        }
-        .btn {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-        }
-        .btn + .btn {
-            margin-left: 10px;
-        }
-        .login {
-            color: rgb(255, 255, 255);
-        }
-        .signup_button {
-
-
-            padding-top: 0px;
-            padding-bottom: 0px;
-            padding-left: 15px;
-            padding-right: 15px;
-            border-radius: 50px;
-        }
-
-        .signin_button {
-
-
-            padding-top: 0px;
-            padding-bottom: 0px;
-            padding-left: 15px;
-            padding-right: 15px;
-            border-radius: 50px;
-        }
-
-        .signup_text {
-            font-weight: bolder;
-            font-family: Arial;
-            color: black;
-        }
-        .signin_text {
-            font-weight: bolder;
-            font-family: Arial;
-            color: black;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-       
-    <h3 class="login">Welcome to LadyLeads</h3>
-
-    <button class="signup_button" type="submit"> <a href="signup"><p class="signup_text">SignUp</p></a></button>
-    <button class="signin_button" type="submit"> <a href="/signin"><p class="signin_text">SignIn</p></a></button>
-    </div>
-</body>
-</html>
-
-
-sign up
-
-def signup(request):
-
-    if request.method == "POST":
-      username = request.POST['username']
-      fname = request.POST['fname']
-      lname = request.POST['lname']
-      email = request.POST['email']
-      pass1 = request.POST['pass1']
-    
-      myuser = User.objects.create_user(username, email, pass1)
-      myuser.first_name = fname
-      myuser.last_name = lname
-
-      myuser.save()
-
-      messages.success(request, "Your Account has been successfully created. ")
-
-      return redirect('signin')
-
-
-
-
-      signup
-
-
-      <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .container {
-            text-align: center;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .container h3 {
-            margin-bottom: 20px;
-            padding-top: 50px;
-            padding-bottom: 50px;
-        }
-        .btn {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-        }
-        .btn + .btn {
-            margin-left: 10px;
-        }
-        .user_box {
-            margin-bottom: 10px;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h3>Sign Up</h3>
-        <form action="/signup" method="post">
-            {% csrf_token %}    
-            <label for="">Username</label>
-            <input class="user_box" type="text" id="username" name="username" placeholder="Create a username (only letters and numbers)" Required>
-            <br>
-
-            <label for="">First Name</label>
-            <input type="text" id="fname" name="fname" placeholder="Enter Your First Name" Required oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');">
-            <br>
-
-            <label for="">Last Name</label>
-            <input type="text" id="lname" name="lname" placeholder="Enter Your Last Name" Required oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');" >
-            <br>
-
-            <label for="">Email Id</label>
-            <input type="email" id="email" name="email" placeholder="Enter Your Email Address" Required>
-            <br>
-
-            <label for="">Password</label>
-            <input type="password" id="pass1" name="pass1" placeholder="Create a Password" minlength="8"
-              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$]).{8,}"
-             title="Password must be at least 8 characters long, include uppercase and lowercase letters, a number, and special characters like @#$"
-             required>
-             <br>
-
-            <button type="submit" class="btn">Register</button>
-        </form>
-    </div>
-</body>
-</html>
-
-
-
-home.html<!DOCTYPE html>
-<html>
 
 <head>
-    {% load static %}
-    <title>LADY LEADS</title>
-    <style>
-        body {
-            background-repeat: no-repeat;
-            background-size: cover;
-            text-align: center;
-            font-weight: bolder;
-            font-family: Arial;
-            font-size: 25px;
-            margin-top: 70px;
-        }
 
-        .main_text {
-            color: white;
-            font-size: 30px;
-            font-weight: bold;
-            margin-top: 10px; /* Adjusted margin */
-        }
-
-        .button1 {
-            width: 200px;
-            height: 200px;
-            border-radius: 10px;
-            border: 2px solid white;
-            box-shadow: 3px 1px 1px rgb(248, 247, 247);
-        }
-
-        .button2 {
-            width: 200px;
-            height: 200px;
-            border-radius: 10px;
-            border: 10px;
-            border: 2px solid white;
-            box-shadow: 3px 1px 1px rgb(248, 247, 247);
-        }
-
-        .text1 {
-            margin-top: 0px;
-            font-size: 25px;
-            font-weight: bolder;
-            font-family: Arial;
-            cursor: cell;
-            text-align: center;
-            color: brown;
-        }
-
-        .text2 {
-            margin-top: 0px;
-            font-size: 25px;
-            font-weight: bolder;
-            font-family: Arial;
-            cursor: cell;
-            text-align: center;
-            color: brown;
-
-        }
-
-        .inner {
-            justify-content: space-around;
-            align-items: center;
-            top: 50%;
-            transform: translate(50%, 25%);
-            left: 50%;
-            display: flex;
-            height: 50%;
-            width: 50%;
-        }
-        .main {
-            height: 400px;
-            width: 400px;
-            margin-top: 90px;
-            margin-left: 550px;
-        }
-        .seek {
-            margin-right: 130px;
-        }
-    </style>
-</head>
-
-<body>
-    <img src="{% static 'logo.png' %}">
-    <div class="main">
-        <div class="blank_text">
-        </div>
-        <div class="second">
-            <div class="inner">
-                <div class="seek">
-                    <div class="seek_image">
-                        <a href="login">
-                            <img class="button1" src="{% static 'IMG_2742.JPG' %}">
-                        </a>
-                    </div>
-                    <div class="seek_text">
-                        <p class="text1"> Home</p>
-                    </div>
-                </div>
-                <div class="provider">
-                    <div class="provider_image">
-                        <a href="login">
-                            <img class="button2" src="{% static 'IMG_2741.JPG' %}">
-                        </a>
-                    </div>
-                    <div class="provider_text">
-                        <p class="text2"> About</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
-
-</html>
-
-
-home
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Redressed&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
-    <style>
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            /* Align items to the top */
-            padding: 10px 20px;
-            /* Adjust padding */
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo {
-            width: 30px;
-            height: auto;
-            padding: 0px;
-            /* Maintain aspect ratio */
-        }
-
-        .logo-name {
-            font-size: 30px;
-            margin-left: 10px;
-            font-weight: 300;
-            font-family: "Redressed", cursive;
-            color: brown;
-        }
-
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0px;
-            display: flex;
-            align-items: center;
-            /* Align items vertically */
-        }
-
-        nav ul li {
-            margin-right: 20px;
-            /* Reduce margin-right */
-        }
-
-        nav ul li:last-child {
-            margin-right: 0;
-            /* Remove margin-right for the last item */
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: black;
-            padding: 0px;
-            /* Add padding to links */
-        }
-
-        .signin1 {
-            display: inline-block;
-            padding: 5px 10px;
-            /* Adjust padding as needed */
-            background-color: brown;
-            /* Add border-radius for rounded corners */
-            font-size: 20px;
-        }
-
-        .signintext {
-            font-family: "inter", cursive;
-            color: #ffffff;
-            text-align: center;
-            margin: 0;
-            /* Remove margin */
-        }
-
-        .home_text {
-            font-family: "inter", cursive;
-            font-size: 20px;
-        }
-
-
-        .contact_text {
-            font-family: "inter", cursive;
-            font-size: 20px;
-        }
-
-        .about_text {
-            font-family: "inter", cursive;
-            font-size: 20px;
-            cursor: pointer;
-        }
-
-        .blog_text {
-            font-family: "inter", cursive;
-            font-size: 20px;
-        }
-
-
-        .center-right-image {
-            position: absolute;
-            top: 35%;
-            right: 0;
-            width: 450px;
-            /* Maintain the same width */
-            height: 450px;
-            /* Maintain the same height */
-            transform: translateY(-50%);
-            margin-right: 50px;
-        }
-        .second_box {
-            width: 100%;
-            height: 450px;
-            background-color: bisque;
-        }
-        .header_box {
-            height: 475px;
-            width: 100%;
-            background-color: ;
-        }
-        .ab {
-            cursor: pointer;
-        }
-    </style>
-</head>
-
-<body>
-    <div class="header_box">
-        <header>
-            <div class="logo-container">
-                <img src="{% static 'logo1.png' %}" alt="Logo" class="logo">
-                <span class="logo-name">LadyLeads</span>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="/">
-                            <p class="home_text">Home</p>
-                        </a></li>
-                    <li class="ab"><a href="about">
-                            <p class="about_text">About</p>
-                        </a></li>
-                    <li><a href="login">
-                            <p class="blog_text">Blog</p>
-                        </a></li>
-                    <li><a href="#">
-                            <p class="contact_text">Contact</p>
-                        </a></li>
-                    <li><a class="signin1" href="signin">
-                            <p class="signintext">Sign In</p>
-                        </a></li>
-                </ul>
-            </nav>
-        </header>
-    
-    </div>
-    <div class="second_box">
-
-    </div>
-    
-    <main>
-        <!-- Your main content goes here -->
-    </main>
-
-    <footer>
-        <!-- Your footer content goes here -->
-    </footer>
-
-    <!-- Center-right image -->
-    <img src="{% static 'women.png' %}" alt="Center Right Image" class="center-right-image">
-
-</body>
-
-</html>
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Feedback Star Rating</title>
-<style>
-  .rating {
-    unicode-bidi: bidi-override;
-    direction: rtl;
-    text-align: center;
-  }
-  .rating input {
-    display: none;
-  }
-  .rating label {
-    display: inline-block;
-    padding: 5px;
-    font-size: 25px;
-    color: #FFD700;
-    cursor: pointer;
-  }
-  .rating label:hover,
-  .rating label:hover ~ label {
-    color: #ff5959;
-  }
-  .rating input:checked ~ label {
-    color: #601212;
-  }
-</style>
-</head>
-<body>
-
-<div class="rating">
-  <input type="radio" id="star5" name="rating" value="5">
-  <label for="star5">&#9733;</label>
-  <input type="radio" id="star4" name="rating" value="4">
-  <label for="star4">&#9733;</label>
-  <input type="radio" id="star3" name="rating" value="3">
-  <label for="star3">&#9733;</label>
-  <input type="radio" id="star2" name="rating" value="2">
-  <label for="star2">&#9733;</label>
-  <input type="radio" id="star1" name="rating" value="1">
-  <label for="star1">&#9733;</label>
-</div>
-
-</body>
-</html>
-
-
-
-HOME 
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Redressed&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
-     rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-    <style>
-        body{
-            background-color: rgb(255, 252, 250);
-        }
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            /* Align items to the top */
-            padding: 10px 20px;
-            /* Adjust padding */
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo {
-            width: 30px;
-            height: auto;
-            padding: 0px;
-            /* Maintain aspect ratio */
-        }
-
-        .logo-name {
-            font-size: 30px;
-            margin-left: 10px;
-            font-weight: 300;
-            font-family: "Redressed", cursive;
-            color: brown;
-        }
-
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0px;
-            display: flex;
-            align-items: center;
-            /* Align items vertically */
-        }
-
-        nav ul li {
-            margin-right: 20px;
-            /* Reduce margin-right */
-        }
-
-        nav ul li:last-child {
-            margin-right: 0;
-            /* Remove margin-right for the last item */
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: black;
-            padding: 0px;
-            /* Add padding to links */
-        }
-
-        .signin1 {
-            display: inline-block;
-            padding: 5px 10px;
-            /* Adjust padding as needed */
-            background-color: brown;
-            /* Add border-radius for rounded corners */
-            font-size: 20px;
-        }
-
-        .signintext {
-            font-family: "inter", cursive;
-            color: #ffffff;
-            text-align: center;
-            margin: 0;
-            /* Remove margin */
-        }
-
-        .home_text {
-            font-family: "inter", cursive;
-            font-size: 20px;
-        }
-
-
-        .contact_text {
-            font-family: "inter", cursive;
-            font-size: 20px;
-        }
-
-        .about_text {
-            font-family: "inter", cursive;
-            font-size: 20px;
-        }
-
-        .blog_text {
-            font-family: "inter", cursive;
-            font-size: 20px;
-        }
-
-        .rectbox {
-            width: 100px;
-            height: 100px;
-
-        }
-
-
-        .center-right-image {
-            position: absolute;
-            top: 35%;
-            right: 2%;
-            width: 420px; /* Maintain the same width */
-            height: 400px; /* Maintain the same height */
-            transform: translateY(-50%);
-        }
-
-        .second_box {
-            width: 100%;
-            height: 500px;
-            color: rgb(87, 87, 8);
-        }
-
-        .foot {
-            background-color: rgb(254, 242, 223);
-            margin-top: 23.9%;
-        }
-
-        .main_description {
-            font-family: "Outfit", sans-serif;
-            font-optical-sizing: auto;
-            font-weight: bold;
-            font-style: normal;
-            font-size: 55px;
-            margin-left: 5%;
-            margin-top: 25%;
-            color: rgb(77, 73, 73);
-        }
-
-        .description {
-            width: 55%;
-            height: 500px;
-        }
-    </style>
-</head>
-
-<body>
-    <nav style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
-
-        <div class="logo-container">
-            <img src="{% static 'logo1.png' %}" alt="Logo" class="logo">
-            <span class="logo-name">LadyLeads</span>
-        </div>
-        <div>
-            <ul>
-                <li><a href="/">
-                        <p class="home_text">Home</p>
-                    </a></li>
-                <li><a href="about">
-                        <p class="about_text">About</p>
-                    </a></li>
-                <li><a href="blog">
-                        <p class="blog_text">Blog</p>
-                    </a></li>
-                <li><a href="#">
-                        <p class="contact_text">Contact</p>
-                    </a></li>
-                <li><a class="signin1" href="signin">
-                        <p class="signintext">Sign In</p>
-                    </a></li>
-            </ul>
-        </div>
-    </nav>
-
-
-    <main>
-        <!-- Your main content goes here -->
-      <div class="description">
-            <p class="main_description">
-                Empowering women to lead, innovate, and inspire change in every corner of the world.
-            </p>
-        </div>
-    </main>
-
-    <footer class="foot">
-        <!-- Your footer content goes here -->
-        <div class="second_box">
-
-        </div>
-    </footer>
-
-    <!-- Center-right image -->
-    <img src="{% static 'women.png' %}" alt="Center Right Image" class="center-right-image">
-</body>
-
-</html>
-
-login
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    {% load static %}
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-image: url("{% static 'IMG_2743.JPG' %}");
-            background-size: cover;
-            background-position: center;
-        }
-        .container {
-            text-align: center;
-            background-color: rgba(49, 49, 49, 0.6); /* Background overlay */
-            padding: 50px;
-            border: 3.8px solid white;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            width: 100%;
-        }
-        .container img.logo {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 20px;
-        }
-        .container h3 {
-            margin-bottom: 20px;
-            color: #ffffff;
-            font-weight: bold;
-            font-size: 24px;
-        }
-        .btn {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 20px;
-            transition: background-color 0.3s ease;
-        }
-        .btn:hover {
-            background-color: #0056b3;
-        }
-        .signup_button, .signin_button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            background-color: #007bff;
-            color: #fff;
-            margin-top: 20px;
-            text-decoration: none;
-            display: inline-block;
-            transition: background-color 0.3s ease;
-        }
-        .signup_button:hover, .signin_button:hover {
-            background-color: #0056b3;
-        }
-        .signup_text, .signin_text {
-            font-weight: bold;
-            font-family: Arial;
-            color: #fff;
-            margin: 0;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <img src="{% static 'Group4.png' %}" alt="Logo" class="logo">
-        <h3> </h3>
-
-        <a href="signup" class="signup_button"><span class="signup_text">Sign Up</span></a>
-        <a href="/signin" class="signin_button"><span class="signin_text">Sign In</span></a>
-    </div>
-</body>
-</html>
-
-about
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Redressed&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
-    <style>
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            /* Align items to the top */
-            padding: 10px 20px;
-            /* Adjust padding */
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo {
-            width: 30px;
-            height: auto;
-            padding: 0px;
-            /* Maintain aspect ratio */
-        }
-
-        .logo-name {
-            font-size: 30px;
-            margin-left: 10px;
-            font-weight: 300;
-            font-family: "Redressed", cursive;
-            color: brown;
-        }
-
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0px;
-            display: flex;
-            align-items: center;
-            /* Align items vertically */
-        }
-
-        nav ul li {
-            margin-right: 20px;
-            /* Reduce margin-right */
-        }
-
-        nav ul li:last-child {
-            margin-right: 0;
-            /* Remove margin-right for the last item */
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: black;
-            padding: 0px;
-            /* Add padding to links */
-        }
-
-        .aboutus {
-            font-size: 100px;
-            font-family: "Outfit", sans-serif;
-            color: brown;
-            margin-left: 38%;
-            margin-top: 160px;
-        }
-
-        .signin1 {
-            display: inline-block;
-            padding: 5px 10px;
-            /* Adjust padding as needed */
-            background-color: brown;
-            /* Add border-radius for rounded corners */
-            font-size: 20px;
-        }
-
-        .signintext {
-            font-family: "inter", cursive;
-            color: #ffffff;
-            text-align: center;
-            margin: 0;
-            /* Remove margin */
-        }
-
-        .home_text {
-            font-family: "inter", cursive;
-            font-size: 20px;
-        }
-
-
-        .contact_text {
-            font-family: "inter", cursive;
-            font-size: 20px;
-        }
-
-        .about_text {
-            font-family: "inter", cursive;
-            font-size: 20px;
-        }
-
-        .blog_text {
-            font-family: "inter", cursive;
-            font-size: 20px;
-        }
-
-        .description{
-            font-family: "Outfit", sans-serif;
-            font-optical-sizing: auto;
-            font-style: normal;
-            font-size: 55px;
-            margin-left: 20%;
-            margin-top: 0%;
-            color: rgb(77, 73, 73);
-            display: flex;
-        }
-        .page_image {
-            display: flex;
-            width: 130px;
-            height: 130px;
-        }
-    </style>
-</head>
-
-<body>
-
-    <nav style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
-
-        <div class="logo-container">
-            <img src="{% static 'logo1.png' %}" alt="Logo" class="logo">
-            <span class="logo-name">LadyLeads</span>
-        </div>
-        <div>
-            <ul>
-                <li><a href="/">
-                        <p class="home_text">Home</p>
-                    </a></li>
-                <li><a href="about">
-                        <p class="about_text">About</p>
-                    </a></li>
-                <li><a href="blog">
-                        <p class="blog_text">Blog</p>
-                    </a></li>
-                <li><a href="#">
-                        <p class="contact_text">Contact</p>
-                    </a></li>
-                <li><a class="signin1" href="signin">
-                        <p class="signintext">Sign In</p>
-                    </a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <div class="aboutus">About Us</div>
-
-
-    <main>
-        <!-- Your main content goes here -->
-        <div class="description">
-            <div class="page_image">
-                <img src="{% static 'simg.jpg' %}" alt="Logo" class="logo">
-            </div>
-            <div class="description">
-                <p>
-                    At LadyLeads, we believe in the power of empowerment and community building. Founded with a vision to create a more inclusive society, LadyLeads serves as a platform that connects women with opportunities, supports skilled professionals, and fosters artisan communities.
-                    Driven by the belief that every woman deserves economic independence and the opportunity to showcase her talents, LadyLeads empowers job seekers by matching them with tailored employment opportunities that align with their skills and aspirations.
-                    Whether it's finding a job in tailoring, housekeeping, childcare, nursing, gardening, or any other profession, LadyLeads is dedicated to ensuring that every woman has access to meaningful work.
-    
-                </p>
-            </div>
-        </div>
-    </main>
-
-</body>
-
-
-
-</html>
-
-
-signin
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-image: url("{% static 'lady2.png' %}");
-            background-repeat: no-repeat;
-            background-size: cover;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .container {
-            text-align: center;
-            background-color: #ffffff;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-left: 45%;
-            font-family: "Outfit", sans-serif;
-        }
-        .container h3 {
-            margin-bottom: 20px;
-            font-weight: 700;
-            color: #333333;
-        }
-        .form-group {
-            margin-bottom: 20px;
-            font-family: "Outfit", sans-serif;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            color: #666666;
-        }
-        .form-group input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #dddddd;
-            border-radius: 5px;
-            box-sizing: border-box;
-            font-size: 16px;
-        }
-        .form-group button {
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            background-color: #fb6759;
-            color: #ffffff;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .form-group button:hover {
-            background-color: #ff583a;
-        }
-    </style>
-</head>
-
-<body>
-    <div class="container">
-        <h3>Sign In</h3>
-
-        <form action="/signin" method="post">
-            {% csrf_token %}    
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" placeholder="Enter username" required>
-            </div>
-
-            <div class="form-group">
-                <label for="pass1">Password</label>
-                <input type="password" id="pass1" name="pass1" placeholder="Enter password" required>
-            </div>
-
-            <div class="form-group">
-                <button type="submit">Sign In</button>
-            </div>
-            <ul>
-                <div>
-                    <li><a class="createone" href="signup">
-                        <p class="signintext">Dont have an account?create one</p>
-                    </a></li>
-                </div>
-            </ul>
-        </form>
-    </div>
-</body>
-</html>
-
-
-
-
-about
-<!doctype html>
-<html class="no-js" lang="zxx">
-
-<head>
     <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title> AboutUs </title>
-    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="site.webmanifest">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap" >
+    
+    <title>Workers</title>
 
-    <!-- CSS here -->
-    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'owl.carousel.min.css' %}">
-    <link rel="stylesheet" href="{% static 'slicknav.css' %}">
-    <link rel="stylesheet" href="{% static 'flaticon.css' %}">
-    <link rel="stylesheet" href="{% static 'progressbar_barfiller.css' %}">
-    <link rel="stylesheet" href="{% static 'gijgo.css' %}">
-    <link rel="stylesheet" href="{% static 'animate.min.css' %}">
-    <link rel="stylesheet" href="{% static 'animated-headline.css' %}">
-    <link rel="stylesheet" href="{% static 'magnific-popup.css' %}">
-    <link rel="stylesheet" href="{% static 'fontawesome-all.min.css' %}">
-    <link rel="stylesheet" href="{% static 'themify-icons.css' %}">
-    <link rel="stylesheet" href="{% static 'slick.css' %}">
-    <link rel="stylesheet" href="{% static 'nice-select.css' %}">
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
 
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+
+    <link rel="stylesheet" href="assets/css/templatemo-hexashop.css">
+
+    <link rel="stylesheet" href="assets/css/owl-carousel.css">
+
+    <link rel="stylesheet" href="assets/css/lightbox.css">
+
+    <style>
+        .heading {
+            font-family: "archivo" ;
+        }
+    </style>
+    <!--
+
+TemplateMo 571 Hexashop
+
+https://templatemo.com/tm-571-hexashop
+
+-->
+</head>
+
+<body>
+
+    <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <H1 class="heading">
+                            LadyLeads
+                        </H1>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+                            <li class="scroll-to-section"><a href="#men">Men's</a></li>
+                            <li class="scroll-to-section"><a href="#women">Women's</a></li>
+                            <li class="scroll-to-section"><a href="#kids">Kid's</a></li>
+                            <li class="submenu">
+                                <a href="javascript:;">Pages</a>
+                                <ul>
+                                    <li><a href="about.html">About Us</a></li>
+                                    <li><a href="products.html">Products</a></li>
+                                    <li><a href="single-product.html">Single Product</a></li>
+                                    <li><a href="contact.html">Contact Us</a></li>
+                                </ul>
+                            </li>
+                            <li class="submenu">
+                                <a href="javascript:;">Features</a>
+                                <ul>
+                                    <li><a href="#">Features Page 1</a></li>
+                                    <li><a href="#">Features Page 2</a></li>
+                                    <li><a href="#">Features Page 3</a></li>
+                                    <li><a rel="nofollow" href="https://templatemo.com/page/4" target="_blank">Template
+                                            Page 4</a></li>
+                                </ul>
+                            </li>
+                            <li class="scroll-to-section"><a href="#explore">Explore</a></li>
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+    <!-- ***** Main Banner Area Start ***** -->
+    <div class="main-banner" id="top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="left-content">
+                        <div class="thumb">
+                            <div class="inner-content">
+                                <h4>We Are Hexashop</h4>
+                                <span>Awesome, clean &amp; creative HTML5 Template</span>
+                                <div class="main-border-button">
+                                    <a href="#">Purchase Now!</a>
+                                </div>
+                            </div>
+                            <img src="assets/images/left-banner-image.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="right-content">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="right-first-image">
+                                    <div class="thumb">
+                                        <div class="inner-content">
+                                            <h4>Women</h4>
+                                            <span>Best Clothes For Women</span>
+                                        </div>
+                                        <div class="hover-content">
+                                            <div class="inner">
+                                                <h4>Women</h4>
+                                                <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.
+                                                </p>
+                                                <div class="main-border-button">
+                                                    <a href="#">Discover More</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <img src="assets/images/baner-right-image-01.jpg">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="right-first-image">
+                                    <div class="thumb">
+                                        <div class="inner-content">
+                                            <h4>Men</h4>
+                                            <span>Best Clothes For Men</span>
+                                        </div>
+                                        <div class="hover-content">
+                                            <div class="inner">
+                                                <h4>Men</h4>
+                                                <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.
+                                                </p>
+                                                <div class="main-border-button">
+                                                    <a href="#">Discover More</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <img src="assets/images/baner-right-image-02.jpg">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="right-first-image">
+                                    <div class="thumb">
+                                        <div class="inner-content">
+                                            <h4>Kids</h4>
+                                            <span>Best Clothes For Kids</span>
+                                        </div>
+                                        <div class="hover-content">
+                                            <div class="inner">
+                                                <h4>Kids</h4>
+                                                <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.
+                                                </p>
+                                                <div class="main-border-button">
+                                                    <a href="#">Discover More</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <img src="assets/images/baner-right-image-03.jpg">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="right-first-image">
+                                    <div class="thumb">
+                                        <div class="inner-content">
+                                            <h4>Accessories</h4>
+                                            <span>Best Trend Accessories</span>
+                                        </div>
+                                        <div class="hover-content">
+                                            <div class="inner">
+                                                <h4>Accessories</h4>
+                                                <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.
+                                                </p>
+                                                <div class="main-border-button">
+                                                    <a href="#">Discover More</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <img src="assets/images/baner-right-image-04.jpg">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Main Banner Area End ***** -->
+
+
+
+    <!-- ***** Explore Area Starts ***** -->
+    <section class="section" id="explore">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="left-content">
+                        <h2>Explore Our Products</h2>
+                        <span>You are allowed to use this HexaShop HTML CSS template. You can feel free to modify or
+                            edit this layout. You can convert this template as any kind of ecommerce CMS theme as you
+                            wish.</span>
+                        <div class="quote">
+                            <i class="fa fa-quote-left"></i>
+                            <p>You are not allowed to redistribute this template ZIP file on any other website.</p>
+                        </div>
+                        <p>There are 5 pages included in this HexaShop Template and we are providing it to you for
+                            absolutely free of charge at our TemplateMo website. There are web development costs for us.
+                        </p>
+                        <p>If this template is beneficial for your website or business, please kindly <a rel="nofollow"
+                                href="https://paypal.me/templatemo" target="_blank">support us</a> a little via PayPal.
+                            Please also tell your friends about our great website. Thank you.</p>
+                        <div class="main-border-button">
+                            <a href="products.html">Discover More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="right-content">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="leather">
+                                    <h4>Leather Bags</h4>
+                                    <span>Latest Collection</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="first-image">
+                                    <img src="assets/images/explore-image-01.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="second-image">
+                                    <img src="assets/images/explore-image-02.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="types">
+                                    <h4>Different Types</h4>
+                                    <span>Over 304 Products</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Explore Area Ends ***** -->
+
+
+
+    <!-- ***** Subscribe Area Starts ***** -->
+    <div class="subscribe">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="section-heading">
+                        <h2>By Subscribing To Our Newsletter You Can Get 30% Off</h2>
+                        <span>Details to details is what makes Hexashop different from the other themes.</span>
+                    </div>
+                    <form id="subscribe" action="" method="get">
+                        <div class="row">
+                            <div class="col-lg-5">
+                                <fieldset>
+                                    <input name="name" type="text" id="name" placeholder="Your Name" required="">
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-5">
+                                <fieldset>
+                                    <input name="email" type="text" id="email" pattern="[^ @]@[^ @]"
+                                        placeholder="Your Email Address" required="">
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-2">
+                                <fieldset>
+                                    <button type="submit" id="form-submit" class="main-dark-button"><i
+                                            class="fa fa-paper-plane"></i></button>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-4">
+                    <div class="row">
+                        <div class="col-6">
+                            <ul>
+                                <li>Store Location:<br><span>Sunny Isles Beach, FL 33160, United States</span></li>
+                                <li>Phone:<br><span>010-020-0340</span></li>
+                                <li>Office Location:<br><span>North Miami Beach</span></li>
+                            </ul>
+                        </div>
+                        <div class="col-6">
+                            <ul>
+                                <li>Work Hours:<br><span>07:30 AM - 9:30 PM Daily</span></li>
+                                <li>Email:<br><span>info@company.com</span></li>
+                                <li>Social Media:<br><span><a href="#">Facebook</a>, <a href="#">Instagram</a>, <a
+                                            href="#">Behance</a>, <a href="#">Linkedin</a></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Subscribe Area Ends ***** -->
+
+    <!-- ***** Footer Start ***** -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="first-item">
+                        <div class="logo">
+                            <img src="assets/images/white-logo.png" alt="hexashop ecommerce templatemo">
+                        </div>
+                        <ul>
+                            <li><a href="#">16501 Collins Ave, Sunny Isles Beach, FL 33160, United States</a></li>
+                            <li><a href="#">hexashop@company.com</a></li>
+                            <li><a href="#">010-020-0340</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <h4>Shopping &amp; Categories</h4>
+                    <ul>
+                        <li><a href="#">Men’s Shopping</a></li>
+                        <li><a href="#">Women’s Shopping</a></li>
+                        <li><a href="#">Kid's Shopping</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><a href="#">Homepage</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h4>Help &amp; Information</h4>
+                    <ul>
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">FAQ's</a></li>
+                        <li><a href="#">Shipping</a></li>
+                        <li><a href="#">Tracking ID</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-12">
+                    <div class="under-footer">
+                        <p>Copyright © 2024 LadyLeads, Ltd. All Rights Reserved.
+
+
+                            <!-- <ul>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                        </ul> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- jQuery -->
+    <script src="assets/js/jquery-2.1.0.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="assets/js/popper.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+
+    <!-- Plugins -->
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/accordions.js"></script>
+    <script src="assets/js/datepicker.js"></script>
+    <script src="assets/js/scrollreveal.min.js"></script>
+    <script src="assets/js/waypoints.min.js"></script>
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <script src="assets/js/imgfix.min.js"></script>
+    <script src="assets/js/slick.js"></script>
+    <script src="assets/js/lightbox.js"></script>
+    <script src="assets/js/isotope.js"></script>
+
+    <!-- Global Init -->
+    <script src="assets/js/custom.js"></script>
+
+    <script>
+
+        $(function () {
+            var selectedClass = "";
+            $("p").click(function () {
+                selectedClass = $(this).attr("data-rel");
+                $("#portfolio").fadeTo(50, 0.1);
+                $("#portfolio div").not("." + selectedClass).fadeOut();
+                setTimeout(function () {
+                    $("." + selectedClass).fadeIn();
+                    $("#portfolio").fadeTo(50, 1);
+                }, 500);
+
+            });
+        });
+
+    </script>
+
+</body>
+
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>workers</title>
+    <style>
+        @import 'https://unpkg.com/open-props' layer(design.system);
+        @import 'https://unpkg.com/open-props/normalize.light.min.css'
+        layer(base.normalize);
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200..900&display=swap');
+
+        @layer base.carousel {
+            section {
+                container-type: inline-size;
+                display: grid;
+                place-items: center;
+                gap: var(--size-7);
+                inline-size: 100%;
+                background-color: #f2f0e4;
+                color: #010101;
+                padding-block: var(--size-7);
+                padding-inline: var(--size-3);
+            }
+
+            .carousel {
+                display: grid;
+                max-inline-size: 1600px;
+                gap: var(--size-3);
+            }
+
+            header {
+                display: grid;
+                grid-auto-flow: column;
+                justify-content: space-between;
+            }
+
+            h3 {
+                font-weight: var(--font-weight-7);
+            }
+
+            .controls {
+                direction: ltr;
+                display: grid;
+                grid-auto-flow: column;
+                place-items: center;
+                gap: 0.75rem;
+
+                @media (width < 768px) {
+                    display: none;
+                }
+            }
+
+            button {
+                display: grid;
+                place-items: center;
+                inline-size: var(--size-8);
+                block-size: var(--size-8);
+                border-radius: var(--radius-round);
+                background-color: var(--gray-3);
+                transition: background-color 0.2s ease;
+
+                &:hover {
+                    background-color: var(--gray-4);
+                }
+
+                &:focus {
+                    box-shadow: 0 0 0 2px var(--indigo-7);
+                }
+
+                &:focus-visible {
+                    box-shadow: unset;
+                    outline-offset: unset;
+                }
+
+                &:disabled {
+                    opacity: 0.3;
+                    cursor: not-allowed;
+                }
+            }
+
+            .scroller {
+                display: grid;
+                grid-auto-flow: column;
+                gap: var(--size-3);
+                scroll-behavior: smooth;
+                overflow-x: auto;
+                padding-block-end: var(--size-6);
+                scrollbar-width: thin;
+                overflow-x: auto;
+                overscroll-behavior-x: contain;
+                scroll-snap-type: x mandatory;
+            }
+
+            .snap {
+                scroll-snap-align: start;
+                padding: 0;
+                margin: 0;
+                text-decoration: none;
+                color: inherit;
+            }
+
+            figure {
+                display: grid;
+                grid-template-rows: 1fr min-content;
+                inline-size: min(100cqi, 500px);
+                place-items: start;
+                gap: var(--size-3);
+            }
+
+            img {
+                aspect-ratio: var(--ratio-square);
+                object-fit: cover;
+                background-color: white;
+                block-size: 100%;
+            }
+
+            figcaption {
+                font-size: var(--font-size-3);
+                font-weight: var(--font-weight-5);
+            }
+        }
+
+        @layer base.demo {
+
+            /* just for demo */
+            body {
+                font-family: 'Inter', sans-serif;
+                display: grid;
+                place-items: center;
+                background-color: #f2f0e4;
+                color:#010101;
+            }
+        }
+
+        .main_div {
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+            width: 450px;
+            margin: 0 auto;
+        }
+
+
+        .search {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 450px;
+            margin: 0 auto;
+            color: #011F1F;
+            justify-content: space-evenly;
+        }
+
+        button {
+            all: unset;
+            background-color: #011f1f;
+            color: #f2f0e4;
+            ;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .suggestions {
+            display: none;
+            margin: 0 auto;
+            cursor: pointer;
+            width: 400px;
+        }
+
+        .suggestions {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            max-height: 100px;
+            overflow-y: auto;
+        }
+
+        input[type="search"] {
+            all: unset;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        .profileicon {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .profile-icon {
+            width: 50px;
+            /* Adjust size as needed */
+            height: 50px;
+            /* Adjust size as needed */
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <h3>LadyLeads</h3>
+    <form>
+        <div class="profileicon">
+            <a href="{% url 'profile' %}">
+                <img src="{% static 'profile.png' %}" alt="Profile Icon" class="profile-icon">
+            </a>
+        </div>
+        <div class="main_div">
+            <div class="search">
+                <input type="search" id="search-box" placeholder="What are you looking for?"
+                    oninput="filterSuggestions()">
+                <button type="submit">Search</button>
+            </div>
+
+            <div id="suggestions" class="suggestions">
+                <p>Tailor</p>
+                <p>Gardener</p>
+                <p>Home nurse</p>
+                <p>Henna</p>
+                <p>Cake maker</p>
+            </div>
+
+        </div>
+
+    </form>
+    <section>
+        <div class="carousel" aria-label="Featured Items Carousel" aria-roledescription="carousel">
+            <header>
+                <h1>Henna</h1>
+                <div class="controls">
+                    <button id="prevBtn" aria-label="Previous" title="Previous" onclick="Scroller.scrollBy(-516, 0)">
+                        <svg width="10" height="15" viewBox="0 0 10 15" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true">
+                            <path d="M8.71833 15L0 7.5L8.71833 0L10 1.10257L2.56337 7.5L10 13.8974L8.71833 15Z"
+                                fill="black" />
+                        </svg>
+                    </button>
+                    <button id="nextBtn" aria-label="Next" title="Next" onclick="Scroller.scrollBy(516, 0)">
+                        <svg width="10" height="15" viewBox="0 0 10 15" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true">
+                            <path
+                                d="M1.28167 15L10 7.5L1.28167 0L1.72702e-07 1.10257L7.43663 7.5L1.72702e-07 13.8974L1.28167 15Z"
+                                fill="black" />
+                        </svg>
+                    </button>
+                </div>
+            </header>
+
+            <div id="Scroller" class="scroller" role="group" aria-label="Items Scroller" aria-live="polite">
+                <a href="/" class="snap" aria-label="1 of 6" aria-roledescription="item">
+                    <figure>
+                        <picture>
+                            <source srcset="
+                      https://raw.githubusercontent.com/mobalti/open-props-interfaces/main/logical-carousel/images/img-1.avif
+                    " type="image/avif" />
+                            <img src="https://raw.githubusercontent.com/mobalti/open-props-interfaces/main/logical-carousel/images/img-1.webp"
+                                alt="" loading="lazy" width="300" height="300" />
+                        </picture>
+                        <figcaption>
+                            <div>Unleash Your Potential</div>
+                        </figcaption>
+                    </figure>
+                </a>
+                <a href="/" class="snap" aria-label="2 of 6" aria-roledescription="item">
+                    <figure>
+                        <picture>
+                            <source srcset="
+                      https://raw.githubusercontent.com/mobalti/open-props-interfaces/main/logical-carousel/images/img-2.avif
+                    " type="image/avif" />
+                            <img src="https://raw.githubusercontent.com/mobalti/open-props-interfaces/main/logical-carousel/images/img-2.webp"
+                                alt="" loading="lazy" width="300" height="300" />
+                        </picture>
+                        <figcaption>
+                            <div>Elevate Your Game</div>
+                        </figcaption>
+                    </figure>
+                </a>
+                <a href="/" class="snap" aria-label="3 of 6" aria-roledescription="item">
+                    <figure>
+                        <picture>
+                            <source srcset="
+                      https://raw.githubusercontent.com/mobalti/open-props-interfaces/main/logical-carousel/images/img-3.avif
+                    " type="image/avif" />
+                            <img src="https://raw.githubusercontent.com/mobalti/open-props-interfaces/main/logical-carousel/images/img-3.webp"
+                                alt="" loading="lazy" width="300" height="300" />
+                        </picture>
+                        <figcaption>
+                            <div>Seamless Performance</div>
+                        </figcaption>
+                    </figure>
+                </a>
+                <a href="/" class="snap" aria-label="4 of 6" aria-roledescription="item">
+                    <figure>
+                        <picture>
+                            <source srcset="
+                      https://raw.githubusercontent.com/mobalti/open-props-interfaces/main/logical-carousel/images/img-4.avif
+                    " type="image/avif" />
+                            <img src="https://raw.githubusercontent.com/mobalti/open-props-interfaces/main/logical-carousel/images/img-4.webp"
+                                alt="" loading="lazy" width="300" height="300" />
+                        </picture>
+                        <figcaption>
+                            <div>Breakthrough Comfort</div>
+                        </figcaption>
+                    </figure>
+
+                </a>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="carousel" aria-label="Featured Items Carousel" aria-roledescription="carousel">
+            <header>
+                <h1>Tailor</h1>
+                <div class="controls">
+                    <button id="prevBtn" aria-label="Previous" title="Previous" onclick="Scroller.scrollBy(-516, 0)">
+                        <svg width="10" height="15" viewBox="0 0 10 15" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true">
+                            <path d="M8.71833 15L0 7.5L8.71833 0L10 1.10257L2.56337 7.5L10 13.8974L8.71833 15Z"
+                                fill="black" />
+                        </svg>
+                    </button>
+                    <button id="nextBtn" aria-label="Next" title="Next" onclick="Scroller.scrollBy(516, 0)">
+                        <svg width="10" height="15" viewBox="0 0 10 15" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true">
+                            <path
+                                d="M1.28167 15L10 7.5L1.28167 0L1.72702e-07 1.10257L7.43663 7.5L1.72702e-07 13.8974L1.28167 15Z"
+                                fill="black" />
+                        </svg>
+                    </button>
+                </div>
+            </header>
+
+            <div id="Scroller" class="scroller" role="group" aria-label="Items Scroller" aria-live="polite">
+                <a href="/" class="snap" aria-label="1 of 6" aria-roledescription="item">
+                    <figure>
+                        <picture>
+                            <source srcset="
+                      https://raw.githubusercontent.com/mobalti/open-props-interfaces/main/logical-carousel/images/img-1.avif
+                    " type="image/avif" />
+                            <img src="https://raw.githubusercontent.com/mobalti/open-props-interfaces/main/logical-carousel/images/img-1.webp"
+                                alt="" loading="lazy" width="300" height="300" />
+                        </picture>
+                        <figcaption>
+                            <div>Unleash Your Potential</div>
+                        </figcaption>
+                    </figure>
+                </a>
+                <a href="/" class="snap" aria-label="2 of 6" aria-roledescription="item">
+                    <figure>
+                        <picture>
+                            <source srcset="
+                      https://raw.githubusercontent.com/mobalti/open-props-interfaces/main/logical-carousel/images/img-2.avif
+                    " type="image/avif" />
+                            <img src="https://raw.githubusercontent.com/mobalti/open-props-interfaces/main/logical-carousel/images/img-2.webp"
+                                alt="" loading="lazy" width="300" height="300" />
+                        </picture>
+                        <figcaption>
+                            <div>Elevate Your Game</div>
+                        </figcaption>
+                    </figure>
+                </a>
+                <a href="/" class="snap" aria-label="3 of 6" aria-roledescription="item">
+                    <figure>
+                        <picture>
+                            <source srcset="
+                      https://raw.githubusercontent.com/mobalti/open-props-interfaces/main/logical-carousel/images/img-3.avif
+                    " type="image/avif" />
+                            <img src="https://raw.githubusercontent.com/mobalti/open-props-interfaces/main/logical-carousel/images/img-3.webp"
+                                alt="" loading="lazy" width="300" height="300" />
+                        </picture>
+                        <figcaption>
+                            <div>Seamless Performance</div>
+                        </figcaption>
+                    </figure>
+                </a>
+                <a href="/" class="snap" aria-label="4 of 6" aria-roledescription="item">
+                    <figure>
+                        <picture>
+                            <source srcset="
+                      https://raw.githubusercontent.com/mobalti/open-props-interfaces/main/logical-carousel/images/img-4.avif
+                    " type="image/avif" />
+                            <img src="https://raw.githubusercontent.com/mobalti/open-props-interfaces/main/logical-carousel/images/img-4.webp"
+                                alt="" loading="lazy" width="300" height="300" />
+                        </picture>
+                        <figcaption>
+                            <div>Breakthrough Comfort</div>
+                        </figcaption>
+                    </figure>
+
+                </a>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="carousel" aria-label="Featured Items Carousel" aria-roledescription="carousel">
+            <header>
+                <h1>Gardener</h1>
+                <div class="controls">
+                    <button id="prevBtn" aria-label="Previous" title="Previous" onclick="Scroller.scrollBy(-516, 0)">
+                        <svg width="10" height="15" viewBox="0 0 10 15" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true">
+                            <path d="M8.71833 15L0 7.5L8.71833 0L10 1.10257L2.56337 7.5L10 13.8974L8.71833 15Z"
+                                fill="black" />
+                        </svg>
+                    </button>
+                    <button id="nextBtn" aria-label="Next" title="Next" onclick="Scroller.scrollBy(516, 0)">
+                        <svg width="10" height="15" viewBox="0 0 10 15" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true">
+                            <path
+                                d="M1.28167 15L10 7.5L1.28167 0L1.72702e-07 1.10257L7.43663 7.5L1.72702e-07 13.8974L1.28167 15Z"
+                                fill="black" />
+                        </svg>
+                    </button>
+                </div>
+            </header>
+
+            <div id="Scroller" class="scroller" role="group" aria-label="Items Scroller" aria-live="polite">
+                <a href="/" class="snap" aria-label="1 of 6" aria-roledescription="item">
+                    <figure>
+                        <picture>
+                            <source srcset="
+                      https://raw.githubusercontent.com/mobalti/open-props-interfaces/main/logical-carousel/images/img-1.avif
+                    " type="image/avif" />
+                            <img src="https://raw.githubusercontent.com/mobalti/open-props-interfaces/main/logical-carousel/images/img-1.webp"
+                                alt="" loading="lazy" width="300" height="300" />
+                        </picture>
+                        <figcaption>
+                            <div>Unleash Your Potential</div>
+                        </figcaption>
+                    </figure>
+                </a>
+                <a href="/" class="snap" aria-label="2 of 6" aria-roledescription="item">
+                    <figure>
+                        <picture>
+                            <source srcset="
+                      https://raw.githubusercontent.com/mobalti/open-props-interfaces/main/logical-carousel/images/img-2.avif
+                    " type="image/avif" />
+                            <img src="https://raw.githubusercontent.com/mobalti/open-props-interfaces/main/logical-carousel/images/img-2.webp"
+                                alt="" loading="lazy" width="300" height="300" />
+                        </picture>
+                        <figcaption>
+                            <div>Elevate Your Game</div>
+                        </figcaption>
+                    </figure>
+                </a>
+                <a href="/" class="snap" aria-label="3 of 6" aria-roledescription="item">
+                    <figure>
+                        <picture>
+                            <source srcset="
+                      https://raw.githubusercontent.com/mobalti/open-props-interfaces/main/logical-carousel/images/img-3.avif
+                    " type="image/avif" />
+                            <img src="https://raw.githubusercontent.com/mobalti/open-props-interfaces/main/logical-carousel/images/img-3.webp"
+                                alt="" loading="lazy" width="300" height="300" />
+                        </picture>
+                        <figcaption>
+                            <div>Seamless Performance</div>
+                        </figcaption>
+                    </figure>
+                </a>
+                <a href="/" class="snap" aria-label="4 of 6" aria-roledescription="item">
+                    <figure>
+                        <picture>
+                            <source srcset="
+                      https://raw.githubusercontent.com/mobalti/open-props-interfaces/main/logical-carousel/images/img-4.avif
+                    " type="image/avif" />
+                            <img src="https://raw.githubusercontent.com/mobalti/open-props-interfaces/main/logical-carousel/images/img-4.webp"
+                                alt="" loading="lazy" width="300" height="300" />
+                        </picture>
+                        <figcaption>
+                            <div>Breakthrough Comfort</div>
+                        </figcaption>
+                    </figure>
+
+                </a>
+            </div>
+        </div>
+    </section>
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+
+        function goToSlide(index) {
+            slides.forEach((slide, slideIndex) => {
+                slide.classList.remove('active');
+                if (index === slideIndex) {
+                    slide.classList.add('active');
+                }
+            });
+        }
+
+        function handleArrowKey(event) {
+            if (event.key === 'ArrowLeft') {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            } else if (event.key === 'ArrowRight') {
+                currentSlide = (currentSlide + 1) % slides.length;
+            }
+            goToSlide(currentSlide);
+        }
+
+        slides.forEach((slide, index) => {
+            slide.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    goToSlide(index);
+                }
+            });
+        });
+
+        document.addEventListener('keydown', handleArrowKey);
+        goToSlide(currentSlide);
+
+        function filterSuggestions() {
+            var input = document.getElementById('search-box');
+            var filter = input.value.toUpperCase();
+            var suggestions = document.getElementById('suggestions');
+            var p = suggestions.getElementsByTagName('p');
+            if (filter.length > 0) {
+                suggestions.style.display = 'block';
+                for (var i = 0; i < p.length; i++) {
+                    if (p[i].textContent.toUpperCase().indexOf(filter) > -1) {
+                        p[i].style.display = 'block';
+                        p[i].addEventListener('click', function () {
+                            input.value = this.textContent;
+                            suggestions.style.display = 'none';
+                        });
+                    } else {
+                        p[i].style.display = 'none';
+                    }
+                }
+            } else {
+                suggestions.style.display = 'none';
+            }
+        }
+    </script>
+    <script>
+        const lastElem = Scroller.lastElementChild;
+        const firstElem = Scroller.firstElementChild;
+
+        let isAtEnd;
+        let isAtStart;
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    isAtEnd = entry.isIntersecting && lastElem === entry.target;
+                    isAtStart = entry.isIntersecting && firstElem === entry.target;
+                    updateControls();
+                });
+            },
+            { root: Scroller, threshold: 0.5 }
+        );
+
+        observer.observe(lastElem);
+        observer.observe(firstElem);
+
+        function updateControls() {
+            // If the document direction is right-to-left (RTL), swap the values of isAtStart and isAtEnd
+            if (document.firstElementChild.getAttribute('dir') === 'rtl')
+                [isAtStart, isAtEnd] = [isAtEnd, isAtStart];
+
+            if (document.activeElement === nextBtn && isAtEnd) {
+                prevBtn.focus();
+            } else if (document.activeElement === prevBtn && isAtStart) {
+                nextBtn.focus();
+            }
+
+            nextBtn.toggleAttribute('disabled', isAtEnd);
+            prevBtn.toggleAttribute('disabled', isAtStart);
+        }
+
+    </script>
+</body>
+
+</html>
+ 
+
+home         
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -1307,7 +1046,7 @@ about
             justify-content: ;
             align-items: flex-start;
             /* Align items to the top */
-            padding: 40px 20px;
+            padding: 10px 20px;
             /* Adjust padding */
         }
 
@@ -1377,10 +1116,17 @@ about
             /* Remove margin */
         }
 
+        .signin1:hover::before {
+            transform: scaleX(1);
+            color: #fff !important;
+            z-index: -1
+        }
+
         .home_text {
             font-family: "Archivo";
             font-size: 20px;
             margin-right: 40px;
+            color:#DE7044 ;
         }
 
 
@@ -1394,7 +1140,6 @@ about
             font-family: "Archivo";
             font-size: 20px;
             margin-right: 40px;
-            color: #DE7044;
         }
 
         .blog_text {
@@ -1415,7 +1160,7 @@ about
             color: rgb(87, 87, 8);
         }
 
-        .foot {}
+        
 
         .main_description {
             font-family: "Archivo";
@@ -1423,6 +1168,22 @@ about
             font-size: 20px;
             margin-top: 3%;
             color: #000000;
+        }
+
+        .description {
+            width: 650px;
+            height: 75px;
+            margin-left: 55%;
+            margin-top: 1%;
+            transform: translateY(-70%);
+        }
+
+        .header1 {
+            font-weight: 400;
+            font-family: "Archivo";
+            font-size: 143px;
+            margin-top: 3%;
+            margin-left: 1.5%;
         }
 
         .contact_button {
@@ -1438,8 +1199,10 @@ about
             transform: translateY(-50%);
         }
 
-        .section-tittle mb-35 {
-            color: #000000;
+        .heroin {
+            transform: translateY(-120%);
+            margin-left: 1.5%;
+            border-radius: 20px;
         }
     </style>
 </head>
@@ -1461,7 +1224,7 @@ about
                 <li><a href="blog">
                         <p class="blog_text">Blog</p>
                     </a></li>
-                <li><a href="#">
+                <li><a href="contact">
                         <p class="contact_text">Contact</p>
                     </a></li>
                 <li><a class="signin1" href="signin">
@@ -1472,1316 +1235,26 @@ about
     </nav>
 
 
-    <!-- Center-right image -->
-
-
-
-
-
-
-
-    <!-- ? Preloader Start -->
-
-    <!-- Preloader Start -->
-
     <main>
-        <!--? Hero Area Start-->
-
-        <!--Hero Area End-->
-        <!--? About 1 Start-->
-        <section class="about-area section-padding40">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-xl-6 col-lg-6 col-md-10">
-                        <div class="about-caption mb-50">
-                            <!-- Section Tittle -->
-                            <div class="section-tittle mb-35">
-                                <h2>About Us</h2>
-                            </div>
-                            <p> At LadyLeads, we believe in the power of empowerment and community building. Founded
-                                with a vision to create a more inclusive society, LadyLeads serves as a platform that
-                                connects women with opportunities, supports skilled professionals, and fosters artisan
-                                communities.
-                                Driven by the belief that every woman deserves economic independence and the opportunity
-                                to showcase her talents, LadyLeads empowers job seekers by matching them with tailored
-                                employment opportunities that align with their skills and aspirations.
-                                Whether it's finding a job in tailoring, housekeeping, childcare, nursing, gardening, or
-                                any other profession, LadyLeads is dedicated to ensuring that every woman has access to
-                                meaningful work.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="about-img">
-                            <img src="% static lady1.jpg" alt="">
-                        </div>
-                    </div>
-                </div>
-                <div class="row pt-40">
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="experience">
-                            <span>6 years</span>
-                            <p>of trusted platform</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="experience">
-                            <span>$40M+</span>
-                            <p>clients<br> </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="experience">
-                            <span>Quality</span>
-                            <p>assurence</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- About  End-->
+        <!-- Your main content goes here -->
+        <h1 class="header1">World's female canvas.</h1>
+        <div class="description">
+            <p class="main_description">
+                "Empowering women globally to lead, innovate, and inspire change, fostering a brighter, more inclusive
+                future in every corner of the world, through leadership development, innovation support, and advocacy
+                for gender equality and equity."
+            </p>
+        </div>
     </main>
-    <footer>
-        <div class="footer-wrappr">
-            <div class="footer-top">
-                <!-- Want To work -->
-                 <!-- Want To work End -->
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <!-- contact-form -->
-                                <div class="form-wrapper">
-                                    <div class="row ">
-                                        <div class="col-xl-12">
-                                            <div class="small-tittle mb-30">
-                                                <h4>Contact Us</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <form id="contact-form" action="#" method="POST">
-                                        {% csrf_token %}
-                                        <div class="row">
-                                            <div class="col-lg-4 col-md-6">
-                                                <div class="form-box user-icon mb-25">
-                                                    <input type="text" name="name" placeholder="Your name">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-6">
-                                                <div class="form-box email-icon mb-25">
-                                                    <input type="text" name="email" placeholder="Email">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-6">
-                                                <div class="form-box email-icon mb-25">
-                                                    <input type="text" name="email" placeholder="Subject">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <div class="form-box message-icon mb-25">
-                                                    <textarea name="message" id="message"
-                                                        placeholder="Message"></textarea>
-                                                </div>
-                                                <div class="submit-info">
-                                                    <button class="submit-btn2" type="submit">Send Message</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-            <!-- footer-bottom area -->
-            <div class="footer-bottom-area">
-                <div class="container">
-                    <div class="footer-border">
-                        <div class="row align-items-center">
-                            <div class="col-xl-4 col-lg-4">
-                                <div class="footer-social">
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="https://bit.ly/sai4ull"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                                    <a href="#"><i class="fas fa-globe"></i></a>
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
+    <a href="{% url 'contact'%}"><button class="contact_button">Contact us</button></a>
+    <footer class="foot">
+        <!-- Your footer content goes here -->
+        <div class="second_box">
 
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </footer>
-    <!-- Scroll Up -->
-    <div id="back-top">
-        <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
-    </div>
-    <!-- JS here -->
-    <script src="{% static 'vendor/modernizr-3.5.0.min.js' %}"></script>
-    <script src="{% static 'vendor/jquery-1.12.4.min.js' %}"></script>
-    <script src="{% static 'popper.min.js' %}"></script>
-    <script src="{% static 'bootstrap.min.js' %}"></script>
-    <script src="{% static 'jquery.slicknav.min.js' %}"></script>
-    <script src="{% static 'owl.carousel.min.js' %}"></script>
-    <script src="{% static 'slick.min.js' %}"></script>
-    <script src="{% static 'wow.min.js' %}"></script>
-    <script src="{% static 'animated.headline.js' %}"></script>
-    <script src="{% static 'jquery.magnific-popup.js' %}"></script>
-    <script src="{% static 'gijgo.min.js' %}"></script>
-    <script src="{% static 'jquery.nice-select.min.js' %}"></script>
-    <script src="{% static 'jquery.sticky.js' %}"></script>
-    <script src="{% static 'jquery.barfiller.js' %}"></script>
-    <script src="{% static 'jquery.counterup.min.js' %}"></script>
-    <script src="{% static 'waypoints.min.js' %}"></script>
-    <script src="{% static 'jquery.countdown.min.js' %}"></script>
-    <script src="{% static 'hover-direction-snake.min.js' %}"></script>
-    <script src="{% static 'contact.js' %}"></script>
-    <script src="{% static 'jquery.form.js' %}"></script>
-    <script src="{% static 'jquery.validate.min.js' %}"></script>
-    <script src="{% static 'mail-script.js' %}"></script>
-    <script src="{% static 'jquery.ajaxchimp.min.js' %}"></script>
-    <script src="{% static 'plugins.js' %}"></script>
-    <script src="{% static 'main.js' %}"></script>
-
-
-
+    <img src="{% static 'heroin.png' %}" alt="Center Right Image" class="heroin">
+    <!-- Center-right image -->
 </body>
 
 </html>
-
-
-
-
-login
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    {% load static %}
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-image: url("{% static 'IMG_2743.JPG' %}");
-            background-size: cover;
-            background-position: center;
-        }
-        .container {
-            text-align: center;
-            background-color: rgba(49, 49, 49, 0.6); /* Background overlay */
-            padding: 50px;
-            border: 3.8px solid white;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            width: 100%;
-        }
-        .container img.logo {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 20px;
-        }
-        .container h3 {
-            margin-bottom: 20px;
-            color: #ffffff;
-            font-weight: bold;
-            font-size: 24px;
-        }
-        .btn {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 20px;
-            transition: background-color 0.3s ease;
-        }
-        .btn:hover {
-            background-color: #0056b3;
-        }
-        .signup_button, .signin_button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            background-color: #007bff;
-            color: #fff;
-            margin-top: 20px;
-            text-decoration: none;
-            display: inline-block;
-            transition: background-color 0.3s ease;
-        }
-        .signup_button:hover, .signin_button:hover {
-            background-color: #0056b3;
-        }
-        .signup_text, .signin_text {
-            font-weight: bold;
-            font-family: Arial;
-            color: #fff;
-            margin: 0;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <img src="{% static 'Group4.png' %}" alt="Logo" class="logo">
-        <h3> </h3>
-
-        <a href="signup" class="signup_button"><span class="signup_text">Sign Up</span></a>
-        <a href="/signin" class="signin_button"><span class="signin_text">Sign In</span></a>
-    </div>
-</body>
-</html>
-
-
-
-selman 
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, 
-						initial-scale=1.0" />
-    <title>Signup/Signin</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-        rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
-    {% load static %}
-
-    <style>
-        html {
-            height: 100%;
-            /* Ensure the html element covers the full viewport height */
-        }
-
-        body {
-            font-family: Open Sans, sans-serif;
-            justify-content: center;
-            margin: 0px;
-            position: relative;
-            /* Ensure the pseudo-element positions relative to the body */
-            min-height: 100%;
-            /* Ensure the body covers at least the full viewport height */
-            z-index: 0;
-        }
-
-        body::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5),
-                rgba(0, 0, 0, 0.5)),
-            url('{% static "signup_bg.jpg" %}');
-            background-position: center top;
-            background-repeat: no-repeat;
-            background-size: cover;
-            opacity: 0.8;
-            /* Adjust the opacity as needed */
-            z-index: -1;
-            /* Ensures the background is behind the content */
-        }
-
-        .main-container {
-            width: 450px;
-            margin: auto;
-            padding: 20px;
-            border: none;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .slider {
-            text-align: center;
-            margin-bottom: 20px;
-            margin-left: auto;
-            margin-right: auto;
-            position: relative;
-            background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 20px;
-            width: 230px;
-        }
-
-        .type-slider {
-            text-align: center;
-            margin: 20px 250px;
-            position: relative;
-            background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 20px;
-        }
-
-        .buttons {
-            position: relative;
-        }
-
-        .type-slider-background {
-            position: absolute;
-            background-color: white;
-            height: 100%;
-            width: 35%;
-            left: 0%;
-            transition: left 0.3s;
-            border-radius: 20px;
-        }
-
-        .slider-background {
-            position: absolute;
-            background-color: white;
-            height: 100%;
-            width: 50%;
-            left: 0%;
-            transition: left 0.3s;
-            border-radius: 20px;
-        }
-
-        .slide-btn {
-            padding: 10px 100px;
-            cursor: pointer;
-            background: none;
-            border: none;
-            color: black;
-            font-size: 20px;
-            font-weight: 600;
-            position: relative;
-            z-index: 1;
-        }
-
-        .non-selected-btn {
-            color: white;
-        }
-
-        .slide-btn1 {
-            padding: 10px 30px;
-            cursor: pointer;
-            background: none;
-            border: none;
-            color: black;
-            font-size: 16px;
-            font-weight: 600;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hed {
-            justify-content: center;
-            text-align: center;
-        }
-
-        .container {
-            justify-content: center;
-        }
-
-        .row {
-            display: flex;
-            /* This makes the div a flex container and aligns its children (p and input) in a row */
-            align-items: center;
-            /* This vertically centers the children in the row */
-        }
-
-        .column-p {
-            width: 120px;
-            /* Explicitly sets the width of the <p> tag */
-            padding: 5px;
-            margin-right: 20px;
-            color: white;
-            background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 5px;
-        }
-
-        .column-input {
-            flex-grow: 1;
-            /* Allows the <input> tag to take up the remaining space */
-            padding: 5px;
-            border-radius: 5px;
-            /* Optional: Adds some padding around the <input> tag */
-        }
-
-        .email {
-            width: 100%;
-            /* Makes the input field take the full width of its parent column */
-        }
-
-        .clkbtn {
-            text-align: center;
-            height: 40px;
-            padding: 15px;
-        }
-
-        .clkbtn-button {
-            height: 40px;
-            width: 150px;
-            color: white;
-            background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 5px;
-        }
-
-        .alert {
-            text-align: center;
-            background-color: rgba(0, 0, 0, 0.8);
-            border-radius: 5px;
-            width: 400px;
-            height: 35px;
-            margin-left: auto;
-            margin-right: auto;
-            font-size: 16px;
-            font-weight: 300;
-            padding: 10px;
-        }
-
-        .alert-good {
-            color: white;
-        }
-
-        .good-i {
-            color: green;
-            margin-top: auto;
-            margin-bottom: auto;
-            font-size: 20px;
-            margin-bottom: 12px;
-        }
-
-        .error-i {
-            color: red;
-            margin-top: auto;
-            margin-bottom: auto;
-            font-size: 20px;
-            margin-bottom: 12px;
-        }
-
-        .info-i {
-            color: orangered;
-            margin-top: auto;
-            margin-bottom: auto;
-            font-size: 20px;
-            margin-bottom: 12px;
-        }
-
-        .bi {
-            vertical-align: 0.125em;
-            width: 1em;
-            height: 1em;
-        }
-
-        .topnav {
-            overflow: hidden;
-        }
-
-        .topnav h1 {
-            float: left;
-            padding-left: 20px;
-            color: black;
-        }
-
-        .btn {
-            color: black;
-            width: 110px;
-            height: 35px;
-            border-radius: 12px;
-            font-size: 17px;
-            font-weight: 500;
-        }
-
-        .button-container {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-        }
-
-        .selectable-button {
-            padding: 10px;
-            /* Adjust padding for better appearance */
-            cursor: pointer;
-            border-radius: 20px;
-        }
-
-        /* Style for the selected button */
-        .selected {
-            background-color: #4caf50;
-            /* Green background for selected button */
-            color: white;
-            /* White text color for better contrast */
-        }
-    </style>
-</head>
-
-<body>
-
-        <!--Ngo area-->
-        <div id="NGO" class="main-container">
-            <div class="container">
-                <div class="slider">
-                    <div class="buttons">
-                        <div class="slider-background"></div>
-                        <button class="slide-btn1" onclick="showForm('login', 'NGO')">
-                            Login
-                        </button>
-                        <button class="slide-btn1" onclick="showForm('signup', 'NGO')">
-                            Signup
-                        </button>
-                    </div>
-                </div>
-
-                <!-- login form -->
-                <div id="NGO-login" class="form-container">
-                    <form action="{% url 'signin' %}" method="POST" class="form-horizontal" id="loginForm">
-                        {% csrf_token%}
-                        </div>
-                        <input type="hidden" name="selectedOption" class="selectedOption" required />
-                    </form>
-                </div>
-
-                <!-- signup form -->
-                <div id="NGO-signup" class="form-container" style="display: none">
-                    <form action="{% url 'signup' %}" method="POST" class="form-horizontal" id="signupForm">
-                        {% csrf_token%}
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script>
-        function showForm(formId, type) {
-            var forms = document.querySelectorAll(`#${type} .form-container`);
-            for (var i = 0; i < forms.length; i++) {
-                forms[i].style.display = "none"; // Hide all forms
-            }
-            document.getElementById(`${type}-${formId}`).style.display = "block"; // Show the selected form
-
-            // Adjust the slider position and button colors based on the formId
-            var sliderBackground = document.querySelector(
-                `#${type} .slider-background`
-            );
-            var buttons = document.querySelectorAll(
-                `#${type} .slider > .buttons > .slide-btn1`
-            ); // Select all 'Login' and 'Signup' buttons
-
-            // Loop through buttons to update styles
-            buttons.forEach(function (button) {
-                if (button.getAttribute("onclick").includes(formId)) {
-                    // Selected button
-                    button.classList.remove("non-selected-btn");
-                    button.style.color = "black"; // Ensure selected button has black text
-                    if (formId === "login") {
-                        sliderBackground.style.left = "0%";
-                    } else {
-                        sliderBackground.style.left = "50%";
-                    }
-                } else {
-                    // Non-selected buttons
-                    button.classList.add("non-selected-btn");
-                    button.style.color = "white"; // Ensure non-selected buttons have white text
-                }
-            });
-        }
-
-        function showType(typeId) {
-            var types = document.getElementsByClassName("main-container");
-            for (var i = 0; i < types.length; i++) {
-                types[i].style.display = "none"; // Hide all type containers
-            }
-            document.getElementById(typeId).style.display = "block"; // Show the selected type container
-
-            var typeSliderBackground = document.querySelector(
-                ".type-slider-background"
-            );
-            var buttons = document.querySelectorAll(".type-slider .slide-btn"); // Select all buttons
-
-            // Iterate over buttons to update their classes based on selection
-            buttons.forEach(function (button) {
-                if (button.textContent.trim() === typeId) {
-                    button.classList.remove("non-selected-btn"); // Selected button
-                    // Adjust background slider position based on button
-                    if (typeId === "Submit") {
-                        typeSliderBackground.style.left = "66.6%";
-                    }
-                } else {
-                    button.classList.add("non-selected-btn"); // Non-selected buttons
-                }
-            });
-            showForm("login", typeId);
-        }
-
-        showType("NGO");
-
-        document.addEventListener("DOMContentLoaded", function () {
-            const buttons = document.querySelectorAll(".selectable-button");
-
-            // Select both forms using their unique IDs
-            const forms = document.querySelectorAll("#loginForm, #signupForm");
-
-            forms.forEach((form) => {
-                const selectedOptionInput = form.querySelector(".selectedOption"); // Select the hidden input by class within the form
-
-                buttons.forEach((button) => {
-                    button.addEventListener("click", function () {
-                        // Reset selection on all buttons
-                        form
-                            .querySelectorAll(".selectable-button")
-                            .forEach((btn) => btn.classList.remove("selected"));
-                        this.classList.add("selected"); // Mark the clicked button as selected
-                        selectedOptionInput.value = this.dataset.value; // Update the hidden input's value
-                    });
-                });
-
-                // Add submit event listener to each form
-                form.addEventListener("submit", function (e) {
-                    if (!selectedOptionInput.value) {
-                        e.preventDefault(); // Prevent the form from being submitted
-                        alert("Please select a user type before submitting."); // Show a message
-                    }
-                });
-            });
-        });
-    </script>
-</body>
-
-</html>
-
-selman core 
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, 
-						initial-scale=1.0"
-    />
-    <title>Signup/Signin</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
-    />
-    {% load static %}
-
-    <style>
-      html {
-        height: 100%; /* Ensure the html element covers the full viewport height */
-      }
-
-      body {
-        font-family: Open Sans, sans-serif;
-        justify-content: center;
-        margin: 0px;
-        position: relative; /* Ensure the pseudo-element positions relative to the body */
-        min-height: 100%; /* Ensure the body covers at least the full viewport height */
-        z-index: 0;
-      }
-
-      body::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: linear-gradient(
-            rgba(0, 0, 0, 0.5),
-            rgba(0, 0, 0, 0.5)
-          ),
-          url('{% static "signup_bg.jpg" %}');
-        background-position: center top;
-        background-repeat: no-repeat;
-        background-size: cover;
-        opacity: 0.8; /* Adjust the opacity as needed */
-        z-index: -1; /* Ensures the background is behind the content */
-      }
-
-      .main-container {
-        width: 450px;
-        margin: auto;
-        padding: 20px;
-        border: none;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      }
-
-      .slider {
-        text-align: center;
-        margin-bottom: 20px;
-        margin-left: auto;
-        margin-right: auto;
-        position: relative;
-        background-color: rgba(0, 0, 0, 0.5);
-        border-radius: 20px;
-        width: 230px;
-      }
-      .type-slider {
-        text-align: center;
-        margin: 20px 250px;
-        position: relative;
-        background-color: rgba(0, 0, 0, 0.5);
-        border-radius: 20px;
-      }
-
-      .buttons {
-        position: relative;
-      }
-
-      .type-slider-background {
-        position: absolute;
-        background-color: white;
-        height: 100%;
-        width: 35%;
-        left: 0%;
-        transition: left 0.3s;
-        border-radius: 20px;
-      }
-      .slider-background {
-        position: absolute;
-        background-color: white;
-        height: 100%;
-        width: 50%;
-        left: 0%;
-        transition: left 0.3s;
-        border-radius: 20px;
-      }
-
-      .slide-btn {
-        padding: 10px 100px;
-        cursor: pointer;
-        background: none;
-        border: none;
-        color: black;
-        font-size: 20px;
-        font-weight: 600;
-        position: relative;
-        z-index: 1;
-      }
-      .non-selected-btn {
-        color: white;
-      }
-      .slide-btn1 {
-        padding: 10px 30px;
-        cursor: pointer;
-        background: none;
-        border: none;
-        color: black;
-        font-size: 16px;
-        font-weight: 600;
-        position: relative;
-        z-index: 1;
-      }
-      .hed {
-        justify-content: center;
-        text-align: center;
-      }
-      .container {
-        justify-content: center;
-      }
-      .row {
-        display: flex; /* This makes the div a flex container and aligns its children (p and input) in a row */
-        align-items: center; /* This vertically centers the children in the row */
-      }
-
-      .column-p {
-        width: 120px; /* Explicitly sets the width of the <p> tag */
-        padding: 5px;
-        margin-right: 20px;
-        color: white;
-        background-color: rgba(0, 0, 0, 0.5);
-        border-radius: 5px;
-      }
-
-      .column-input {
-        flex-grow: 1; /* Allows the <input> tag to take up the remaining space */
-        padding: 5px;
-        border-radius: 5px; /* Optional: Adds some padding around the <input> tag */
-      }
-
-      .email {
-        width: 100%; /* Makes the input field take the full width of its parent column */
-      }
-      .clkbtn {
-        text-align: center;
-        height: 40px;
-        padding: 15px;
-      }
-      .clkbtn-button {
-        height: 40px;
-        width: 150px;
-        color: white;
-        background-color: rgba(0, 0, 0, 0.5);
-        border-radius: 5px;
-      }
-      .alert {
-        text-align: center;
-        background-color: rgba(0, 0, 0, 0.8);
-        border-radius: 5px;
-        width: 400px;
-        height: 35px;
-        margin-left: auto;
-        margin-right: auto;
-        font-size: 16px;
-        font-weight: 300;
-        padding: 10px;
-      }
-      .alert-good {
-        color: white;
-      }
-      .good-i {
-        color: green;
-        margin-top: auto;
-        margin-bottom: auto;
-        font-size: 20px;
-        margin-bottom: 12px;
-      }
-      .error-i {
-        color: red;
-        margin-top: auto;
-        margin-bottom: auto;
-        font-size: 20px;
-        margin-bottom: 12px;
-      }
-      .info-i {
-        color: orangered;
-        margin-top: auto;
-        margin-bottom: auto;
-        font-size: 20px;
-        margin-bottom: 12px;
-      }
-      .bi {
-        vertical-align: 0.125em;
-        width: 1em;
-        height: 1em;
-      }
-      .topnav {
-        overflow: hidden;
-      }
-      .topnav h1 {
-        float: left;
-        padding-left: 20px;
-        color: black;
-      }
-      .btn {
-        color: black;
-        width: 110px;
-        height: 35px;
-        border-radius: 12px;
-        font-size: 17px;
-        font-weight: 500;
-      }
-
-      .button-container {
-        display: flex;
-        gap: 10px;
-        justify-content: center;
-      }
-
-      .selectable-button {
-        padding: 10px; /* Adjust padding for better appearance */
-        cursor: pointer;
-        border-radius: 20px;
-      }
-
-      /* Style for the selected button */
-      .selected {
-        background-color: #4caf50; /* Green background for selected button */
-        color: white; /* White text color for better contrast */
-      }
-    </style>
-  </head>
-
-  <body>
-    <div class="topnav">
-      <h1>NGO-Connect</h1>
-    </div>
-    <div class="main">
-      <!--Alert area-->
-      <div class="form-group row">
-        {% for message in messages %} {% if message.tags == 'success' %}
-        <div class="alert alert-good" role="alert">
-          <i class="bi bi-check-circle good-i"></i>
-          {{message}}
-        </div>
-        {% elif message.tags == 'error' %}
-        <div class="alert alert-good" role="alert">
-          <i class="bi bi-hexagon-fill error-i"></i>
-          {{message}}
-        </div>
-        {% elif message.tags == 'info' %}
-        <div class="alert alert-good" role="alert">
-          <i class="bi bi-exclamation-triangle info-i"></i>
-          {{message}}
-        </div>
-        {% else %}
-        <div class="alert" role="alert">{{message}}</div>
-        {% endif %} {% endfor %}
-      </div>
-      <!--Alert area ends-->
-
-      <!--Ngo area-->
-      <div id="NGO" class="main-container">
-        <div class="container">
-          <div class="slider">
-            <div class="buttons">
-              <div class="slider-background"></div>
-              <button class="slide-btn1" onclick="showForm('login', 'NGO')">
-                Login
-              </button>
-              <button class="slide-btn1" onclick="showForm('signup', 'NGO')">
-                Signup
-              </button>
-            </div>
-          </div>
-
-          <!-- login form -->
-          <div id="NGO-login" class="form-container">
-            <form
-              action="{% url 'signin' %}"
-              method="POST"
-              class="form-horizontal"
-              id="loginForm"
-            >
-              {% csrf_token%}
-
-              <div class="row">
-                <p class="column-p">Email</p>
-                <input
-                  type="email"
-                  class="email column-input"
-                  placeholder="NGO"
-                  name="email"
-                />
-              </div>
-              <div class="row">
-                <p class="column-p">Password</p>
-                <input
-                  type="password"
-                  class="email column-input password"
-                  placeholder=""
-                  name="password"
-                />
-              </div>
-              <div class="row">
-                <p class="column-p">Type</p>
-                <div class="button-container">
-                  <button
-                    type="button"
-                    class="selectable-button"
-                    data-value="NGO"
-                  >
-                    NGO
-                  </button>
-                  <button
-                    type="button"
-                    class="selectable-button"
-                    data-value="Donor"
-                  >
-                    Contributor
-                  </button>
-                  <button
-                    type="button"
-                    class="selectable-button"
-                    data-value="Receiver"
-                  >
-                    Receiver
-                  </button>
-                </div>
-              </div>
-              <input
-                type="hidden"
-                name="selectedOption"
-                class="selectedOption"
-                required
-              />
-              <div class="clkbtn">
-                <button class="clkbtn-button" type="submit">Login</button>
-              </div>
-            </form>
-          </div>
-
-          <!-- signup form -->
-          <div id="NGO-signup" class="form-container" style="display: none">
-            <form
-              action="{% url 'signup' %}"
-              method="POST"
-              class="form-horizontal"
-              id="signupForm"
-            >
-              {% csrf_token%}
-              <div class="row">
-                <p class="column-p">Type</p>
-                <div class="button-container">
-                  <button
-                    type="button"
-                    class="selectable-button"
-                    data-value="NGO"
-                  >
-                    NGO
-                  </button>
-                  <button
-                    type="button"
-                    class="selectable-button"
-                    data-value="Donor"
-                  >
-                  Contributor
-                  </button>
-                  <button
-                    type="button"
-                    class="selectable-button"
-                    data-value="Receiver"
-                  >
-                    Receiver
-                  </button>
-                </div>
-              </div>
-              <div class="row">
-                <p class="column-p">Name</p>
-                <input
-                  type="text"
-                  class="email column-input"
-                  placeholder=""
-                  name="first_name"
-                  oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');"
-                />
-              </div>
-              <div class="row">
-                <p class="column-p">Email</p>
-                <input
-                  type="email"
-                  class="email column-input"
-                  placeholder=""
-                  name="email"
-                />
-              </div>
-              <div class="row">
-                <p class="column-p">Phone</p>
-                <input
-                  type="number"
-                  class="email column-input"
-                  placeholder=""
-                  name="phone_number"
-                  oninput="this.value = this.value.slice(0, 10);"
-                  pattern="\d*"
-                  title="Phone number must be up to 10 digits."
-                />
-              </div>
-              <div class="row">
-                <p class="column-p">Address</p>
-                <textarea
-                  class="email column-input"
-                  placeholder=""
-                  style="height: 100px"
-                  name="address"
-                ></textarea>
-              </div>
-              <div class="row">
-                <p class="column-p">Pincode</p>
-                <input
-                  type="number"
-                  class="email column-input"
-                  placeholder=""
-                  name="pincode"
-                  oninput="this.value = this.value.slice(0, 6);"
-                  pattern="\d*"
-                  title="Pincode must be up to 6 digits."
-                />
-              </div>
-              <div class="row">
-                <p class="column-p">Password</p>
-                <input
-                  type="password"
-                  class="email column-input"
-                  placeholder=""
-                  name="password"
-                  minlength="8"
-                  maxlength="16"
-                  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$]).{8,}"
-                  title="Password must be at least 8 characters long, include uppercase and lowercase letters, a number, and special characters like @#$"
-                />
-              </div>
-              <div class="row">
-                <p class="column-p">confirm passowrd</p>
-                <input
-                  type="password"
-                  class="email column-input"
-                  placeholder=""
-                  name="confirm_password"
-                  minlength="8"
-                  maxlength="16"
-                  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$]).{8,}"
-                  title="Password must be at least 8 characters long, include uppercase and lowercase letters, a number, and special characters like @#$"
-                />
-              </div>
-              <!--<input type="hidden" name="user_type" value="NGO" />-->
-              <input
-                type="hidden"
-                name="selectedOption"
-                class="selectedOption"
-                required
-              />
-              <div class="clkbtn">
-                <button class="clkbtn-button">Signup</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-    <script>
-      function showForm(formId, type) {
-        var forms = document.querySelectorAll(`#${type} .form-container`);
-        for (var i = 0; i < forms.length; i++) {
-          forms[i].style.display = "none"; // Hide all forms
-        }
-        document.getElementById(`${type}-${formId}`).style.display = "block"; // Show the selected form
-
-        // Adjust the slider position and button colors based on the formId
-        var sliderBackground = document.querySelector(
-          `#${type} .slider-background`
-        );
-        var buttons = document.querySelectorAll(
-          `#${type} .slider > .buttons > .slide-btn1`
-        ); // Select all 'Login' and 'Signup' buttons
-
-        // Loop through buttons to update styles
-        buttons.forEach(function (button) {
-          if (button.getAttribute("onclick").includes(formId)) {
-            // Selected button
-            button.classList.remove("non-selected-btn");
-            button.style.color = "black"; // Ensure selected button has black text
-            if (formId === "login") {
-              sliderBackground.style.left = "0%";
-            } else {
-              sliderBackground.style.left = "50%";
-            }
-          } else {
-            // Non-selected buttons
-            button.classList.add("non-selected-btn");
-            button.style.color = "white"; // Ensure non-selected buttons have white text
-          }
-        });
-      }
-
-      function showType(typeId) {
-        var types = document.getElementsByClassName("main-container");
-        for (var i = 0; i < types.length; i++) {
-          types[i].style.display = "none"; // Hide all type containers
-        }
-        document.getElementById(typeId).style.display = "block"; // Show the selected type container
-
-        var typeSliderBackground = document.querySelector(
-          ".type-slider-background"
-        );
-        var buttons = document.querySelectorAll(".type-slider .slide-btn"); // Select all buttons
-
-        // Iterate over buttons to update their classes based on selection
-        buttons.forEach(function (button) {
-          if (button.textContent.trim() === typeId) {
-            button.classList.remove("non-selected-btn"); // Selected button
-            // Adjust background slider position based on button
-            if (typeId === "NGO") {
-              typeSliderBackground.style.left = "0%";
-            } else if (typeId === "Donor") {
-              typeSliderBackground.style.left = "33.3%";
-            } else {
-              // Receiver
-              typeSliderBackground.style.left = "66.6%";
-            }
-          } else {
-            button.classList.add("non-selected-btn"); // Non-selected buttons
-          }
-        });
-        showForm("login", typeId);
-      }
-
-      showType("NGO");
-
-      document.addEventListener("DOMContentLoaded", function () {
-        const buttons = document.querySelectorAll(".selectable-button");
-
-        // Select both forms using their unique IDs
-        const forms = document.querySelectorAll("#loginForm, #signupForm");
-
-        forms.forEach((form) => {
-          const selectedOptionInput = form.querySelector(".selectedOption"); // Select the hidden input by class within the form
-
-          buttons.forEach((button) => {
-            button.addEventListener("click", function () {
-              // Reset selection on all buttons
-              form
-                .querySelectorAll(".selectable-button")
-                .forEach((btn) => btn.classList.remove("selected"));
-              this.classList.add("selected"); // Mark the clicked button as selected
-              selectedOptionInput.value = this.dataset.value; // Update the hidden input's value
-            });
-          });
-
-          // Add submit event listener to each form
-          form.addEventListener("submit", function (e) {
-            if (!selectedOptionInput.value) {
-              e.preventDefault(); // Prevent the form from being submitted
-              alert("Please select a user type before submitting."); // Show a message
-            }
-          });
-        });
-      });
-    </script>
-  </body>
-</html>
-
-
-views
-
-def submit(request):
-    # view to load all recievers detail page
-    user_name=request.user
-    count = 1
-
-    context = {
-        'user' : user_name,
-    }
-
-    return render(request, 'profile.html', context)
-
-
-
-    <div class="profileicon">
-        <a href="{% url 'profile' %}">
-            <img src="{% static 'profile.png' %}" alt="Profile Icon" class="profile-icon">
-        </a>
-    </div>
-
-
-    .profileicon {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-    }
-
-    .profile-icon {
-        width: 50px; /* Adjust size as needed */
-        height: 50px; /* Adjust size as needed */
-    }

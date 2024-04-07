@@ -108,8 +108,7 @@
     <div class="header">LadyLeads</div>
 
     <!-- Form Section -->
-    <form action="{% url 'editprofile' %}" method="POST" enctype="multipart/form-data"
-        onsubmit="return validateForm()">
+    <form action="{% url 'editprofile' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
 
         <!-- Container for Form -->
@@ -120,26 +119,26 @@
             <!-- Job Input Field -->
             <div class="form-group">
                 <label for="job">Job</label>
-                <input type="text" id="job" name="job" required>
+                <input type="text" id="job" name="job" placeholder="Previous:{{ profile.job }}" required>
             </div>
 
             <!-- Location Input Field -->
             <div class="form-group">
                 <label for="location">Location</label>
-                <input type="text" id="location" name="location" required>
+                <input type="text" id="location" name="location" placeholder="{{profile.location}}" required>
             </div>
 
             <!-- Year of Experience Input Field -->
             <div class="form-group">
                 <label for="year">Year Of Experience</label>
-                <input type="number" id="year" name="year" required>
+                <input type="number" id="year" name="year" placeholder="{{profile.Yearofexp}}" required>
             </div>
 
             <!-- Profile Photo Input Field -->
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="photo">Profile Photo</label>
                 <input type="file" id="photo" name="photo" accept="image/*">
-            </div>
+            </div> -->
 
             <!-- Submit Button -->
             <div class="form-group">
