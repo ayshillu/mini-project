@@ -17,6 +17,16 @@ urlpatterns = [
     path('contact', views.contact , name="contact"),
     path('editprofile', views.editprofile, name='editprofile'),
     path('chatprofile', views.chatprofile , name="chatprofile"),
+    path('products', views.products , name="products"),
+    path('page', views.page , name="page"),
+    path('flipflops', views.flipflops , name="flipflops"),
+    path('menstshirt', views.menstshirt , name="menstshirt"),
+    path('girlskirt', views.girlskirt , name="girlskirt"),
+    path('summerhat', views.summerhat , name="summerhat"),
+    path('thankyoupage', views.thankyoupage , name="thankyoupage"),
+    path('womensshoes', views.womensshoes , name="womensshoes"),
+    path('leathergloves', views.leathergloves , name="leathergloves"),
 
+    
 ]
 

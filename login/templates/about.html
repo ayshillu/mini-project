@@ -31,28 +31,21 @@
         }
 
 
-        .signin1 {
-            display: inline-block;
-            padding: 12px 20px;
-            /* Adjust padding as needed */
-            background-color: #000000;
-            /* Add border-radius for rounded corners */
-            font-size: 20px;
-            border-radius: 30px;
-            margin-right: 40px;
-        }
-
         .signintext {
-            font-family: "Archivo";
             color: #ffffff;
             text-align: center;
-            margin: 0;
-            /* Remove margin */
+            background-color: #000;
+            margin-bottom: 5px;
+            border: none;
+            outline: navajowhite;
+            border-radius: 25px;
+            padding-left: 20px;
+            padding-right: 20px;
+
         }
 
         .main_description {
             font-family: "Archivo";
-            font-weight: ;
             font-size: 20px;
             margin-top: 3%;
             color: #000000;
@@ -90,19 +83,14 @@
         .container {
             font-family: "Archivo";
         }
+
+        .aboutus_text {
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 
 <body>
-
-    <div id="preloader">
-        <div class="jumper">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>
-
     <header class="header-area header-sticky" style="background-color: #ffffff;">
         <div class="container">
             <div class="row">
@@ -112,8 +100,8 @@
                             LadyLeads
                         </H1>
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="{% url 'home'%}" class="active">Home</a></li>
-                            <li class="scroll-to-section"><a href="{% url 'about'%}">About</a></li>
+                            <li class="scroll-to-section"><a href="{% url 'home'%}">Home</a></li>
+                            <li class="scroll-to-section"><a href="{% url 'about'%}" class="active">About</a></li>
                             <li class="scroll-to-section"><a href="{% url 'blog'%}">Blog</a></li>
                             <li class="scroll-to-section"><a href="{% url 'contact'%}">Contact</a></li>
                             <li class="submenu">
@@ -126,16 +114,10 @@
 
                                 </ul>
                             </li>
-                            <li class="submenu">
-                                <a href="javascript:;">Features</a>
-                                <ul>
-                                    <li><a href="#">Features Page 1</a></li>
-                                    <li><a href="#">Features Page 2</a></li>
-                                    <li><a href="#">Features Page 3</a></li>
-                                    <li><a rel="nofollow" href="" target="_blank">Template Page 4</a></li>
-                                </ul>
-                            </li>
                             <li class="scroll-to-section"><a href="#explore">Explore</a></li>
+                            <li><a href="signin">
+                                <button class="signintext">Sign In</button>
+                            </a></li>
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>

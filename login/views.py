@@ -8,7 +8,6 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .models import EditProfile
-from .models import  UserProfile
 
 # Create your views here.
 
@@ -53,11 +52,11 @@ def signin(request):
         if user is not None:
             login(request, user)
             fname = user.first_name
-            return render(request,"workers.html", {'fname': fname})
+            return render(request,"home.html", {'fname': fname})
         
         else:
             messages.error(request, "Bad Credential")
-            return redirect('workers')
+            return redirect('home')
 
     return render(request, 'signin.html')
 
@@ -134,3 +133,31 @@ def editprofile(request):
  
 def chatprofile(request):
       return render(request, 'chatprofile.html')
+
+def products(request):
+      return render(request, 'products.html')
+
+def page(request):
+      return render(request, 'page.html')
+
+def menstshirt(request):
+      return render(request, 'menstshirt.html')
+
+def flipflops(request):
+      return render(request, 'flipflops.html')
+
+def girlskirt(request):
+      return render(request, 'girlskirt.html')
+
+def thankyoupage(request):
+      return render(request, 'thankyoupage.html')
+
+def summerhat(request):
+      return render(request, 'summerhat.html')
+
+def womensshoes(request):
+      return render(request, 'womensshoes.html')
+
+def leathergloves(request):
+      return render(request, 'leathergloves.html')
+

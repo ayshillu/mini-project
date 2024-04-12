@@ -1,272 +1,190 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     {% load static %}
-    <title>Contact Us</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
+        rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&display=swap"
+        rel="stylesheet">
+    <title>Contact</title>
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'font-awesome.css' %}">
+    <link rel="stylesheet" href="{% static 'templatemo-hexashop.css' %}">
+    <link rel="stylesheet" href="{% static 'owl-carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'lightbox.css' %}">
     <style>
-        body {
-            background-color: #011F1F;
-            color: #F2F2F2;
-            font-family: "Archivo", sans-serif;
-        }
-
-        .header,
-        h1,
-        h2,
-        p,
-        .subscribe-input,
-        .contact-button,
-        .subscribe-button {
+        .heading {
             font-family: "Archivo";
-        }
-
-        .header {
             position: absolute;
-            top: 0;
-            left: 0;
-            padding: 20px;
-            font-size: 24px;
-            text-decoration: none;
-            color: #F2F0E4;
+            top: 20px;
+            left: 20px;
         }
 
         .container {
-            max-width: 600px;
-            margin: 100px auto;
-            padding: 20px;
-            background-color: #011F1F;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .subscribe-form {
-            margin-top: 80px;
-        }
-
-        .subscribe-input {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid gray;
-            border-radius: 5px;
-            font-size: 16px;
-            line-height: 1.5;
-            background-color: #F2F0E4;
-            color: #011F1F;
-        }
-
-        .subscribe-button,
-        .contact-button {
-            display: block;
-            width: 200px;
-            height: 50px;
-            background-color: #F2F0E4;
-            color: #011F1F;
-            border: none;
-            border-radius: 5px;
-            margin: 0 auto;
-            cursor: pointer;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-            /* Added box-shadow transition */
-            font-weight: bold;
-            /* Adding bold font weight */
-        }
-
-        .subscribe-button:hover,
-        .contact-button:hover {
-            background-color: #F2F0E4;
-            box-shadow: 0px 0px 7px 3px #F2F0E4;
-            /* Added extra shadow on hover */
-        }
-
-        .contact-info {
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .contact-info p {
-            margin-bottom: 5px;
-        }
-
-        .contact-info a {
-            color: #F2F0E4;
-            /* Changing email color to #F2F0E4 */
-            text-decoration: none;
-        }
-
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
-
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            width: 30px;
-            height: auto;
-            padding: 0px;
-            /* Maintain aspect ratio */
-        }
-
-        .logo-name {
-            font-size: 30px;
-            margin-left: 10px;
-            font-weight: 300;
             font-family: "Archivo";
-            color: #F2F0E4;
         }
 
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0px;
-            display: flex;
-            align-items: center;
-            /* Align items vertically */
-        }
-
-        nav ul li {
-            margin-right: 20px;
-            /* Reduce margin-right */
-        }
-
-        nav ul li:last-child {
-            margin-right: 0;
-            /* Remove margin-right for the last item */
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: #F2F0E4;
-            padding: 0px;
-            /* Add padding to links */
-        }
-
-        .signin1 {
-            display: inline-block;
-            padding: 12px 20px;
-            /* Adjust padding as needed */
-            background-color: #F2F0E4;
-            /* Add border-radius for rounded corners */
-            font-size: 20px;
-            border-radius: 30px;
-            margin-right: 40px;
-        }
-
-        
 
         .signintext {
-            font-family: "Archivo";
-            color: #000000;
+            color: #ffffff;
             text-align: center;
-            margin: 0;
-            /* Remove margin */
-        }
-
-        .signin1:hover::before {
-            transform: scaleX(1);
-            color: #fff !important;
-            z-index: -1;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .home_text {
-            font-family: "Archivo";
-            font-size: 20px;
-            margin-right: 40px;
-            color: #F2F0E4;
-        }
-
-        .contact_text {
-            font-family: "Archivo";
-            font-size: 20px;
-            margin-right: 40px;
-            color: #DE7044;
-        }
-
-        .about_text {
-            font-family: "Archivo";
-            font-size: 20px;
-            margin-right: 40px;
-            color: #F2F0E4;
-        }
-
-        .blog_text {
-            font-family: "Archivo";
-            font-size: 20px;
-            margin-right: 40px;
-            color: #F2F0E4;
-        }
-
-        .rectbox {
-            width: 100px;
-            height: 100px;
+            background-color: #000;
+            margin-bottom: 5px;
+            border: none;
+            outline: navajowhite;
+            border-radius: 25px;
+            padding-left: 20px;
+            padding-right: 20px;
 
         }
-
-        .second_box {
-            width: 100%;
-            height: 500px;
-            color: rgb(87, 87, 8);
+        .section-heading{
+            margin-top: 100px;
         }
+
+    
     </style>
 </head>
 
 <body>
 
-
-    <nav style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
-
-        <div class="logo-container">
-            <span class="logo-name">LadyLeads</span>
-        </div>
-        <div>
-            <ul>
-                <li><a href="/">
-                        <p class="home_text">Home</p>
-                    </a></li>
-                <li><a href="about">
-                        <p class="about_text">About</p>
-                    </a></li>
-                <li><a href="blog">
-                        <p class="blog_text">Blog</p>
-                    </a></li>
-                <li><a href="contact">
-                        <p class="contact_text">Contact</p>
-                    </a></li>
-                <li><a class="signin1" href="signin">
-                        <p class="signintext">Sign In</p>
-                    </a></li>
-            </ul>
-        </div>
-    </nav>
-
-
-    <div class="container">
-        <h1>Contact Us</h1>
-        <p>If you have any questions or concerns, please don't hesitate to contact us.</p>
-        <button class="contact-button" onclick="window.location.href='mailto:youremail@example.com'">Contact Us</button>
-
-        <div class="subscribe-form">
-            <h2>Subscribe to our newsletter</h2>
-            <p>Get updates on new products, promotions, and more.</p>
-            <input type="email" class="subscribe-input" placeholder="Enter your email address">
-            <button class="subscribe-button">Subscribe</button>
-        </div>
-
-        <div class="contact-info">
-            <p>Email: <a href="mailto:ladyleads@example.com">ladyleads@example.com</a></p>
-            <p>Phone: +1 123-456-7890</p>
+    <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
     </div>
+    <!-- ***** Preloader End ***** -->
+
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky" style="background-color: #ffffff;">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <H1 class="heading">
+                            LadyLeads
+                        </H1>
+                        <ul class="nav">
+                            <li class="scroll-to-section"><a href="{% url 'home'%}" >Home</a></li>
+                            <li class="scroll-to-section"><a href="{% url 'about'%}">About</a></li>
+                            <li class="scroll-to-section"><a href="{% url 'blog'%}">Blog</a></li>
+                            <li class="scroll-to-section"><a href="{% url 'contact'%}" class="active">Contact</a></li>
+
+                            <li class="submenu">
+                                <a href="javascript:;">Pages</a>
+                                <ul>
+                                    <li><a href="{% url 'home' %}">Home</a></li>
+                                    <li><a href="{% url 'about' %}">About Us</a></li>
+                                    <li><a href="{% url 'blog' %}">Blog</a></li>
+                                    <li><a href="{% url 'contact' %}">contact</a></li>
+
+                                </ul>
+                            </li>
+
+                            <li><a href="signin">
+                                    <button class="signintext">Sign In</button>
+                                </a></li>
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="subscribe">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="section-heading">
+                        <h2>Contact Us</h2>
+                        <span>If you have any questions or concerns, please don't hesitate to contact us through our <a href="mailto:youremail@example.com">mail</a>.</span>
+                    </div>
+
+                    <div class="section-heading">
+                        <h2>By Subscribing To Our Newsletter You Can Get 10% Off</h2>
+                        <span>Subscribe for empowerment and inspiration. LadyLeads,where every woman's journey
+                            matters.</span>
+                    </div>
+                    <form id="subscribe" action="" method="get">
+                        <div class="row">
+                            <div class="col-lg-5">
+                                <fieldset>
+                                    <input name="name" type="text" id="name" placeholder="Your Name" required="">
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-5">
+                                <fieldset>
+                                    <input name="email" type="text" id="email" pattern="[^ @]@[^ @]"
+                                        placeholder="Your Email Address" required="">
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-2">
+                                <fieldset>
+                                    <button type="submit" id="form-submit" class="main-dark-button"><i
+                                            class="fa fa-paper-plane"></i></button>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="{% static 'jquery-2.1.0.min.js' %}"></script>
+    <script src="{% static 'popper.js' %}"></script>
+    <script src="{% static 'bootstrap.min.js' %}"></script>
+    <script src="{% static 'owl-carousel.js' %}"></script>
+    <script src="{% static 'accordions.js' %}"></script>
+    <script src="{% static 'datepicker.js' %}"></script>
+    <script src="{% static 'scrollreveal.min.js' %}"></script>
+    <script src="{% static 'waypoints.min.js' %}"></script>
+    <script src="{% static 'jquery.counterup.min.js' %}"></script>
+    <script src="{% static 'imgfix.min.js' %}"></script>
+    <script src="{% static 'slick.js' %}"></script>
+    <script src="{% static 'lightbox.js' %}"></script>
+    <script src="{% static 'isotope.js' %}"></script>
+    <script src="{% static 'custom.js' %}"></script>
+
+    <script>
+        $(function () {
+            var selectedClass = "";
+            $("p").click(function () {
+                selectedClass = $(this).attr("data-rel");
+                $("#portfolio").fadeTo(50, 0.1);
+                $("#portfolio div").not("." + selectedClass).fadeOut();
+                setTimeout(function () {
+                    $("." + selectedClass).fadeIn();
+                    $("#portfolio").fadeTo(50, 1);
+                }, 500);
+
+            });
+        });
+    </script>
+
 </body>
 
 </html>
