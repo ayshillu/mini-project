@@ -11,10 +11,6 @@ from .models import EditProfile
 
 # Create your views here.
 
-
-def index(request):
-    return render(request, 'login.html')
-
 def signup(request):
 
     if request.method == "POST":
@@ -134,30 +130,11 @@ def editprofile(request):
 def chatprofile(request):
       return render(request, 'chatprofile.html')
 
-def products(request):
-      return render(request, 'products.html')
+def shop(request):
+      return render(request, 'shop.html')
 
-def page(request):
-      return render(request, 'page.html')
-
-def menstshirt(request):
-      return render(request, 'menstshirt.html')
-
-def flipflops(request):
-      return render(request, 'flipflops.html')
-
-def girlskirt(request):
-      return render(request, 'girlskirt.html')
+def cart(request):
+      return render(request, 'cart.html')
 
 def thankyoupage(request):
       return render(request, 'thankyoupage.html')
-
-def summerhat(request):
-      return render(request, 'summerhat.html')
-
-def womensshoes(request):
-      return render(request, 'womensshoes.html')
-
-def leathergloves(request):
-      return render(request, 'leathergloves.html')
-

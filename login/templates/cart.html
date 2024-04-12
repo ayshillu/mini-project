@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart</title>
+  <style>
+    body {
+      background: #ddd;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: sans-serif;
+      font-size: 0.8rem;
+      font-weight: bold;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      width: 100%;
+      margin: 20px;
+      display: flex;
+      justify-content: space-between;
+      background-color: #fff;
+      border-radius: 1rem;
+      box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      overflow: hidden;
+    }
+
+    .cart {
+      width: 70%;
+      padding: 20px;
+      border-right: 1px solid #ddd;
+    }
+
+    .summary {
+      width: 30%;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+
+    .title {
+      margin-bottom: 20px;
+    }
+
+    .item {
+      margin-bottom: 20px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 20px;
+    }
+
+    .item img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .item-details {
+      margin-left: 20px;
+    }
+
+    .item-details h6 {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .item-details p {
+      margin: 5px 0;
+      color: #888;
+    }
+
+    .item-quantity {
+      display: flex;
+      align-items: center;
+    }
+
+    .item-quantity a {
+      margin: 0 5px;
+      text-decoration: none;
+      color: #555;
+    }
+
+    .close {
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .summary-title {
+      margin-bottom: 20px;
+    }
+
+    .summary-content {
+      margin-bottom: 20px;
+    }
+
+    .total-price {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #ddd;
+      margin: 20px 0;
+    }
+
+    form {
+      margin-top: 20px;
+    }
+
+    input[type="text"],
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    input[type="text"]:focus,
+    select:focus {
+      outline: none;
+      border-color: #666;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      background-color: #000;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #333;
+    }
+
+    .back-to-shop-item {
+      list-style-type: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="cart">
+      <div class="title">
+        <h4>Shopping Cart</h4>
+        <p class="text-muted">3 items</p>
+      </div>
+      <div class="item">
+        <div class="item-image">
+          <img src="https://i.imgur.com/1GrakTl.jpg" alt="Shirt">
+        </div>
+        <div class="item-details">
+          <h6>Shirt</h6>
+          <p>Cotton T-shirt</p>
+        </div>
+        <div class="item-quantity">
+          <a href="#">-</a>
+          <span>1</span>
+          <a href="#">+</a>
+        </div>
+        <div class="item-price">
+          &euro; 44.00 <span class="close">&#10005;</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-image">
+          <img src="https://i.imgur.com/ba3tvGm.jpg" alt="Shirt">
+        </div>
+        <div class="item-details">
+          <h6>Shirt</h6>
+          <p>Cotton T-shirt</p>
+        </div>
+        <div class="item-quantity">
+          <a href="#">-</a>
+          <span>1</span>
+          <a href="#">+</a>
+        </div>
+        <div class="item-price">
+          &euro; 44.00 <span class="close">&#10005;</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-image">
+          <img src="https://i.imgur.com/pHQ3xT3.jpg" alt="Shirt">
+        </div>
+        <div class="item-details">
+          <h6>Shirt</h6>
+          <p>Cotton T-shirt</p>
+        </div>
+        <div class="item-quantity">
+          <a href="#">-</a>
+          <span>1</span>
+          <a href="#">+</a>
+        </div>
+        <div class="item-price">
+          &euro; 44.00 <span class="close">&#10005;</span>
+        </div>
+      </div>
+      <li><a href="{% url 'shop' %}">
+          <button class="back-to-shop" style="display: block;">Back to shop</button>
+        </a></li>
+    </div>
+
+    <div class="summary">
+      <div class="summary-title">
+        <h5>Summary</h5>
+      </div>
+      <div class="summary-content">
+        <div>ITEMS: 3</div>
+        <div>Subtotal: &euro; 132.00</div>
+        <hr>
+        <form>
+          <p>SHIPPING</p>
+          <select>
+            <option class="text-muted">Standard-Delivery- &euro;5.00</option>
+          </select>
+          <p>GIVE CODE</p>
+          <input id="code" type="text" placeholder="Enter your code">
+        </form>
+      </div>
+      <div class="total-price">TOTAL PRICE: &euro; 137.00</div>
+      <button class="btn">CHECKOUT</button>
+    </div>
+  </div>
+</body>
+
+</html>

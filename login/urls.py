@@ -5,7 +5,6 @@ from login import views
 # Define urlpatterns
 urlpatterns = [
     path('', views.home, name='home'),
-    path('login', views.index, name="login"),
     path('signup', views.signup, name="signup"),
     path('signin', views.signin, name="signin"),
     path('signout', views.signout, name="signout"),
@@ -17,16 +16,9 @@ urlpatterns = [
     path('contact', views.contact , name="contact"),
     path('editprofile', views.editprofile, name='editprofile'),
     path('chatprofile', views.chatprofile , name="chatprofile"),
-    path('products', views.products , name="products"),
-    path('page', views.page , name="page"),
-    path('flipflops', views.flipflops , name="flipflops"),
-    path('menstshirt', views.menstshirt , name="menstshirt"),
-    path('girlskirt', views.girlskirt , name="girlskirt"),
-    path('summerhat', views.summerhat , name="summerhat"),
+    path('shop', views.shop , name="shop"),
+    path('cart', views.cart , name="cart"),
     path('thankyoupage', views.thankyoupage , name="thankyoupage"),
-    path('womensshoes', views.womensshoes , name="womensshoes"),
-    path('leathergloves', views.leathergloves , name="leathergloves"),
-
     
 ]
 
