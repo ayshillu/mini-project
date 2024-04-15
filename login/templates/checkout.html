@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>checkout</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            min-height: 100vh;
+            background-color: #f7f7f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            height: auto;
+            width: 340px;
+            border-radius: 10px;
+            background-color: #fff;
+            padding: 0 20px;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .payment-details {
+            margin-top: 20px;
+        }
+
+        .payment-details p {
+            font-size: 12px;
+            font-weight: 700;
+            color: #89898e;
+        }
+
+        .input-text {
+            position: relative;
+            margin-top: 30px;
+        }
+
+        input[type="text"] {
+
+            height: 40px;
+            width: 100%;
+            border-radius: 5px;
+            border: none;
+            outline: 0;
+            border: 1px solid #f6f6f7;
+            padding: 0 10px;
+            box-sizing: border-box;
+            font-size: 12px;
+        }
+
+        .input-text span {
+            position: absolute;
+            top: -16px;
+            left: 10px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .input-text-cvv {
+            position: relative;
+        }
+
+        .input-text-cvv input[type="text"] {
+            height: 40px;
+            width: 70px;
+            border: none;
+
+            border-bottom: 1px solid #f6f6f7;
+            border-top: 1px solid #f6f6f7;
+            position: absolute;
+            top: -40px;
+            right: 60px;
+        }
+
+        .cvv input[type="text"] {
+            position: absolute;
+            right: 0;
+            border-right: 1px solid #f6f6f7;
+        }
+
+        .billing {
+            margin-top: 30px;
+            position: relative;
+        }
+
+        .billing span {
+            font-size: 12px;
+            font-weight: 700;
+            position: absolute;
+            top: -16px;
+            left: 10px;
+        }
+
+        .billing select {
+            height: 35px;
+            width: 100%;
+            font-size: 12px;
+            outline: 0;
+            padding-left: 5px;
+            border: 1px solid #f6f6f7;
+            cursor: pointer;
+        }
+
+        .billing select option:nth-child(1) {
+            display: none;
+
+        }
+
+        .zip-state {
+            display: flex;
+            width: 100%;
+        }
+
+        .zip {
+            width: 50%;
+        }
+
+        .zip input[type="text"] {
+            height: 35px;
+        }
+
+        .state {
+            width: 50%;
+        }
+
+        .summary {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .text-data p {
+            margin-top: 3px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .numerical-data p {
+            margin-top: 3px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .pay {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .pay button {
+            height: 40px;
+            width: 400%;
+            background-color: #7047eb;
+            border: none;
+            outline: 0;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.5s;
+        }
+
+        .pay button:hover {
+            background-color: blue !important;
+        }
+
+        .secure {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /*text-align:center;*/
+            color: #aeaebc;
+        }
+
+        .secure p {
+            font-size: 12px;
+            font-weight: 600;
+            color: #aeaebc;
+            margin-left: 5px;
+        }
+
+        .last {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .last p {
+            margin-right: 5px;
+        }
+
+        .last a {
+            color: blue;
+            text-decoration: none;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="payment-details">
+                <h3>Payment Details</h3>
+                <p>Complete your purchase by providing your payment details.</p>
+            </div>
+            <div class="input-text">
+                <input type="text" placeholder="luke@skywalker.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+                <span>Email</span>
+            </div>
+            <div class="input-text">
+                <input type="text" placeholder="0000 0000 0000 0000" data-slots="0" data-accept="\d">
+                <span>Card Details</span>
+            </div>
+            <div class="input-text-cvv">
+                <input type="text" placeholder="mm/yyyy" data-slots="my">
+                <!--<span>Card Details</span>-->
+            </div>
+            <div class="input-text-cvv cvv">
+                <input type="text" placeholder="000" data-slots="0" data-accept="\d" size="3">
+                <!--<span>Card Details</span>-->
+            </div>
+            <div class="input-text">
+                <input type="text" placeholder="Username">
+                <span>Card Holder name</span>
+            </div>
+            <div class="billing">
+               
+                <div class="zip-state">
+                    <div class="zip">
+                        <input type="text" placeholder="ZIP">
+                    </div>
+                    <div class="state">
+                        <select>
+                            <option>Select District</option>
+                            <option>Trivandrum</option>
+                            <option>Kollam</option>
+                            <option>Pathanamthitta</option>
+                            <option>Alappuzha</option>
+                            <option>Kottayam</option>
+                            <option>Idukki</option>
+                            <option>Ernakulam</option>
+                            <option>Thrissur</option>
+                            <option>Palakkad</option>
+                            <option>Malappuram</option>
+                            <option>Kozhikode</option>
+                            <option>Wayanad</option>
+                            <option>Kannur</option>
+                            <option>Kasargod</option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+            <div class="input-text">
+                <input type="text" placeholder="GB0124589">
+                <span>Vat Number</span>
+            </div>
+            <div class="summary">
+                <div class="text-data">
+                    <p>Subtotal</p>
+                    <p>Discount</p>
+                    <!-- <p>VAT(20%)</p> -->
+                    <h5 id="total">Total</h5>
+                </div>
+                <div class="numerical-data">
+                    <p>$19.00</p>
+                    <p>$5.00</p>
+                    <!-- <p>$2.80</p> -->
+                    <h5>$16.80</h5>
+                </div>
+            </div>
+            <div class="pay">
+                <button onclick="window.location.href='order'">Pay</button>
+            </div>
+
+            <div class="secure">
+                <i class="fa fa-lock"></i>
+                <p> Payments are secured and encrypted</p>
+            </div>
+            <!-- <div class="last">
+                <p>Powered by Orman Clark</p>
+                <a href="#"> Terms </a>
+                <a href="#"> Privacy </a>
+            </div> -->
+
+        </div>
+
+    </div>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', () => {
+            for (const el of document.querySelectorAll("[placeholder][data-slots]")) {
+                const pattern = el.getAttribute("placeholder"),
+                    slots = new Set(el.dataset.slots || "_"),
+                    prev = (j => Array.from(pattern, (c, i) => slots.has(c) ? j = i + 1 : j))(0),
+                    first = [...pattern].findIndex(c => slots.has(c)),
+                    accept = new RegExp(el.dataset.accept || "\\d", "g"),
+                    clean = input => {
+                        input = input.match(accept) || [];
+                        return Array.from(pattern, c =>
+                            input[0] === c || slots.has(c) ? input.shift() || c : c
+                        );
+                    },
+                    format = () => {
+                        const [i, j] = [el.selectionStart, el.selectionEnd].map(i => {
+                            i = clean(el.value.slice(0, i)).findIndex(c => slots.has(c));
+                            return i < 0 ? prev[prev.length - 1] : back ? prev[i - 1] || first : i;
+                        }); el.value = clean(el.value).join``; el.setSelectionRange(i, j); back = false;
+                    }; let back = false; el.addEventListener("keydown", (e) => back = e.key === "Backspace");
+                el.addEventListener("input", format);
+                el.addEventListener("focus", format);
+                el.addEventListener("blur", () => el.value === pattern && (el.value = ""));
+            }
+        });
+
+
+    </script>
+
+</body>
+
+</html>

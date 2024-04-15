@@ -208,38 +208,11 @@
             font-weight: 600;
         }
 
-        .chat-button{
-            font-family: "Archivo";
-            font-weight: 600;
-        }
-        
         .profile-actions {
             display: flex;
             justify-content: center;
             margin-top: 50px;
             flex-wrap: wrap;
-        }
-
-        .chat-actions button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 20px;
-            background-color: #010101;
-            /* Change button color */
-            color: #F2F0E4;
-            /* Change button text color */
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            font-family: 'Archivo', sans-serif;
-            margin: 0px;
-            margin-left: -10px;
-            margin-top: 400px;
-            /* Add margin to create space between buttons */
-        }
-
-        .chat-actions button:hover {
-            background-color: #333;
-            /* Darken button color on hover */
         }
         
 
@@ -277,13 +250,11 @@
 
         <div class="containerbar">
             <div class="sidebar">
-                <a href="{% url 'home' %}" class="sidebar-link">Home</a>
-                <a href="{% url 'about' %}" class="sidebar-link">About</a>
-                <a href="{% url 'blog' %}" class="sidebar-link">Blog</a>
-                <a href="{% url 'contact' %}" class="sidebar-link">Contact</a>
-                <div class="chat-actions">
-                <a href="{% url 'chatprofile' %}"><button class="chat-button">Chat with us</button></a>
-                </div>            
+                <a href="{% url 'homelogout' %}" class="sidebar-link">Home</a>
+                <a href="{% url 'shop' %}" class="sidebar-link">Shop</a>
+                <a href="{% url 'services' %}" class="sidebar-link">Services</a>
+                <a href="{% url 'cart' %}" class="sidebar-link">My Cart</a>
+                <a href="{% url 'contact' %}" class="sidebar-link">Contact</a>       
             </div>
         </div>
         <!-- <div class="star-rating">

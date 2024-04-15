@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&display=swap"
+        rel="stylesheet">
+
+    <title>services</title>
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'font-awesome.css' %}">
+    <link rel="stylesheet" href="{% static 'templatemo-hexashop.css' %}">
+    <link rel="stylesheet" href="{% static 'owl-carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'lightbox.css' %}">
+
+</head>
+
+<body>
+    <style>
+        .heading {
+            font-family: "Archivo";
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .container {
+            font-family: "Archivo";
+        }
+
+
+        .signintext {
+            color: #ffffff;
+            text-align: center;
+            /* Center text horizontally */
+            background-color: #000;
+            margin-bottom: 5px;
+            border: none;
+            border-radius: 25px;
+            padding: 0 20px;
+            /* Adjust padding as needed */
+            width: 60px;
+            height: 30px;
+            line-height: 20px;
+            /* Center text vertically */
+        }
+
+
+        .main_div {
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+            width: 450px;
+            margin: 0 auto;
+        }
+
+
+        .search {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-bottom: -40px;
+            width: 450px;
+            margin: 115px auto 50px;
+            /* Adjusted margin */
+            color: #011F1F;
+            justify-content: space-evenly;
+        }
+
+
+        button {
+            all: unset;
+            background-color: #011f1f;
+            color: #f2f0e4;
+            ;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .suggestions {
+            display: none;
+            margin: 0 auto;
+            cursor: pointer;
+            width: 400px;
+        }
+
+        .suggestions {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            max-height: 100px;
+            overflow-y: auto;
+        }
+
+        input[type="search"] {
+            all: unset;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        .header-area {
+            padding: 20px 0;
+            /* Adjusted padding */
+        }
+
+        body {
+            margin-top: 20px;
+            background: #eee;
+        }
+
+        .single_advisor_profile {
+            position: relative;
+            margin-bottom: 50px;
+            -webkit-transition-duration: 500ms;
+            transition-duration: 500ms;
+            z-index: 1;
+            border-radius: 15px;
+            -webkit-box-shadow: 0 0.25rem 1rem 0 rgba(47, 91, 234, 0.125);
+            box-shadow: 0 0.25rem 1rem 0 rgba(47, 91, 234, 0.125);
+        }
+
+        .single_advisor_profile .advisor_thumb {
+            position: relative;
+            z-index: 1;
+            border-radius: 15px 15px 0 0;
+            margin: 0 auto;
+            padding: 30px 30px 0 30px;
+            background-color: #1a1a1a;
+            overflow: hidden;
+        }
+
+        .single_advisor_profile .advisor_thumb::after {
+            -webkit-transition-duration: 500ms;
+            transition-duration: 500ms;
+            position: absolute;
+            width: 150%;
+            height: 80px;
+            bottom: -45px;
+            left: -25%;
+            content: "";
+            background-color: #ffffff;
+            -webkit-transform: rotate(-15deg);
+            transform: rotate(-15deg);
+        }
+
+        @media only screen and (max-width: 575px) {
+            .single_advisor_profile .advisor_thumb::after {
+                height: 160px;
+                bottom: -90px;
+            }
+        }
+
+        .single_advisor_profile .advisor_thumb .social-info {
+            position: absolute;
+            z-index: 1;
+            width: 100%;
+            bottom: 0;
+            right: 30px;
+            text-align: right;
+        }
+
+        .single_advisor_profile .advisor_thumb .social-info a {
+            font-size: 14px;
+            color: #020710;
+            padding: 0 5px;
+        }
+
+        .single_advisor_profile .advisor_thumb .social-info a:hover,
+        .single_advisor_profile .advisor_thumb .social-info a:focus {
+            color: #262626;
+        }
+
+        .single_advisor_profile .advisor_thumb .social-info a:last-child {
+            padding-right: 0;
+        }
+
+        .single_advisor_profile .single_advisor_details_info {
+            position: relative;
+            z-index: 1;
+            padding: 30px;
+            text-align: right;
+            -webkit-transition-duration: 500ms;
+            transition-duration: 500ms;
+            border-radius: 0 0 15px 15px;
+            background-color: #ffffff;
+        }
+
+        .single_advisor_profile .single_advisor_details_info::after {
+            -webkit-transition-duration: 500ms;
+            transition-duration: 500ms;
+            position: absolute;
+            z-index: 1;
+            width: 50px;
+            height: 3px;
+            background-color: #242424;
+            content: "";
+            top: 12px;
+            right: 30px;
+        }
+
+        .single_advisor_profile .single_advisor_details_info h6 {
+            margin-bottom: 0.25rem;
+            -webkit-transition-duration: 500ms;
+            transition-duration: 500ms;
+        }
+
+        @media only screen and (min-width: 768px) and (max-width: 991px) {
+            .single_advisor_profile .single_advisor_details_info h6 {
+                font-size: 14px;
+            }
+        }
+
+        .single_advisor_profile .single_advisor_details_info p {
+            -webkit-transition-duration: 500ms;
+            transition-duration: 500ms;
+            margin-bottom: 0;
+            font-size: 14px;
+        }
+
+        @media only screen and (min-width: 768px) and (max-width: 991px) {
+            .single_advisor_profile .single_advisor_details_info p {
+                font-size: 12px;
+            }
+        }
+
+        .single_advisor_profile:hover .advisor_thumb::after,
+        .single_advisor_profile:focus .advisor_thumb::after {
+            background-color: #c0ab8c;
+        }
+
+        .single_advisor_profile:hover .advisor_thumb .social-info a,
+        .single_advisor_profile:focus .advisor_thumb .social-info a {
+            color: #ffffff;
+        }
+
+        .single_advisor_profile:hover .advisor_thumb .social-info a:hover,
+        .single_advisor_profile:hover .advisor_thumb .social-info a:focus,
+        .single_advisor_profile:focus .advisor_thumb .social-info a:hover,
+        .single_advisor_profile:focus .advisor_thumb .social-info a:focus {
+            color: #ffffff;
+        }
+
+        .single_advisor_profile:hover .single_advisor_details_info,
+        .single_advisor_profile:focus .single_advisor_details_info {
+            background-color: #c0ab8c;
+        }
+
+        .single_advisor_profile:hover .single_advisor_details_info::after,
+        .single_advisor_profile:focus .single_advisor_details_info::after {
+            background-color: #ffffff;
+        }
+
+        .single_advisor_profile:hover .single_advisor_details_info h6,
+        .single_advisor_profile:focus .single_advisor_details_info h6 {
+            color: #ffffff;
+        }
+
+        .single_advisor_profile:hover .single_advisor_details_info p,
+        .single_advisor_profile:focus .single_advisor_details_info p {
+            color: #ffffff;
+        }
+
+        .advisor_thumb img {
+            max-width: 100%;
+            /* Ensure the image doesn't exceed the container width */
+            height: auto;
+            /* Maintain aspect ratio */
+        }
+    </style>
+
+
+    <header class="header-area header-sticky" style="background-color: #ffffff;">
+        <style>
+            .header-area {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100px;
+                /* Adjust height as needed */
+            }
+
+            .main-nav ul {
+                margin: 0;
+                padding: 0;
+                list-style-type: none;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <H1 class="heading">
+                            LadyLeads
+                        </H1>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li class="scroll-to-section"><a href="#" class="active">Home</a></li>
+                            <li class="scroll-to-section"><a href="{% url 'shop'%}">Shop</a></li>
+                            <li class="scroll-to-section"><a href="{% url 'services'%}">Services</a></li>
+                            <li class="scroll-to-section"><a href="{% url 'profile'%}">Profile</a></li>
+                            <li class="scroll-to-section"><a href="{% url 'cart'%}">Cart</a></li>
+
+                            <li><a href="home">
+                                    <button class="signintext">Logout</button>
+                                </a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <nav>
+        <ul>
+
+            <li class="main_div">
+            <li class="search"><input type="search" id="search" placeholder="Search...">
+                <button id="searchBtn" onclick="handleSearch()">Search</button>
+            </li>
+
+    </nav>
+
+    <div style="height: 50px;"></div>
+
+    <section class="section" id="henna">
+        <div class="container">
+            <div class="section-heading">
+                <h2>Henna Artist</h2>
+                <span>Check out</span>
+            </div>
+            <div class="row">
+                <!-- Single Advisor-->
+                {% for profile in profiles %}
+                {% if profile.job == "Henna designer" %}
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
+                        style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+                        <!-- Team Thumb-->
+                        <div class="advisor_thumb"><img src="{% static 'ppic15.jpg' %}" alt="">
+                        </div>
+                        <!-- Team Details-->
+                        <div class="single_advisor_details_info">
+                            <h6>{{ profile.user }}</h6>
+                            <p class="designation">{{ profile.job }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% endfor %}
+
+
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
+                        style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+                        <div class="advisor_thumb"><img src="{% static 'ppic14.jpg' %}" alt="">
+                        </div>
+                        <div class="single_advisor_details_info">
+                            <h6>Evelyn</h6>
+                            <p class="designation">Henna</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
+                        style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+
+                        <div class="advisor_thumb"><img src="{% static 'ppic13.jpg' %}" alt="">
+                        </div>
+
+                        <div class="single_advisor_details_info">
+                            <h6>Amelia</h6>
+                            <p class="designation">Henna</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
+                        style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+
+                        <div class="advisor_thumb"><img src="{% static 'ppic12.jpg' %}" alt="">
+                        </div>
+
+                        <div class="single_advisor_details_info">
+                            <h6>Mia</h6>
+                            <p class="designation">Henna</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div style="height: 50px;"></div>
+
+    <section class="section" id="tailor">
+        <div class="container">
+            <div class="section-heading">
+                <h2>Tailor</h2>
+                <span>Check out</span>
+            </div>
+            <div class="row">
+
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
+                        style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+
+                        <div class="advisor_thumb"><img src="{% static 'ppic11.jpg' %}" alt="">
+                        </div>
+
+                        <div class="single_advisor_details_info">
+                            <h6>Sophia</h6>
+                            <p class="designation">Tailor</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
+                        style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+
+                        <div class="advisor_thumb"><img src="{% static 'ppic10.jpg' %}" alt="">
+                        </div>
+
+                        <div class="single_advisor_details_info">
+                            <h6>Ava</h6>
+                            <p class="designation">Tailor</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
+                        style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+
+                        <div class="advisor_thumb"><img src="{% static 'ppic9.jpg' %}" alt="">
+                        </div>
+
+                        <div class="single_advisor_details_info">
+                            <h6>Olivia</h6>
+                            <p class="designation">Tailor</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
+                        style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+
+                        <div class="advisor_thumb"><img src="{% static 'ppic8.jpg' %}" alt="">
+                        </div>
+
+                        <div class="single_advisor_details_info">
+                            <h6>Emma</h6>
+                            <p class="designation">Tailor</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div style="height: 50px;"></div>
+
+    <section class="section" id="maid">
+        <div class="container">
+            <div class="section-heading">
+                <h2>Maid</h2>
+                <span>Check out</span>
+            </div>
+            <div class="row">
+
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
+                        style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+
+                        <div class="advisor_thumb"><img src="{% static 'ppic7.jpg' %}" alt="">
+                        </div>
+                        <!-- Team Details-->
+                        <div class="single_advisor_details_info">
+                            <h6>Taylor</h6>
+                            <p class="designation">Maid</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Single Advisor-->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
+                        style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+                        <!-- Team Thumb-->
+                        <div class="advisor_thumb"><img src="{% static 'ppic6.jpg' %}" alt="">
+                        </div>
+                        <!-- Team Details-->
+                        <div class="single_advisor_details_info">
+                            <h6>Megan</h6>
+                            <p class="designation">Maid</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Single Advisor-->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
+                        style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+                        <!-- Team Thumb-->
+                        <div class="advisor_thumb"><img src="{% static 'ppic5.jpg' %}" alt="">
+                        </div>
+                        <!-- Team Details-->
+                        <div class="single_advisor_details_info">
+                            <h6>Raya</h6>
+                            <p class="designation">Maid</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Single Advisor-->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
+                        style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+                        <!-- Team Thumb-->
+                        <div class="advisor_thumb"><img src="{% static 'ppic4.jpg' %}" alt="">
+                        </div>
+                        <!-- Team Details-->
+                        <div class="single_advisor_details_info">
+                            <h6>Helen</h6>
+                            <p class="designation">Maid</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div style="height: 50px;"></div>
+
+    <section class="section" id="home-nurse">
+        <div class="container">
+            <div class="section-heading">
+                <h2>Home Nurse</h2>
+                <span>Check out</span>
+            </div>
+            <div class="row">
+                <!-- Single Advisor-->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
+                        style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+                        <!-- Team Thumb-->
+                        <div class="advisor_thumb"><img src="{% static 'ppic17.jpg' %}" alt="">
+                        </div>
+                        <!-- Team Details-->
+                        <div class="single_advisor_details_info">
+                            <h6>Julie</h6>
+                            <p class="designation">Home Nurse</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Single Advisor-->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
+                        style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+                        <!-- Team Thumb-->
+                        <div class="advisor_thumb"><img src="{% static 'ppic2.jpg' %}" alt="">
+                        </div>
+                        <!-- Team Details-->
+                        <div class="single_advisor_details_info">
+                            <h6>Rooha</h6>
+                            <p class="designation">Home Nurse</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Single Advisor-->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
+                        style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+                        <!-- Team Thumb-->
+                        <div class="advisor_thumb"><img src="{% static 'ppic1.jpg' %}" alt="">
+                        </div>
+                        <!-- Team Details-->
+                        <div class="single_advisor_details_info">
+                            <h6>Rihanna</h6>
+                            <p class="designation">Home Nurse</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+    </section>
+
+    <div style="height: 50px;"></div>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="first-item">
+                        <ul>
+                            <li><a href="#">ladyleads@gmail.com</a></li>
+                            <li><a href="#">010-020-0340</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <h4>Shopping &amp; Categories</h4>
+                    <ul>
+                        <li><a href="#">Dress</a></li>
+                        <li><a href="#">Food</a></li>
+                        <li><a href="#">Henna</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><a href="#">Homepage</a></li>
+                        <li><a href="{% url 'about' %}">About Us</a></li>
+                        <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h4>Help &amp; Information</h4>
+                    <ul>
+                        <li><a href="workers">Services</a></li>
+                        <li><a href="shop">Shop</a></li>
+                        <li><a href="profile">Profile</a></li>
+                        <li><a href="cart">Cart</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-12">
+                    <div class="under-footer">
+                        <p>Copyright © 2024 LadyLeads, Ltd. All Rights Reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/popper.js"></script>
+    <script src="{% static 'jquery-2.1.0.min.js' %}"></script>
+    <script src="{% static 'popper.js' %}"></script>
+    <script src="{% static 'bootstrap.min.js' %}"></script>
+    <script src="{% static 'owl-carousel.js' %}"></script>
+    <script src="{% static 'accordions.js' %}"></script>
+    <script src="{% static 'datepicker.js' %}"></script>
+    <script src="{% static 'scrollreveal.min.js' %}"></script>
+    <script src="{% static 'waypoints.min.js' %}"></script>
+    <script src="{% static 'jquery.counterup.min.js' %}"></script>
+    <script src="{% static 'imgfix.min.js' %}"></script>
+    <script src="{% static 'slick.js' %}"></script>
+    <script src="{% static 'lightbox.js' %}"></script>
+    <script src="{% static 'isotope.js' %}"></script>
+    <script src="{% static 'custom.js' %}"></script>
+
+    <script>
+
+        $(function () {
+            var selectedClass = "";
+            $("p").click(function () {
+                selectedClass = $(this).attr("data-rel");
+                $("#portfolio").fadeTo(50, 0.1);
+                $("#portfolio div").not("." + selectedClass).fadeOut();
+                setTimeout(function () {
+                    $("." + selectedClass).fadeIn();
+                    $("#portfolio").fadeTo(50, 1);
+                }, 500);
+
+            });
+        });
+
+    </script>
+
+
+
+    <script>
+        document.getElementById("searchBtn").addEventListener("click", handleSearch);
+
+        document.getElementById("search").addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+                handleSearch();
+            }
+        });
+
+        function handleSearch() {
+            var searchQuery = document.getElementById("search").value.toLowerCase();
+            var sectionId = searchQuery.replace(/\s/g, '-'); // Replace spaces with hyphens
+            var section = document.getElementById(sectionId);
+            if (section) {
+                var navbarHeight = document.querySelector("nav").offsetHeight; // Get height of navbar
+                window.scrollTo({
+                    top: section.offsetTop - navbarHeight, // Adjust for navbar height
+                    behavior: "smooth"
+                });
+            } else {
+                alert("No matching section found for your search query.");
+            }
+        }
+    </script>
+
+
+
+</body>
+
+</html>

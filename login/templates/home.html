@@ -111,7 +111,7 @@
                             <div class="inner-content">
                                 <h4>We Are LadyLeads</h4>
                                 <div class="main-border-button">
-                                    <a href="#">Purchase Now!</a>
+                                    <a href="shop">Purchase Now!</a>
                                 </div>
                             </div>
                             <img src="{% static 'pizza.jpg' %}" alt="">
@@ -130,7 +130,7 @@
                                         <div class="hover-content">
                                             <div class="inner">
                                                 <h4>Henna</h4>
-                                                <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.
+                                                <p>Add elegance to your event with intricate henna designs by skilled artists.
                                                 </p>
                                                 <div class="main-border-button">
                                                     <a href="#">Discover More</a>
@@ -149,8 +149,8 @@
                                         </div>
                                         <div class="hover-content">
                                             <div class="inner">
-                                                <h4>tailor</h4>
-                                                <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.
+                                                <h4>Tailor</h4>
+                                                <p>Craft the perfect fit for your style with expert tailoring services.
                                                 </p>
                                                 <div class="main-border-button">
                                                     <a href="#">Discover More</a>
@@ -170,7 +170,7 @@
                                         <div class="hover-content">
                                             <div class="inner">
                                                 <h4>Home Nurse</h4>
-                                                <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.
+                                                <p>Professional care, comfort, and support right in the comfort of your home.
                                                 </p>
                                                 <div class="main-border-button">
                                                     <a href="#">Discover More</a>
@@ -190,7 +190,7 @@
                                         <div class="hover-content">
                                             <div class="inner">
                                                 <h4>Maid</h4>
-                                                <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.
+                                                <p>Reliable, efficient, and trustworthy domestic assistance for a cleaner, more organized home.
                                                 </p>
                                                 <div class="main-border-button">
                                                     <a href="#">Discover More</a>
@@ -225,13 +225,15 @@
                         <p> Domestic Services
                             Home Nurses: Compassionate care in the comfort of your home.
                             Maids: Reliable help with household chores and cleaning.
-                            Tailors: Custom-made clothing for a perfect fit.
-                            Creative Services
+                            Tailors: Custom-made clothing for a perfect fit.</p>
+
+                           <p>Creative Services
                             Stitched Dresses: Stylish garments for every occasion.
                             Cakes: Delicious treats for special celebrations.
                             Henna Tubes: Artistic temporary tattoos for a unique look</p>
                         <div class="main-border-button">
-                            <a href="{% url 'profile' %}">Discover More</a>
+                            <a href="{% url 'services' %}">Discover Services</a>
+                            <a href="{% url 'shop' %}">Discover Shop</a>
                         </div>
                     </div>
                 </div>
@@ -337,17 +339,16 @@
                     <ul>
                         <li><a href="#">Homepage</a></li>
                         <li><a href="{% url 'about' %}">About Us</a></li>
-                        <li><a href="#">Help</a></li>
                         <li><a href="{% url 'contact' %}">Contact Us</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-3"> 
                     <h4>Help &amp; Information</h4>
                     <ul>
-                        <li><a href="#">Help</a></li>
-                        <li><a href="#">FAQ's</a></li>
-                        <li><a href="#">Shipping</a></li>
-                        <li><a href="#">Tracking ID</a></li>
+                        <li><a href="workers">Services</a></li>
+                        <li><a href="shop">Shop</a></li>
+                        <li><a href="profile">Profile</a></li>
+                        <li><a href="cart">Cart</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-12">

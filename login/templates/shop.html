@@ -72,12 +72,14 @@
       display: flex;
       flex-direction: row;
       align-items: center;
+      margin-bottom: -40px;
       width: 450px;
-      margin: 180px;
+      margin: 115px auto 50px;
+      /* Adjusted margin */
       color: #011F1F;
       justify-content: space-evenly;
-      margin-left: -6%;
     }
+
 
     button {
       all: unset;
@@ -114,10 +116,144 @@
       font-size: 16px;
       width: 100%;
     }
+
+    .header-area {
+      padding: 20px 0;
+      /* Adjusted padding */
+    }
+
+    body {
+      margin-top: 20px;
+      background: #eee;
+    }
+
+
+    .product-image {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+
+    .product-details {
+      padding: 15px;
+      text-align: center;
+      transition: background-color 0.3s;
+    }
+
+    .product-title {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .product-price {
+      font-size: 14px;
+      color: #424242;
+      margin-bottom: 8px;
+    }
+
+
+
+    .product-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      /* Align items horizontally in the center */
+      align-items: center;
+      /* Align items vertically in the center */
+      margin-top: 20px;
+      /* Add some top margin for spacing */
+    }
+
+
+    .product-card {
+      width: 300px;
+      /* Adjust width of cards as needed */
+      margin-right: 20px;
+      /* Adjust margin between cards */
+      margin-bottom: 37px;
+      /* Adjust margin between rows */
+    }
+
+    .product-card:nth-child(4n) {
+      margin-right: 0;
+      /* Remove right margin from every fourth card to create new row */
+    }
+
+    .product-card:last-child {
+      width: 300px;
+      /* Adjust width of last two cards */
+      margin-right: 10px;
+      /* Adjust margin between last two cards */
+    }
+
+    /* Styles for .add-to-cart-btn */
+    .add-to-cart-btn {
+      min-width: 200px;
+      /* Set a minimum width */
+      width: auto;
+      /* Allow the button to expand based on content */
+      padding: 8px 20px;
+      /* Adjust padding as needed */
+      border: 3px solid #000000;
+      background-color: #ffffff;
+      color: #000000;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      text-align: center;
+      /* Center the text horizontally */
+    }
+
+
+
+    .add-to-cart-btn:hover {
+      background-color: #020710;
+      color: #eee;
+    }
+
+    /* Hover Effects */
+    .product-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .product-card:hover .product-details {
+      background-color: #f9f9f9;
+    }
+
+    .product-card:hover .product-image {
+      transform: scale(1.05);
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 500px) {
+      .product-card {
+        width: 100%;
+      }
+    }
   </style>
 
 
   <header class="header-area header-sticky" style="background-color: #ffffff;">
+    <style>
+      .header-area {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+        /* Adjust height as needed */
+      }
+
+      .main-nav ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+
     <div class="container">
       <div class="row">
         <div class="col-12">
@@ -126,8 +262,12 @@
             <H1 class="heading">
               LadyLeads
             </H1>
+            <!-- ***** Logo End ***** -->
+            <!-- ***** Menu Start ***** -->
             <ul class="nav">
-              <li class="scroll-to-section"><a href="{% url 'shop'%}" class="active">Shop</a></li>
+              <li class="scroll-to-section"><a href="#" class="active">Home</a></li>
+              <li class="scroll-to-section"><a href="{% url 'shop'%}">Shop</a></li>
+              <li class="scroll-to-section"><a href="{% url 'services'%}">Services</a></li>
               <li class="scroll-to-section"><a href="{% url 'profile'%}">Profile</a></li>
               <li class="scroll-to-section"><a href="{% url 'cart'%}">Cart</a></li>
 
@@ -140,290 +280,120 @@
       </div>
     </div>
   </header>
-  <form>
-    <div class="main_div">
-      <div class="search">
-        <input type="search" id="search-box" placeholder="What are you looking for?" oninput="filterSuggestions()">
-        <button type="submit">Search</button>
-      </div>
 
-      <div id="suggestions" class="suggestions">
-        <p>Tailor</p>
-        <p>Gardener</p>
-        <p>Home nurse</p>
-        <p>Henna</p>
-        <p>Cake maker</p>
-      </div>
 
-    </div>
+  <nav>
+    <ul>
 
-  </form>
+      <li class="main_div">
+      <li class="search"><input type="search" id="search" placeholder="Search...">
+        <button id="searchBtn" onclick="handleSearch()">Search</button>
+      </li>
 
-  <section class="section" id="products">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="section-heading">
-            <h2>Our Latest Products</h2>
-            <span>Check out all of our products.</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="item">
-            <div class="thumb">
-              <div class="hover-content">
-                <ul>
-                  <li><a href="{% url 'cart' %}"><i class="fa fa-eye"></i></a></li>
-                  <li><a href="{% url 'cart' %}"><i class="fa fa-star"></i></a></li>
-                  <li><a href="{% url 'cart' %}"><i class="fa fa-shopping-cart"></i></a></li>
-                </ul>
-              </div>
-              <img src="{% static 'cooking.jpg' %}" alt="">
-            </div>
-            <div class="down-content">
-              <h4>Classic Spring</h4>
-              <span>$120.00</span>
-              <ul class="stars">
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="item">
-            <div class="thumb">
-              <div class="hover-content">
-                <ul>
-                  <li><a href="{% url 'cart' %}"><i class="fa fa-eye"></i></a></li>
-                  <li><a href="{% url 'cart' %}"><i class="fa fa-star"></i></a></li>
-                  <li><a href="{% url 'cart' %}"><i class="fa fa-shopping-cart"></i></a></li>
-                </ul>
-              </div>
-              <img src="{% static 'cooking.jpg' %}" alt="">
-            </div>
-            <div class="down-content">
-              <h4>Air Force 1 X</h4>
-              <span>$90.00</span>
-              <ul class="stars">
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="item">
-            <div class="thumb">
-              <div class="hover-content">
-                <ul>
-                  <li><a href="{% url 'cart' %}"><i class="fa fa-eye"></i></a></li>
-                  <li><a href="{% url 'cart' %}"><i class="fa fa-star"></i></a></li>
-                  <li><a href="{% url 'cart' %}"><i class="fa fa-shopping-cart"></i></a></li>
-                </ul>
-              </div>
-              <img src="{% static 'cooking.jpg' %}" alt="">
-            </div>
-            <div class="down-content">
-              <h4>Love Nana ‘20</h4>
-              <span>$150.00</span>
-              <ul class="stars">
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="item">
-            <div class="thumb">
-              <div class="hover-content">
-                <ul>
-                  <li><a href="{% url 'cart' %}"><i class="fa fa-eye"></i></a></li>
-                  <li><a href="{% url 'cart' %}"><i class="fa fa-star"></i></a></li>
-                  <li><a href="{% url 'cart' %}"><i class="fa fa-shopping-cart"></i></a></li>
-                </ul>
-              </div>
-              <img src="{% static 'cooking.jpg' %}" alt="">
-            </div>
-            <div class="down-content">
-              <h4>New Green Jacket</h4>
-              <span>$75.00</span>
-              <ul class="stars">
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="item">
-            <div class="thumb">
-              <div class="hover-content">
-                <ul>
-                  <li><a href="{% url 'cart' %}"><i class="fa fa-eye"></i></a></li>
-                  <li><a href="{% url 'cart' %}"><i class="fa fa-star"></i></a></li>
-                  <li><a href="{% url 'cart' %}"><i class="fa fa-shopping-cart"></i></a></li>
-                </ul>
-              </div>
-              <img src="{% static 'cooking.jpg' %}" alt="">
-            </div>
-            <div class="down-content">
-              <h4>Classic Dress</h4>
-              <span>$45.00</span>
-              <ul class="stars">
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="item">
-            <div class="thumb">
-              <div class="hover-content">
-                <ul>
-                  <li><a href="{% url 'cart' %}"><i class="fa fa-eye"></i></a></li>
-                  <li><a href="{% url 'cart' %}"><i class="fa fa-star"></i></a></li>
-                  <li><a href="{% url 'cart' %}"><i class="fa fa-shopping-cart"></i></a></li>
-                </ul>
-              </div>
-              <img src="{% static 'cooking.jpg' %}" alt="">
-            </div>
-            <div class="down-content">
-              <h4>Spring Collection</h4>
-              <span>$130.00</span>
-              <ul class="stars">
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="item">
-            <div class="thumb">
-              <div class="hover-content">
-                <ul>
-                  <li><a href="{% url 'cart' %}"><i class="fa fa-eye"></i></a></li>
-                  <li><a href="{% url 'cart' %}"><i class="fa fa-star"></i></a></li>
-                  <li><a href="{% url 'cart' %}"><i class="fa fa-shopping-cart"></i></a></li>
-                </ul>
-              </div>
-              <img src="{% static 'cooking.jpg' %}" alt="">
-            </div>
-            <div class="down-content">
-              <h4>School Collection</h4>
-              <span>$80.00</span>
-              <ul class="stars">
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="item">
-            <div class="thumb">
-              <div class="hover-content">
-                <ul>
-                  <li><a href="{% url 'cart' %}"><i class="fa fa-eye"></i></a></li>
-                  <li><a href="{% url 'cart' %}"><i class="fa fa-star"></i></a></li>
-                  <li><a href="{% url 'cart' %}"><i class="fa fa-shopping-cart"></i></a></li>
-                </ul>
-              </div>
-              <img src="{% static 'cooking.jpg' %}" alt="">
-            </div>
-            <div class="down-content">
-              <h4>Summer Cap</h4>
-              <span>$12.00</span>
-              <ul class="stars">
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="item">
-            <div class="thumb">
-              <div class="hover-content">
-                <ul>
-                  <li><a href="{% url 'cart' %}"><i class="fa fa-eye"></i></a></li>
-                  <li><a href="{% url 'cart' %}"><i class="fa fa-star"></i></a></li>
-                  <li><a href="{% url 'cart' %}"><i class="fa fa-shopping-cart"></i></a></li>
-                </ul>
-              </div>
-              <img src="{% static 'cooking.jpg' %}" alt="">
-            </div>
-            <div class="down-content">
-              <h4>Classic Kid</h4>
-              <span>$30.00</span>
-              <ul class="stars">
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-12">
-          <div class="pagination">
-            <ul>
-              <li>
-                <a href="#">1</a>
-              </li>
-              <li class="active">
-                <a href="#">2</a>
-              </li>
-              <li>
-                <a href="#">3</a>
-              </li>
-              <li>
-                <a href="#">4</a>
-              </li>
-              <li>
-                <a href="#">></a>
-              </li>
-            </ul>
-          </div>
-        </div>
+  </nav>
+
+  <div style="height: 50px;"></div>
+
+  <!-- for product cards -->
+  <div class="product-container">
+    {% for product in products %}
+    <div class="product-card">
+      <img class="product-image" src="{% static 'image/shopic6.jpg' %}">
+      <div class="product-details">
+        <h2 class="product-title">{{ product.name }}</h2>
+        <p class="product-price">₹{{ product.price }}</p>
+        <form method="post" action="{% url 'add_to_cart' %}">
+          {% csrf_token %}
+          <input type="hidden" name="product_id" value="{{ product.id }}">
+          <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+        </form>
       </div>
     </div>
-  </section>
-  <!-- ***** Products Area Ends ***** -->
+    {% endfor %}
+    <!-- <div class="product-card">
+      <img class="product-image" src="{% static 'image/shopic9.jpg' %}">
+      <div class="product-details">
+        <h2 class="product-title">Henna Stencil</h2>
+        <p class="product-price">$149.99</p>
+        <a href="cart" class="add-to-cart-btn">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img class="product-image" src="{% static 'image/shopic8.jpg' %}">
+      <div class="product-details">
+        <h2 class="product-title">Flower cones</h2>
+        <p class="product-price">$99.99</p>
+        <a href="cart" class="add-to-cart-btn">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img class="product-image" src="{% static 'image/shopic7.jpg' %}">
+      <div class="product-details">
+        <h2 class="product-title">Pastries</h2>
+        <p class="product-price">$78.99</p>
+        <a href="cart" class="add-to-cart-btn">Add to Cart</a>
+      </div>
+    </div>
+  </div>
+  <div class="product-container">
+    <div class="product-card">
+      <img class="product-image" src="{% static 'image/shopic1.jpg' %}">
+      <div class="product-details">
+        <h2 class="product-title">Diary</h2>
+        <p class="product-price">$65.99</p>
+        <a href="cart" class="add-to-cart-btn">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img class="product-image" src="{% static 'image/shopic2.jpg' %}">
+      <div class="product-details">
+        <h2 class="product-title">Bracelet</h2>
+        <p class="product-price">$34.99</p>
+        <a href="cart" class="add-to-cart-btn">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img class="product-image" src="{% static 'image/shopic3.jpg' %}">
+      <div class="product-details">
+        <h2 class="product-title">Decor</h2>
+        <p class="product-price">$179.99</p>
+        <a href="cart" class="add-to-cart-btn">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img class="product-image" src="{% static 'image/shopic4.jpg' %}">
+      <div class="product-details">
+        <h2 class="product-title">Custom letter</h2>
+        <p class="product-price">$39.99</p>
+        <a href="cart" class="add-to-cart-btn">Add to Cart</a>
+      </div>
+    </div>
+  </div>
+  <div class="product-container">
+    <div class="product-card">
+      <img class="product-image" src="{% static 'image/shopic5.jpg' %}">
+      <div class="product-details">
+        <h2 class="product-title">Pottery</h2>
+        <p class="product-price">$99.99</p>
+        <a href="cart" class="add-to-cart-btn">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img class="product-image" src="{% static 'image/shopic.jpg' %}">
+      <div class="product-details">
+        <h2 class="product-title">Custom Knit</h2>
+        <p class="product-price">$99.99</p>
+        <a href="cart" class="add-to-cart-btn">Add to Cart</a>
+      </div>
+    </div> -->
 
-  <!-- ***** Footer Start ***** -->
+  </div>
+
+
+
+
+  <div style="height: 50px;"></div>
+
   <footer>
     <div class="container">
       <div class="row">
@@ -448,17 +418,16 @@
           <ul>
             <li><a href="#">Homepage</a></li>
             <li><a href="{% url 'about' %}">About Us</a></li>
-            <li><a href="#">Help</a></li>
             <li><a href="{% url 'contact' %}">Contact Us</a></li>
           </ul>
         </div>
         <div class="col-lg-3">
           <h4>Help &amp; Information</h4>
           <ul>
-            <li><a href="#">Help</a></li>
-            <li><a href="#">FAQ's</a></li>
-            <li><a href="#">Shipping</a></li>
-            <li><a href="#">Tracking ID</a></li>
+            <li><a href="workers">Services</a></li>
+            <li><a href="shop">Shop</a></li>
+            <li><a href="profile">Profile</a></li>
+            <li><a href="cart">Cart</a></li>
           </ul>
         </div>
         <div class="col-lg-12">
@@ -485,6 +454,9 @@
   <script src="{% static 'lightbox.js' %}"></script>
   <script src="{% static 'isotope.js' %}"></script>
   <script src="{% static 'custom.js' %}"></script>
+  <script src="{% static 'cart.js' %}"></script>
+
+
 
   <script>
 
@@ -503,6 +475,35 @@
     });
 
   </script>
+
+
+
+  <script>
+    document.getElementById("searchBtn").addEventListener("click", handleSearch);
+
+    document.getElementById("search").addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        handleSearch();
+      }
+    });
+
+    function handleSearch() {
+      var searchQuery = document.getElementById("search").value.toLowerCase();
+      var sectionId = searchQuery.replace(/\s/g, '-'); // Replace spaces with hyphens
+      var section = document.getElementById(sectionId);
+      if (section) {
+        var navbarHeight = document.querySelector("nav").offsetHeight; // Get height of navbar
+        window.scrollTo({
+          top: section.offsetTop - navbarHeight, // Adjust for navbar height
+          behavior: "smooth"
+        });
+      } else {
+        alert("No matching section found for your search query.");
+      }
+    }
+  </script>
+
+
 
 </body>
 

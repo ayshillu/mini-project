@@ -157,59 +157,27 @@
     <div class="cart">
       <div class="title">
         <h4>Shopping Cart</h4>
-        <p class="text-muted">3 items</p>
+        <p class="text-muted">{{ cart_items.count }} items</p>
       </div>
+      {% for cart_item in cart_items %}
       <div class="item">
         <div class="item-image">
-          <img src="https://i.imgur.com/1GrakTl.jpg" alt="Shirt">
+          <img src="{{ cart_item.product.image.url }}" alt="{{ cart_item.product.name }}">
         </div>
         <div class="item-details">
-          <h6>Shirt</h6>
-          <p>Cotton T-shirt</p>
+          <h6>{{ cart_item.product.name }}</h6>
+          <p>{{ cart_item.product.desc }}</p>
         </div>
         <div class="item-quantity">
           <a href="#">-</a>
-          <span>1</span>
+          <span>{{ cart_item.quantity }}</span>
           <a href="#">+</a>
         </div>
         <div class="item-price">
-          &euro; 44.00 <span class="close">&#10005;</span>
+          &euro; {{ cart_item.product.price }} <span class="close">&#10005;</span>
         </div>
       </div>
-      <div class="item">
-        <div class="item-image">
-          <img src="https://i.imgur.com/ba3tvGm.jpg" alt="Shirt">
-        </div>
-        <div class="item-details">
-          <h6>Shirt</h6>
-          <p>Cotton T-shirt</p>
-        </div>
-        <div class="item-quantity">
-          <a href="#">-</a>
-          <span>1</span>
-          <a href="#">+</a>
-        </div>
-        <div class="item-price">
-          &euro; 44.00 <span class="close">&#10005;</span>
-        </div>
-      </div>
-      <div class="item">
-        <div class="item-image">
-          <img src="https://i.imgur.com/pHQ3xT3.jpg" alt="Shirt">
-        </div>
-        <div class="item-details">
-          <h6>Shirt</h6>
-          <p>Cotton T-shirt</p>
-        </div>
-        <div class="item-quantity">
-          <a href="#">-</a>
-          <span>1</span>
-          <a href="#">+</a>
-        </div>
-        <div class="item-price">
-          &euro; 44.00 <span class="close">&#10005;</span>
-        </div>
-      </div>
+      {% endfor %}
       <li><a href="{% url 'shop' %}">
           <button class="back-to-shop" style="display: block;">Back to shop</button>
         </a></li>
@@ -220,8 +188,8 @@
         <h5>Summary</h5>
       </div>
       <div class="summary-content">
-        <div>ITEMS: 3</div>
-        <div>Subtotal: &euro; 132.00</div>
+        <div>ITEMS: {{ cart_items.count }}</div>
+        <div>Subtotal: &euro; {{ subtotal }}</div>
         <hr>
         <form>
           <p>SHIPPING</p>
@@ -232,10 +200,14 @@
           <input id="code" type="text" placeholder="Enter your code">
         </form>
       </div>
-      <div class="total-price">TOTAL PRICE: &euro; 137.00</div>
+      <div class="total-price">TOTAL PRICE: &euro; {{ total_price }}</div>
       <button class="btn">CHECKOUT</button>
     </div>
   </div>
+
+  <script src="cart.js"></script>
+
 </body>
+
 
 </html>

@@ -12,13 +12,15 @@ urlpatterns = [
     path('about', views.about , name="about"),
     path('profile', views.profile , name="profile"),
     path('blog', views.blog , name="blog"),
-    path('workers', views.workers , name="workers"),
+    path('services', views.services , name="services"),
     path('contact', views.contact , name="contact"),
     path('editprofile', views.editprofile, name='editprofile'),
     path('chatprofile', views.chatprofile , name="chatprofile"),
     path('shop', views.shop , name="shop"),
     path('cart', views.cart , name="cart"),
-    path('thankyoupage', views.thankyoupage , name="thankyoupage"),
+    path('thankyou', views.thankyou , name="thankyou"),
+    path('checkout', views.checkout , name="checkout"),
+    path('homelogout', views.homelogout , name="homelogout"),
     
 ]
 

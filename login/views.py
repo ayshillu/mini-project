@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .models import EditProfile
+from cart.models import Products, Cart, CartItem
 
 # Create your views here.
 
@@ -48,7 +49,7 @@ def signin(request):
         if user is not None:
             login(request, user)
             fname = user.first_name
-            return render(request,"home.html", {'fname': fname})
+            return render(request,"homelogout.html", {'fname': fname})
         
         else:
             messages.error(request, "Bad Credential")
@@ -73,8 +74,6 @@ def profile(request):
     except:
         profile = EditProfile(user=request.user)
 
-    # print(profile)
-
     context = {
         'user' : User,
         'me': me,
@@ -86,8 +85,16 @@ def profile(request):
 def blog(request):
     return render(request, 'blog.html')
 
-def workers(request):
-    return render(request, 'workers.html')
+def services(request):
+    profiles = EditProfile.objects.all()
+    # for i in profiles:
+    #     print(i.user)
+
+    context = {
+        'profiles': profiles,
+    }
+
+    return render(request, 'services.html' , context)
 
 
 def contact(request):
@@ -131,10 +138,57 @@ def chatprofile(request):
       return render(request, 'chatprofile.html')
 
 def shop(request):
-      return render(request, 'shop.html')
+    products = Products.objects.all()
+
+    context = {
+        'products' : products
+    }
+    return render(request, 'shop.html', context)
+
+def add_to_cart(request):
+    if request.method == 'POST':
+        product_id = request.POST.get('product_id')
+        product = Products.objects.get(pk=product_id)
+        user = request.user
+        # Check if the user has a cart
+        if hasattr(user, 'cart'):
+            cart = user.cart
+        else:
+            # If user does not have a cart, create one
+            cart = Cart.objects.create(user=user)
+
+        # Check if the product is already in the cart
+        cart_item, created = CartItem.objects.get_or_create(cart=cart, product=product)
+
+        # If the product is already in the cart, increase the quantity
+        if not created:
+            cart_item.quantity += 1
+            cart_item.save()
+
+    return redirect('cart') 
+
 
 def cart(request):
       return render(request, 'cart.html')
 
 def thankyoupage(request):
       return render(request, 'thankyoupage.html')
+
+def checkout(request):
+      return render(request, 'checkout.html')
+
+def thankyou(request):
+       
+    me = request.user
+
+    context = {
+        'user' : User,
+        'me': me,
+
+    }
+    return render(request, 'thankyou.html', context)
+
+def homelogout(request):
+      return render(request, 'homelogout.html')
+      
+
