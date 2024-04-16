@@ -36,13 +36,11 @@ def signup(request):
     
     return render(request, 'signup.html', {'user': request.user})
 
-def signin(request):
-
-    
+def signin(request):   
 
     if request.method == 'POST':
         username = request.POST['username']
-        pass1 = request.POST['pass1']
+        pass1 = request.POST['password']
 
         user = authenticate(username=username, password=pass1)
 
@@ -66,6 +64,9 @@ def signout(request):
 
 def about(request):
     return render(request, 'about.html')
+
+def appointment(request):
+    return render(request, 'appointment.html')
 
 def profile(request):
     me = request.user
@@ -145,31 +146,10 @@ def shop(request):
     }
     return render(request, 'shop.html', context)
 
-def add_to_cart(request):
-    if request.method == 'POST':
-        product_id = request.POST.get('product_id')
-        product = Products.objects.get(pk=product_id)
-        user = request.user
-        # Check if the user has a cart
-        if hasattr(user, 'cart'):
-            cart = user.cart
-        else:
-            # If user does not have a cart, create one
-            cart = Cart.objects.create(user=user)
-
-        # Check if the product is already in the cart
-        cart_item, created = CartItem.objects.get_or_create(cart=cart, product=product)
-
-        # If the product is already in the cart, increase the quantity
-        if not created:
-            cart_item.quantity += 1
-            cart_item.save()
-
-    return redirect('cart') 
 
 
-def cart(request):
-      return render(request, 'cart.html')
+# def cart(request):
+#       return render(request, 'cart.html')
 
 def thankyoupage(request):
       return render(request, 'thankyoupage.html')

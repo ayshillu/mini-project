@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Global Styles */
+        body {
+            color: #000;
+            font-family: Arial, sans-serif;
+            background-color: #D1C4E9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Card Styles */
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 450px;
+            width: 100%;
+        }
+
+        .card-strip {
+            border-bottom: 1px solid lightgray;
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .left {
+            flex: 1;
+        }
+
+        .right {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .right .fa {
+            margin-left: 10px;
+        }
+
+        .fa {
+            font-size: 24px;
+            color: gray;
+            cursor: pointer;
+        }
+
+        .fa-phone {
+            color: #1E88E5;
+        }
+
+        .time {
+            border: 1px solid lightgray;
+            border-radius: 5px;
+            font-weight: bold;
+            padding: 2px 8px;
+            margin-left: 10px;
+        }
+
+        .price {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* Button Styles */
+        .btn {
+            height: 50px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-white {
+            background-color: #fff;
+            color: #000;
+            border: 1px solid gray;
+            margin-top: 20px;
+        }
+
+        .btn-purple {
+            background-color: #5E35B1;
+            color: #fff;
+            border: 1px solid #5E35B1;
+            margin-top: 20px;
+        }
+
+        /* Button Hover Effects */
+        .btn-white:hover,
+        .btn-purple:hover {
+            background-color: #311B92;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-strip">
+                <div class="left">
+                    <h5 class="mb-1">10:00 - 11:00 AM</h5>
+                    <p class="text-muted mb-1 sm-text">Monday, August 19</p>
+                </div>
+                <div class="right">
+                    <img src="https://i.imgur.com/Mcd6HIg.jpg" alt="User Image">
+                </div>
+            </div>
+            <div class="card-strip">
+                <div class="left">
+                    <h5 class="mb-1">Lindsey Johnson</h5>
+                    <p class="text-muted mb-1 sm-text">FIRST VISIT</p>
+                </div>
+                <div class="right">
+                    <div class="fa fa-comment-o"></div>
+                    <div class="fa fa-phone"></div>
+                </div>
+            </div>
+            <div class="card-strip">
+                <div class="left">
+                    <h5 class="mb-1 text-muted">Blowout and style</h5>
+                    <span class="time">1 hr</span>
+                </div>
+                <div class="right">
+                    <p class="mb-0 price"><strong class="text-muted">$80.00</strong></p>
+                </div>
+            </div>
+            <div class="row justify-content-between mx-2 px-3">
+                <button class="btn btn-white">Reschedule</button>
+                <button class="btn btn-purple">Approve</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

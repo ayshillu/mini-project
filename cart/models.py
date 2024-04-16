@@ -8,6 +8,7 @@ class Products(models.Model):
     name = models.CharField(max_length=20, null=True)
     desc = models.CharField(max_length=100, null=True)
     price = models.IntegerField(null=True)
+    image_field = models.CharField(max_length=1000, null=True)
     quatity = models.IntegerField(null=True)
 
 class Cart(models.Model):

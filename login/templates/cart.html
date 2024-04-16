@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  {% load static %}
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shopping Cart</title>
@@ -162,7 +163,7 @@
       {% for cart_item in cart_items %}
       <div class="item">
         <div class="item-image">
-          <img src="{{ cart_item.product.image.url }}" alt="{{ cart_item.product.name }}">
+          <img src="{{ cart_item.product.image_field }}" alt="{{ cart_item.product.name }}">
         </div>
         <div class="item-details">
           <h6>{{ cart_item.product.name }}</h6>
@@ -174,13 +175,13 @@
           <a href="#">+</a>
         </div>
         <div class="item-price">
-          &euro; {{ cart_item.product.price }} <span class="close">&#10005;</span>
+          ₹{{ cart_item.product.price }} <span class="close">&#10005;</span>
         </div>
       </div>
       {% endfor %}
-      <li><a href="{% url 'shop' %}">
+      <a href="{% url 'shop' %}">
           <button class="back-to-shop" style="display: block;">Back to shop</button>
-        </a></li>
+      </a>
     </div>
 
     <div class="summary">
@@ -189,23 +190,23 @@
       </div>
       <div class="summary-content">
         <div>ITEMS: {{ cart_items.count }}</div>
-        <div>Subtotal: &euro; {{ subtotal }}</div>
+        <div>Subtotal: ₹ {{ subtotal }}</div>
         <hr>
         <form>
           <p>SHIPPING</p>
           <select>
-            <option class="text-muted">Standard-Delivery- &euro;5.00</option>
+            <option class="text-muted">Standard-Delivery- ₹5.00</option>
           </select>
           <p>GIVE CODE</p>
           <input id="code" type="text" placeholder="Enter your code">
         </form>
       </div>
-      <div class="total-price">TOTAL PRICE: &euro; {{ total_price }}</div>
+      <div class="total-price">TOTAL PRICE: ₹ {{ total_price }}</div>
       <button class="btn">CHECKOUT</button>
     </div>
   </div>
 
-  <script src="cart.js"></script>
+  <!-- <script src="cart.js"></script> -->
 
 </body>
 

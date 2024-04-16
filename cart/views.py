@@ -1,6 +1,4 @@
-from django.shortcuts import render
-# Create your views here.
-from django.shortcuts import redirect
+from django.shortcuts import render, redirect
 from .models import Products, Cart, CartItem
 
 def add_to_cart(request):
@@ -14,32 +12,27 @@ def add_to_cart(request):
         else:
             # If user does not have a cart, create one
             cart = Cart.objects.create(user=user)
-
         # Check if the product is already in the cart
         cart_item, created = CartItem.objects.get_or_create(cart=cart, product=product)
-
         # If the product is already in the cart, increase the quantity
         if not created:
             cart_item.quantity += 1
             cart_item.save()
 
-    return redirect('cart')  # Redirect to the cart page after adding the product
+    return redirect('cart')
 
-def shop(request):
-    products = Products.objects.all()
+# def shop(request):
+#     products = Products.objects.all()
+#     context = {
+#         'products': products
+#     }
+#     return render(request, 'shop.html', context)
 
-    context = {
-        'products' : products
-    }
-    return render(request, 'shop.html', context)
-
-
-def view_cart(request):
-    user_cart = Cart.objects.get(user=request.user)
+def cart(request):
+    user_cart, created = Cart.objects.get_or_create(user=request.user)
     cart_items = user_cart.cartitem_set.all()
     subtotal = sum(item.product.price * item.quantity for item in cart_items)
     total_price = subtotal + 5  # Assuming a fixed shipping cost of €5
-
     context = {
         'cart_items': cart_items,
         'subtotal': subtotal,

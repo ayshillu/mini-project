@@ -282,7 +282,7 @@
   </header>
 
 
-  <nav>
+  <!-- <nav>
     <ul>
 
       <li class="main_div">
@@ -290,19 +290,19 @@
         <button id="searchBtn" onclick="handleSearch()">Search</button>
       </li>
 
-  </nav>
+  </nav> -->
 
-  <div style="height: 50px;"></div>
+  <div style="height: 150px;"></div>
 
   <!-- for product cards -->
   <div class="product-container">
     {% for product in products %}
     <div class="product-card">
-      <img class="product-image" src="{% static 'image/shopic6.jpg' %}">
+      <img class="product-image" src="{{product.image_field}}">
       <div class="product-details">
         <h2 class="product-title">{{ product.name }}</h2>
         <p class="product-price">₹{{ product.price }}</p>
-        <form method="post" action="{% url 'add_to_cart' %}">
+        <form method="POST" action="{% url 'add_to_cart' %}">
           {% csrf_token %}
           <input type="hidden" name="product_id" value="{{ product.id }}">
           <button type="submit" class="add-to-cart-btn">Add to Cart</button>
@@ -310,6 +310,7 @@
       </div>
     </div>
     {% endfor %}
+  </div>
     <!-- <div class="product-card">
       <img class="product-image" src="{% static 'image/shopic9.jpg' %}">
       <div class="product-details">
@@ -385,9 +386,8 @@
         <p class="product-price">$99.99</p>
         <a href="cart" class="add-to-cart-btn">Add to Cart</a>
       </div>
-    </div> -->
-
-  </div>
+    </div>
+  </div>-->
 
 
 
@@ -439,7 +439,7 @@
     </div>
   </footer>
 
-  <script src="assets/js/popper.js"></script>
+  <script src="{% static 'assets/js/popper.js' %}"></script>
   <script src="{% static 'jquery-2.1.0.min.js' %}"></script>
   <script src="{% static 'popper.js' %}"></script>
   <script src="{% static 'bootstrap.min.js' %}"></script>
@@ -454,7 +454,7 @@
   <script src="{% static 'lightbox.js' %}"></script>
   <script src="{% static 'isotope.js' %}"></script>
   <script src="{% static 'custom.js' %}"></script>
-  <script src="{% static 'cart.js' %}"></script>
+  <!-- <script src="{% static 'cart.js' %}"></script> -->
 
 
 

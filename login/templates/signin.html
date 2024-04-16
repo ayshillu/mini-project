@@ -113,33 +113,32 @@
     <div class="title">LadyLeads</div>
     <div class="container">
         <h3>Sign In</h3>
-        <form action="signin" method="post" onsubmit="return validateSignIn()>
+        <form action="{% url 'signin' %}" method="post" onsubmit="return validateSignIn()">
             {% csrf_token %}
-            <div class=" form-group">
-            <label for="username">Username</label>
-            <input type="text" id="signin-username" name="username" placeholder="Enter username" required>
+            <div class="form-group">
+                <label for="signin-username">Username</label>
+                <input type="text" id="signin-username" name="username" placeholder="Enter username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="signin-pass">Password</label>
+                <input type="password" id="signin-pass" name="password" placeholder="Enter password" required>
+            </div>
+
+            <div class="form-group">
+                <button type="submit">Sign In</button>
+            </div>
+        </form>
+        <ul>
+            <div>
+                <li><a class="createone" href="{% url 'signup' %}">
+                        <p class="signintext">Don't have an account? Create one</p>
+                    </a></li>
+            </div>
+        </ul>
     </div>
 
-    <div class="form-group">
-        <label for="pass1">Password</label>
-        <input type="password" id="signin-pass" name="pass1" placeholder="Enter password" required>
-    </div>
-
-    <div class="form-group">
-        <button type="submit">Sign In</button>
-    </div>
-    <ul>
-        <div>
-            <li><a class="createone" href="signup">
-                    <p class="signintext">Don't have an account? Create one</p>
-                </a></li>
-        </div>
-    </ul>
-    </form>
-    </div>
-
-
-    <script>
+    <!-- <script>
         function validateSignIn() {
             var signname = document.getElementById("signin-username").value;
             var password = document.getElementById("signin-pass").value;
@@ -157,8 +156,7 @@
 
             return true;
         }
-    </script>
-
+    </script> -->
 
 </body>
 
