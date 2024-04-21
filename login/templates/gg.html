@@ -2057,3 +2057,21 @@ shop
       </div>
     </div>
     {% endfor %}
+
+    def homelogout(request):
+      logout(request)
+      messages.success(request, "Logout successfull!")
+      return redirect('signin')
+
+      login(request, user)
+      if not user.is_superuser:
+          messages.error(request, "Bad credential!")
+          fname = user.first_name
+          return render(request,"homelogout.html", {'fname': fname})
+      else:
+          messages.error(request, "Bad credentials")
+          return redirect('signin')
+  
+  else:
+      messages.error(request, "Bad Credential")
+      return redirect('signin')

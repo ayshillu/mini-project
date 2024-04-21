@@ -42,7 +42,7 @@
         .container h3 {
             margin-bottom: 20px;
             font-weight: 700;
-            color: #ffffff;
+            color: #ffffff; /* Set color to white */
         }
 
         .form-group {
@@ -63,7 +63,7 @@
             border-radius: 12px;
             box-sizing: border-box;
             font-size: 16px;
-            color: #0000;
+            color: black; /* Set color to black */
         }
 
         .form-group button {
@@ -113,51 +113,34 @@
     <div class="title">LadyLeads</div>
     <div class="container">
         <h3>Sign In</h3>
+        {% for message in messages %}
+        <p style="color: #fbf9f9;">{{ message }}</p>
+        {% endfor %}
         <form action="{% url 'signin' %}" method="post" onsubmit="return validateSignIn()">
             {% csrf_token %}
             <div class="form-group">
                 <label for="signin-username">Username</label>
                 <input type="text" id="signin-username" name="username" placeholder="Enter username" required>
             </div>
-
+    
             <div class="form-group">
                 <label for="signin-pass">Password</label>
                 <input type="password" id="signin-pass" name="password" placeholder="Enter password" required>
             </div>
-
+    
             <div class="form-group">
                 <button type="submit">Sign In</button>
             </div>
         </form>
         <ul>
             <div>
-                <li><a class="createone" href="{% url 'signup' %}">
-                        <p class="signintext">Don't have an account? Create one</p>
-                    </a></li>
+                <a class="createone" href="{% url 'signup' %}">
+                    <p class="signintext">Don't have an account? Create one</p>
+                </a>
             </div>
         </ul>
     </div>
-
-    <!-- <script>
-        function validateSignIn() {
-            var signname = document.getElementById("signin-username").value;
-            var password = document.getElementById("signin-pass").value;
-
-            if (signname !== "username") {
-                alert("Incorrect username");
-                return false;
-            }
-
-            // Check if the password matches a condition, you can adjust this as needed
-            if (password !== "pass1") {
-                alert("Incorrect password");
-                return false;
-            }
-
-            return true;
-        }
-    </script> -->
-
+    
 </body>
 
 </html>

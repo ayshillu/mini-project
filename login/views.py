@@ -2,7 +2,7 @@ from multiprocessing import context
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
@@ -46,12 +46,17 @@ def signin(request):
 
         if user is not None:
             login(request, user)
-            fname = user.first_name
-            return render(request,"homelogout.html", {'fname': fname})
+            if not user.is_superuser:
+                messages.error(request, "Bad credential")
+                fname = user.first_name
+                return render(request,"homelogout.html", {'fname': fname})
+            else:
+                messages.error(request, "Bad credentials")
+                return redirect('signin')
         
         else:
             messages.error(request, "Bad Credential")
-            return redirect('home')
+            return redirect('signin')
 
     return render(request, 'signin.html')
 
@@ -88,8 +93,6 @@ def blog(request):
 
 def services(request):
     profiles = EditProfile.objects.all()
-    # for i in profiles:
-    #     print(i.user)
 
     context = {
         'profiles': profiles,
@@ -169,6 +172,8 @@ def thankyou(request):
     return render(request, 'thankyou.html', context)
 
 def homelogout(request):
-      return render(request, 'homelogout.html')
+      logout(request)
+      messages.success(request, "Logout successfull")
+      return redirect('signin')
       
 
