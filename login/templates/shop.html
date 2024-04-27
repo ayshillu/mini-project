@@ -270,6 +270,10 @@
               <li class="scroll-to-section"><a href="{% url 'services'%}">Services</a></li>
               <li class="scroll-to-section"><a href="{% url 'profile'%}">Profile</a></li>
               <li class="scroll-to-section"><a href="{% url 'cart'%}">Cart</a></li>
+              <div class="notification-count">
+                Notifications: {{ notification_count }}
+              </div>
+
 
               <li><a href="signin">
                   <button class="signintext">Logout</button>
@@ -298,10 +302,19 @@
   <div class="product-container">
     {% for product in products %}
     <div class="product-card">
-      <img class="product-image" src="{{product.image_field}}">
+
       <div class="product-details">
         <h2 class="product-title">{{ product.name }}</h2>
         <p class="product-price">₹{{ product.price }}</p>
+        {% if product.image %}
+        <td>
+          <img class="product-image" src="{{ product.image.url }}">
+        </td>
+        {% else %}
+        <td>
+          <img class="product-image" src="{% static 'image/shopic.7' %}">
+        </td>
+        {% endif %}
         <form method="POST" action="{% url 'add_to_cart' %}">
           {% csrf_token %}
           <input type="hidden" name="product_id" value="{{ product.id }}">
@@ -311,7 +324,7 @@
     </div>
     {% endfor %}
   </div>
-    <!-- <div class="product-card">
+  <!-- <div class="product-card">
       <img class="product-image" src="{% static 'image/shopic9.jpg' %}">
       <div class="product-details">
         <h2 class="product-title">Henna Stencil</h2>

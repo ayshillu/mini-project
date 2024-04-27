@@ -60,14 +60,7 @@
 
 <body>
 
-    <!-- ***** Preloader Start ***** -->
-    <div id="preloader">
-        <div class="jumper">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>
+    
     <!-- ***** Preloader End ***** -->
 
 
@@ -120,12 +113,8 @@
                         <span>If you have any questions or concerns, please don't hesitate to contact us through our <a href="mailto:youremail@example.com">mail</a>.</span>
                     </div>
 
-                    <div class="section-heading">
-                        <h2>By Subscribing To Our Newsletter You Can Get 10% Off</h2>
-                        <span>Subscribe for empowerment and inspiration. LadyLeads,where every woman's journey
-                            matters.</span>
-                    </div>
                     <form id="subscribe" action="" method="get">
+                        {% csrf_token %}
                         <div class="row">
                             <div class="col-lg-5">
                                 <fieldset>
@@ -151,23 +140,6 @@
         </div>
     </div>
 
-
-
-
-    <script src="{% static 'jquery-2.1.0.min.js' %}"></script>
-    <script src="{% static 'popper.js' %}"></script>
-    <script src="{% static 'bootstrap.min.js' %}"></script>
-    <script src="{% static 'owl-carousel.js' %}"></script>
-    <script src="{% static 'accordions.js' %}"></script>
-    <script src="{% static 'datepicker.js' %}"></script>
-    <script src="{% static 'scrollreveal.min.js' %}"></script>
-    <script src="{% static 'waypoints.min.js' %}"></script>
-    <script src="{% static 'jquery.counterup.min.js' %}"></script>
-    <script src="{% static 'imgfix.min.js' %}"></script>
-    <script src="{% static 'slick.js' %}"></script>
-    <script src="{% static 'lightbox.js' %}"></script>
-    <script src="{% static 'isotope.js' %}"></script>
-    <script src="{% static 'custom.js' %}"></script>
 
     <script>
         $(function () {

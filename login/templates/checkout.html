@@ -223,75 +223,79 @@
                 <h3>Payment Details</h3>
                 <p>Complete your purchase by providing your payment details.</p>
             </div>
-            <div class="input-text">
-                <input type="text" placeholder="luke@skywalker.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
-                <span>Email</span>
-            </div>
-            <div class="input-text">
-                <input type="text" placeholder="0000 0000 0000 0000" data-slots="0" data-accept="\d">
-                <span>Card Details</span>
-            </div>
-            <div class="input-text-cvv">
-                <input type="text" placeholder="mm/yyyy" data-slots="my">
-                <!--<span>Card Details</span>-->
-            </div>
-            <div class="input-text-cvv cvv">
-                <input type="text" placeholder="000" data-slots="0" data-accept="\d" size="3">
-                <!--<span>Card Details</span>-->
-            </div>
-            <div class="input-text">
-                <input type="text" placeholder="Username">
-                <span>Card Holder name</span>
-            </div>
-            <div class="billing">
-               
-                <div class="zip-state">
-                    <div class="zip">
-                        <input type="text" placeholder="ZIP">
-                    </div>
-                    <div class="state">
-                        <select>
-                            <option>Select District</option>
-                            <option>Trivandrum</option>
-                            <option>Kollam</option>
-                            <option>Pathanamthitta</option>
-                            <option>Alappuzha</option>
-                            <option>Kottayam</option>
-                            <option>Idukki</option>
-                            <option>Ernakulam</option>
-                            <option>Thrissur</option>
-                            <option>Palakkad</option>
-                            <option>Malappuram</option>
-                            <option>Kozhikode</option>
-                            <option>Wayanad</option>
-                            <option>Kannur</option>
-                            <option>Kasargod</option>
-                        </select>
-                    </div>
-
+            <form>
+                <div class="input-text">
+                    <input type="text" placeholder="luke@skywalker.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                        required>
+                    <span>Email</span>
                 </div>
-            </div>
-            <div class="input-text">
-                <input type="text" placeholder="GB0124589">
-                <span>Vat Number</span>
-            </div>
+                <div class="input-text">
+                    <input type="text" placeholder="0000 0000 0000 0000" data-slots="0" data-accept="\d">
+                    <span>Card Details</span>
+                </div>
+                <div class="input-text-cvv">
+                    <input type="text" placeholder="mm/yyyy" data-slots="my">
+                    <!--<span>Card Details</span>-->
+                </div>
+                <div class="input-text-cvv cvv">
+                    <input type="text" placeholder="000" data-slots="0" data-accept="\d" size="3">
+                    <!--<span>Card Details</span>-->
+                </div>
+                <div class="input-text">
+                    <input type="text" placeholder="Username">
+                    <span>Card Holder name</span>
+                </div>
+                <div class="billing">
+    
+                    <div class="zip-state">
+                        <div class="zip">
+                            <input type="text" placeholder="ZIP">
+                        </div>
+                        <div class="state">
+                            <select>
+                                <option>Select District</option>
+                                <option>Trivandrum</option>
+                                <option>Kollam</option>
+                                <option>Pathanamthitta</option>
+                                <option>Alappuzha</option>
+                                <option>Kottayam</option>
+                                <option>Idukki</option>
+                                <option>Ernakulam</option>
+                                <option>Thrissur</option>
+                                <option>Palakkad</option>
+                                <option>Malappuram</option>
+                                <option>Kozhikode</option>
+                                <option>Wayanad</option>
+                                <option>Kannur</option>
+                                <option>Kasargod</option>
+                            </select>
+                        </div>
+    
+                    </div>
+                </div>
+            </form>
+            
             <div class="summary">
                 <div class="text-data">
                     <p>Subtotal</p>
                     <p>Discount</p>
-                    <!-- <p>VAT(20%)</p> -->
                     <h5 id="total">Total</h5>
                 </div>
+                <!-- Assuming you want to display total_price in the summary -->
                 <div class="numerical-data">
-                    <p>$19.00</p>
-                    <p>$5.00</p>
-                    <!-- <p>$2.80</p> -->
-                    <h5>$16.80</h5>
+                    <p>₹ {{ subtotal }}</p>
+                    <p>₹5.00</p>
+                    <h5>₹{{ total_price }}</h5>
                 </div>
+
             </div>
-            <div class="pay">
-                <button onclick="window.location.href='order'">Pay</button>
-            </div>
+            <form action="{% url 'thankyou' %}" method="POST">
+                {% csrf_token %}
+                <!-- Your form fields here -->
+                <div class="pay">
+                    <button type="submit">Pay</button>
+                </div>
+            </form>
 
             <div class="secure">
                 <i class="fa fa-lock"></i>

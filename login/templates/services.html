@@ -319,9 +319,9 @@
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="#" class="active">Home</a></li>
+                            <li class="scroll-to-section"><a href="{% url 'gotohome' %}">Home</a></li>
                             <li class="scroll-to-section"><a href="{% url 'shop'%}">Shop</a></li>
-                            <li class="scroll-to-section"><a href="{% url 'services'%}">Services</a></li>
+                            <li class="scroll-to-section"><a href="{% url 'services'%}" class="active">Services</a></li>
                             <li class="scroll-to-section"><a href="{% url 'profile'%}">Profile</a></li>
                             <li class="scroll-to-section"><a href="{% url 'cart'%}">Cart</a></li>
 
@@ -357,66 +357,28 @@
             <div class="row">
                 <!-- Single Advisor-->
                 {% for profile in profiles %}
-                {% if profile.job == "Henna designer" %}
+                {% if profile.job == "Henna Artist" %}
                 <div class="col-12 col-sm-6 col-lg-3">
+                    <a href="apphenna">
                     <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
                         style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
                         <!-- Team Thumb-->
-                        <div class="advisor_thumb"><img src="{% static 'ppic15.jpg' %}" alt="">
-                        </div>
-                        <!-- Team Details-->
-                        <div class="single_advisor_details_info">
-                            <h6>{{ profile.user }}</h6>
-                            <p class="designation">{{ profile.job }}</p>
-                        </div>
+                       
+                            <div class="advisor_thumb"><img src="/media/{{ profile.profile_pic }}" alt="">
+                            </div>
+                            <!-- Team Details-->
+                            <div class="single_advisor_details_info">
+                                    <h6>{{ profile.user }}</h6>
+                                    <p class="designation">{{ profile.job }}</p>
+                            </div>
+
                     </div>
+                    </a>
                 </div>
                 {% endif %}
 
+
                 {% endfor %}
-
-
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
-                        style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
-                        <div class="advisor_thumb"><img src="{% static 'ppic14.jpg' %}" alt="">
-                        </div>
-                        <div class="single_advisor_details_info">
-                            <h6><a href="appointment">Amelia</a></h6>
-                            <p class="designation">Henna</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 col-sm-6 col-lg-3" hr>
-                    <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
-                        style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
-
-                        <div class="advisor_thumb"><img src="{% static 'ppic13.jpg' %}" alt="">
-                        </div>
-
-                        <div class="single_advisor_details_info">
-                            <h6>Amelia</h6>
-                            <p class="designation">Henna</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
-                        style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
-
-                        <div class="advisor_thumb"><img src="{% static 'ppic12.jpg' %}" alt="">
-                        </div>
-
-                        <div class="single_advisor_details_info">
-                            <h6>Mia</h6>
-                            <p class="designation">Henna</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
 
     <div style="height: 50px;"></div>
@@ -428,64 +390,26 @@
                 <span>Check out</span>
             </div>
             <div class="row">
-
+                {% for profile in profiles %}
+                {% if profile.job == "Tailor" %}
                 <div class="col-12 col-sm-6 col-lg-3">
+                    <a href="apptailor">
                     <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
                         style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
 
-                        <div class="advisor_thumb"><img src="{% static 'ppic11.jpg' %}" alt="">
+                        <div class="advisor_thumb"><img src="/media/{{ profile.profile_pic }}" alt="">
                         </div>
 
                         <div class="single_advisor_details_info">
-                            <h6>Sophia</h6>
-                            <p class="designation">Tailor</p>
+                            <h6>{{ profile.user }}</h6>
+                            <p class="designation">{{ profile.job }}</p>
                         </div>
                     </div>
+                    </a>
                 </div>
+                {% endif %}
 
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
-                        style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
-
-                        <div class="advisor_thumb"><img src="{% static 'ppic10.jpg' %}" alt="">
-                        </div>
-
-                        <div class="single_advisor_details_info">
-                            <h6>Ava</h6>
-                            <p class="designation">Tailor</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
-                        style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
-
-                        <div class="advisor_thumb"><img src="{% static 'ppic9.jpg' %}" alt="">
-                        </div>
-
-                        <div class="single_advisor_details_info">
-                            <h6>Olivia</h6>
-                            <p class="designation">Tailor</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
-                        style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
-
-                        <div class="advisor_thumb"><img src="{% static 'ppic8.jpg' %}" alt="">
-                        </div>
-
-                        <div class="single_advisor_details_info">
-                            <h6>Emma</h6>
-                            <p class="designation">Tailor</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                {% endfor %}
     </section>
 
     <div style="height: 50px;"></div>
@@ -496,65 +420,27 @@
                 <h2>Maid</h2>
                 <span>Check out</span>
             </div>
-            <div class="row">
-
+            <div class="row">    
+                {% for profile in profiles %}
+                {% if profile.job == "Maid" %}
                 <div class="col-12 col-sm-6 col-lg-3">
+                    <a href="appmaid">
                     <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
                         style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
 
-                        <div class="advisor_thumb"><img src="{% static 'ppic7.jpg' %}" alt="">
+                        <div class="advisor_thumb"><img src="/media/{{ profile.profile_pic }}" alt="">
                         </div>
                         <!-- Team Details-->
                         <div class="single_advisor_details_info">
-                            <h6>Taylor</h6>
-                            <p class="designation">Maid</p>
+                            <h6>{{ profile.user }}</h6>
+                            <p class="designation">{{ profile.job }}</p>
                         </div>
                     </div>
+                    </a>
                 </div>
-                <!-- Single Advisor-->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
-                        style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
-                        <!-- Team Thumb-->
-                        <div class="advisor_thumb"><img src="{% static 'ppic6.jpg' %}" alt="">
-                        </div>
-                        <!-- Team Details-->
-                        <div class="single_advisor_details_info">
-                            <h6>Megan</h6>
-                            <p class="designation">Maid</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single Advisor-->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
-                        style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
-                        <!-- Team Thumb-->
-                        <div class="advisor_thumb"><img src="{% static 'ppic5.jpg' %}" alt="">
-                        </div>
-                        <!-- Team Details-->
-                        <div class="single_advisor_details_info">
-                            <h6>Raya</h6>
-                            <p class="designation">Maid</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single Advisor-->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
-                        style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
-                        <!-- Team Thumb-->
-                        <div class="advisor_thumb"><img src="{% static 'ppic4.jpg' %}" alt="">
-                        </div>
-                        <!-- Team Details-->
-                        <div class="single_advisor_details_info">
-                            <h6>Helen</h6>
-                            <p class="designation">Maid</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                {% endif %}
+
+                {% endfor %}
     </section>
 
     <div style="height: 50px;"></div>
@@ -566,53 +452,27 @@
                 <span>Check out</span>
             </div>
             <div class="row">
+                {% for profile in profiles %}
+                {% if profile.job == "Home nurse" %}
                 <!-- Single Advisor-->
                 <div class="col-12 col-sm-6 col-lg-3">
+                    <a href="appnurse">
                     <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
                         style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
                         <!-- Team Thumb-->
-                        <div class="advisor_thumb"><img src="{% static 'ppic17.jpg' %}" alt="">
+                        <div class="advisor_thumb"><img src="/media/{{ profile.profile_pic }}" alt="">
                         </div>
                         <!-- Team Details-->
                         <div class="single_advisor_details_info">
-                            <h6>Julie</h6>
-                            <p class="designation">Home Nurse</p>
+                            <h6>{{ profile.user }}</h6>
+                            <p class="designation">{{ profile.job }}</p>
                         </div>
                     </div>
+                    </a>
                 </div>
-                <!-- Single Advisor-->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
-                        style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
-                        <!-- Team Thumb-->
-                        <div class="advisor_thumb"><img src="{% static 'ppic2.jpg' %}" alt="">
-                        </div>
-                        <!-- Team Details-->
-                        <div class="single_advisor_details_info">
-                            <h6>Rooha</h6>
-                            <p class="designation">Home Nurse</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single Advisor-->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
-                        style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
-                        <!-- Team Thumb-->
-                        <div class="advisor_thumb"><img src="{% static 'ppic1.jpg' %}" alt="">
-                        </div>
-                        <!-- Team Details-->
-                        <div class="single_advisor_details_info">
-                            <h6>Rihanna</h6>
-                            <p class="designation">Home Nurse</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                {% endif %}
 
-    </section>
-
+                {% endfor %}
 
     </section>
 
@@ -662,7 +522,6 @@
             </div>
         </div>
     </footer>
-
     <script>
 
         $(function () {
@@ -710,6 +569,9 @@
 
 
 
+
 </body>
 
 </html>
+
+  

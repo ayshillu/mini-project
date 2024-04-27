@@ -92,21 +92,20 @@
         .btn {
             font-size: 18px;
             /* Decreased font size */
-            background-color: #4c40e0;
+            background-color: #151515;
             color: #fff;
             padding: 10px 20px;
             /* Decreased padding */
-            border-radius: 5px;
+            border-radius: 10px;
             cursor: pointer;
             transition: background-color 0.3s ease-in-out;
             display: inline-block;
             margin-top: 15px;
-            /* Decreased margin */
-            text-decoration: none;
+            
         }
 
         .btn:hover {
-            background-color: #352e8c;
+            background-color: #000000;
         }
     </style>
 </head>
@@ -117,22 +116,20 @@
             <div class="info">
                 <span class="name">Thank you, {{ me.first_name }}</span>
             </div>
-            <!-- <img src="{% static 'ppic1' %}" width="40" alt="User Image"> -->
         </div>
         <div class="detail">
             <p>Your order has been dispatched. We are delivering your order.</p>
         </div>
         <hr>
         <div class="thank-you">Thank you for shopping with us!</div>
-        <!-- <div class="address">CHANGE MY DELIVERY ADDRESS</div> -->
-        <!-- <div class="money">
-            <img src="https://i.imgur.com/ppwgjMU.png" width="20" alt="Cash on Delivery Icon">
-            <span>Cash on Delivery</span>
-        </div> -->
         <div class="last">For any assistance, please contact us at support@ladyleads.com</div>
 
         <!-- Button for Home -->
-        <a href="{% url 'homelogout' %}" class="btn">Go to Home</a>
+        <form action="{% url 'gotohome' %}" method="post">
+            {% csrf_token %}
+            <button class="btn">Go to Home</button>
+        </form>
+        
     </div>
 </body>
 

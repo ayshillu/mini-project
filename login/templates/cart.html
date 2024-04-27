@@ -150,6 +150,46 @@
     .back-to-shop-item {
       list-style-type: none;
     }
+
+    .back-to-shop {
+      color: #ffffff;
+      text-align: center;
+      background-color: #000;
+      margin-bottom: 5px;
+      border: none;
+      outline: navajowhite;
+      border-radius: 25px;
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+
+    }
+
+    .item-quantity form button {
+      background-color: black;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      margin-left: 5px;
+      margin-right: 5px;
+      margin-bottom: 20px;
+      border-radius: 2px;
+    }
+
+    .quantity-list {
+      margin-right: 5px;
+      margin-left: 5px;
+      /* Add margin to separate the quantity from the buttons */
+    }
+
+    .item-quantity form {
+      display: inline-flex;
+      /* Align buttons horizontally */
+      align-items: center;
+      /* Align items vertically */
+    }
   </style>
 </head>
 
@@ -163,16 +203,30 @@
       {% for cart_item in cart_items %}
       <div class="item">
         <div class="item-image">
-          <img src="{{ cart_item.product.image_field }}" alt="{{ cart_item.product.name }}">
+          <img src="/media/{{ cart_item.product.image }}" alt="{{ cart_item.product.name }}">
+          <!-- <a href="/media/{{ cart_item.product.image }}">img</a> -->
         </div>
         <div class="item-details">
           <h6>{{ cart_item.product.name }}</h6>
           <p>{{ cart_item.product.desc }}</p>
         </div>
         <div class="item-quantity">
-          <a href="#">-</a>
-          <span>{{ cart_item.quantity }}</span>
-          <a href="#">+</a>
+          <form action="/cart/loss_product" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="product_id" value="{{ cart_item.product.id }}">
+            <button class="-" type="submit">-</button>
+          </form>
+          <span class="quantity-list">{{ cart_item.quantity }}</span>
+          <form action="/cart/add_product" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="product_id" value="{{ cart_item.product.id }}">
+            <button class="+" type="submit">+</button>
+          </form>
+          <!-- <a href="#">-</a> -->
+
+
+          <!-- <a href="#">-</a> -->
+          <!-- <span>{{ cart_item.quantity }}</span> -->
         </div>
         <div class="item-price">
           ₹{{ cart_item.product.price }} <span class="close">&#10005;</span>
@@ -180,10 +234,9 @@
       </div>
       {% endfor %}
       <a href="{% url 'shop' %}">
-          <button class="back-to-shop" style="display: block;">Back to shop</button>
+        <button class="back-to-shop" style="display: block;">Back to shop</button>
       </a>
     </div>
-
     <div class="summary">
       <div class="summary-title">
         <h5>Summary</h5>
@@ -192,21 +245,16 @@
         <div>ITEMS: {{ cart_items.count }}</div>
         <div>Subtotal: ₹ {{ subtotal }}</div>
         <hr>
-        <form>
+        <form action="{% url 'checkout' %}" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="subtotal" value="{{ subtotal }}">
           <p>SHIPPING</p>
-          <select>
-            <option class="text-muted">Standard-Delivery- ₹5.00</option>
-          </select>
-          <p>GIVE CODE</p>
-          <input id="code" type="text" placeholder="Enter your code">
+            <p class="text-muted">Delivery-Charge - ₹ 5.00 </p>
+          <button type="submit" class="btn">CHECKOUT</button>
         </form>
       </div>
-      <div class="total-price">TOTAL PRICE: ₹ {{ total_price }}</div>
-      <button class="btn">CHECKOUT</button>
     </div>
   </div>
-
-  <!-- <script src="cart.js"></script> -->
 
 </body>
 

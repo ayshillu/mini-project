@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import EditProfile, EditProfileClient
 
-# Register your models here.
+admin.site.register(EditProfile)
+admin.site.register(EditProfileClient)

@@ -2075,3 +2075,57 @@ shop
   else:
       messages.error(request, "Bad Credential")
       return redirect('signin')
+
+
+
+shop.
+
+
+{% for product in products %}
+    <div class="product-card">
+  
+      <div class="product-details">
+        <h2 class="product-title">{{ product.name }}</h2>
+        <p class="product-price">₹{{ product.price }}</p>
+        {% if product.image %}
+        <td>
+          <img class="product-image" src="{{product.image_field}}">
+        </td>
+        {% endif %}
+
+
+cart.model
+class Products(models.Model):
+    name = models.CharField(max_length=20, null=True)
+    desc = models.CharField(max_length=100, null=True)
+    price = models.IntegerField(null=True)
+    image_field = models.CharField(max_length=1000, null=True)
+    quatity = models.IntegerField(null=True)
+
+shop
+
+<div class="product-container">
+    {% for product in products %}
+    <div class="product-card">
+  
+      <div class="product-details">
+        <h2 class="product-title">{{ product.name }}</h2>
+        <p class="product-price">₹{{ product.price }}</p>
+        {% if product.image %}
+        <td>
+          <img class="product-image" src="{{ product.image.url }}">
+        </td>
+        {% else %}
+        <td>
+          <img class="product-image" src="{% static 'image/shopic.7' %}">
+        </td>
+        {% endif %}
+        <form method="POST" action="{% url 'add_to_cart' %}">
+          {% csrf_token %}
+          <input type="hidden" name="product_id" value="{{ product.id }}">
+          <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+        </form>
+      </div>
+    </div>
+    {% endfor %}
+  </div>

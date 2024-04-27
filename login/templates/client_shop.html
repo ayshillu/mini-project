@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% load static %}
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&display=swap"
+    rel="stylesheet">
+
+  <title>shop</title>
+
+
+  <!-- Additional CSS Files -->
+  <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'font-awesome.css' %}">
+  <link rel="stylesheet" href="{% static 'templatemo-hexashop.css' %}">
+  <link rel="stylesheet" href="{% static 'owl-carousel.css' %}">
+  <link rel="stylesheet" href="{% static 'lightbox.css' %}">
+
+</head>
+
+<body>
+  <style>
+    .heading {
+      font-family: "Archivo";
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+
+    .container {
+      font-family: "Archivo";
+    }
+
+
+    .signintext {
+      color: #ffffff;
+      text-align: center;
+      /* Center text horizontally */
+      background-color: #000;
+      margin-bottom: 5px;
+      border: none;
+      border-radius: 25px;
+      padding: 0 20px;
+      /* Adjust padding as needed */
+      width: 60px;
+      height: 30px;
+      line-height: 20px;
+      /* Center text vertically */
+    }
+
+
+    .main_div {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+      width: 450px;
+      margin: 0 auto;
+    }
+
+
+    .search {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-bottom: -40px;
+      width: 450px;
+      margin: 115px auto 50px;
+      /* Adjusted margin */
+      color: #011F1F;
+      justify-content: space-evenly;
+    }
+
+
+    button {
+      all: unset;
+      background-color: #011f1f;
+      color: #f2f0e4;
+      ;
+      border-radius: 5px;
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .suggestions {
+      display: none;
+      margin: 0 auto;
+      cursor: pointer;
+      width: 400px;
+    }
+
+    .suggestions {
+      margin: 10px 0;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      max-height: 100px;
+      overflow-y: auto;
+    }
+
+    input[type="search"] {
+      all: unset;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      font-size: 16px;
+      width: 100%;
+    }
+
+    .header-area {
+      padding: 20px 0;
+      /* Adjusted padding */
+    }
+
+    body {
+      margin-top: 20px;
+      background: #eee;
+    }
+
+
+    .product-image {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+
+    .product-details {
+      padding: 15px;
+      text-align: center;
+      transition: background-color 0.3s;
+    }
+
+    .product-title {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .product-price {
+      font-size: 14px;
+      color: #424242;
+      margin-bottom: 8px;
+    }
+
+
+
+    .product-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      /* Align items horizontally in the center */
+      align-items: center;
+      /* Align items vertically in the center */
+      margin-top: 20px;
+      /* Add some top margin for spacing */
+    }
+
+
+    .product-card {
+      width: 300px;
+      /* Adjust width of cards as needed */
+      margin-right: 20px;
+      /* Adjust margin between cards */
+      margin-bottom: 37px;
+      /* Adjust margin between rows */
+    }
+
+    .product-card:nth-child(4n) {
+      margin-right: 0;
+      /* Remove right margin from every fourth card to create new row */
+    }
+
+    .product-card:last-child {
+      width: 300px;
+      /* Adjust width of last two cards */
+      margin-right: 10px;
+      /* Adjust margin between last two cards */
+    }
+
+    /* Styles for .add-to-cart-btn */
+    .add-to-cart-btn {
+      min-width: 200px;
+      /* Set a minimum width */
+      width: auto;
+      /* Allow the button to expand based on content */
+      padding: 8px 20px;
+      /* Adjust padding as needed */
+      border: 3px solid #000000;
+      background-color: #ffffff;
+      color: #000000;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      text-align: center;
+      /* Center the text horizontally */
+    }
+
+
+
+    .add-to-cart-btn:hover {
+      background-color: #020710;
+      color: #eee;
+    }
+
+    /* Hover Effects */
+    .product-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .product-card:hover .product-details {
+      background-color: #f9f9f9;
+    }
+
+    .product-card:hover .product-image {
+      transform: scale(1.05);
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 500px) {
+      .product-card {
+        width: 100%;
+      }
+    }
+  </style>
+
+
+  <header class="header-area header-sticky" style="background-color: #ffffff;">
+    <style>
+      .header-area {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+        /* Adjust height as needed */
+      }
+
+      .main-nav ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <!-- ***** Logo Start ***** -->
+            <H1 class="heading">
+              LadyLeads
+            </H1>
+            <!-- ***** Logo End ***** -->
+            <!-- ***** Menu Start ***** -->
+            <ul class="nav">
+              <li class="scroll-to-section"><a href="{% url 'homeclient' %}">Home</a></li>
+              <li class="scroll-to-section"><a href="#" class="active">Shop</a></li>
+              <li class="scroll-to-section"><a href="{% url 'clientservice'%}">Services</a></li>
+              <li class="scroll-to-section"><a href="{% url 'clientprofile'%}">Profile</a></li>
+              <li class="scroll-to-section"><a href="{% url 'cart'%}">Cart</a></li>
+
+              <li><a href="signin">
+                  <button class="signintext">Logout</button>
+                </a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- <nav>
+    <ul>
+
+      <li class="main_div">
+      <li class="search"><input type="search" id="search" placeholder="Search...">
+        <button id="searchBtn" onclick="handleSearch()">Search</button>
+      </li>
+
+  </nav> -->
+
+  <div style="height: 150px;"></div>
+
+  <!-- for product cards -->
+  <div class="product-container">
+    {% for product in products %}
+    <div class="product-card">
+  
+      <div class="product-details">
+        <h2 class="product-title">{{ product.name }}</h2>
+        <p class="product-price">₹{{ product.price }}</p>
+        {% if product.image %}
+        <td>
+          <img class="product-image" src="{{ product.image.url }}">
+        </td>
+        {% else %}
+        <td>
+          <img class="product-image" src="{% static 'image/shopic.7' %}">
+        </td>
+        {% endif %}
+        <form method="POST" action="{% url 'add_to_cart' %}">
+          {% csrf_token %}
+          <input type="hidden" name="product_id" value="{{ product.id }}">
+          <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+        </form>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <!-- <div class="product-card">
+      <img class="product-image" src="{% static 'image/shopic9.jpg' %}">
+      <div class="product-details">
+        <h2 class="product-title">Henna Stencil</h2>
+        <p class="product-price">$149.99</p>
+        <a href="cart" class="add-to-cart-btn">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img class="product-image" src="{% static 'image/shopic8.jpg' %}">
+      <div class="product-details">
+        <h2 class="product-title">Flower cones</h2>
+        <p class="product-price">$99.99</p>
+        <a href="cart" class="add-to-cart-btn">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img class="product-image" src="{% static 'image/shopic7.jpg' %}">
+      <div class="product-details">
+        <h2 class="product-title">Pastries</h2>
+        <p class="product-price">$78.99</p>
+        <a href="cart" class="add-to-cart-btn">Add to Cart</a>
+      </div>
+    </div>
+  </div>
+  <div class="product-container">
+    <div class="product-card">
+      <img class="product-image" src="{% static 'image/shopic1.jpg' %}">
+      <div class="product-details">
+        <h2 class="product-title">Diary</h2>
+        <p class="product-price">$65.99</p>
+        <a href="cart" class="add-to-cart-btn">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img class="product-image" src="{% static 'image/shopic2.jpg' %}">
+      <div class="product-details">
+        <h2 class="product-title">Bracelet</h2>
+        <p class="product-price">$34.99</p>
+        <a href="cart" class="add-to-cart-btn">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img class="product-image" src="{% static 'image/shopic3.jpg' %}">
+      <div class="product-details">
+        <h2 class="product-title">Decor</h2>
+        <p class="product-price">$179.99</p>
+        <a href="cart" class="add-to-cart-btn">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img class="product-image" src="{% static 'image/shopic4.jpg' %}">
+      <div class="product-details">
+        <h2 class="product-title">Custom letter</h2>
+        <p class="product-price">$39.99</p>
+        <a href="cart" class="add-to-cart-btn">Add to Cart</a>
+      </div>
+    </div>
+  </div>
+  <div class="product-container">
+    <div class="product-card">
+      <img class="product-image" src="{% static 'image/shopic5.jpg' %}">
+      <div class="product-details">
+        <h2 class="product-title">Pottery</h2>
+        <p class="product-price">$99.99</p>
+        <a href="cart" class="add-to-cart-btn">Add to Cart</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img class="product-image" src="{% static 'image/shopic.jpg' %}">
+      <div class="product-details">
+        <h2 class="product-title">Custom Knit</h2>
+        <p class="product-price">$99.99</p>
+        <a href="cart" class="add-to-cart-btn">Add to Cart</a>
+      </div>
+    </div>
+  </div>-->
+
+
+
+
+  <div style="height: 50px;"></div>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="first-item">
+            <ul>
+              <li><a href="#">ladyleads@gmail.com</a></li>
+              <li><a href="#">010-020-0340</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <h4>Shopping &amp; Categories</h4>
+          <ul>
+            <li><a href="#">Dress</a></li>
+            <li><a href="#">Food</a></li>
+            <li><a href="#">Henna</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="#">Homepage</a></li>
+            <li><a href="{% url 'about' %}">About Us</a></li>
+            <li><a href="{% url 'contact' %}">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3">
+          <h4>Help &amp; Information</h4>
+          <ul>
+            <li><a href="workers">Services</a></li>
+            <li><a href="shop">Shop</a></li>
+            <li><a href="profile">Profile</a></li>
+            <li><a href="cart">Cart</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-12">
+          <div class="under-footer">
+            <p>Copyright © 2024 LadyLeads, Ltd. All Rights Reserved.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+
+    $(function () {
+      var selectedClass = "";
+      $("p").click(function () {
+        selectedClass = $(this).attr("data-rel");
+        $("#portfolio").fadeTo(50, 0.1);
+        $("#portfolio div").not("." + selectedClass).fadeOut();
+        setTimeout(function () {
+          $("." + selectedClass).fadeIn();
+          $("#portfolio").fadeTo(50, 1);
+        }, 500);
+
+      });
+    });
+
+  </script>
+
+
+
+  <script>
+    document.getElementById("searchBtn").addEventListener("click", handleSearch);
+
+    document.getElementById("search").addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        handleSearch();
+      }
+    });
+
+    function handleSearch() {
+      var searchQuery = document.getElementById("search").value.toLowerCase();
+      var sectionId = searchQuery.replace(/\s/g, '-'); // Replace spaces with hyphens
+      var section = document.getElementById(sectionId);
+      if (section) {
+        var navbarHeight = document.querySelector("nav").offsetHeight; // Get height of navbar
+        window.scrollTo({
+          top: section.offsetTop - navbarHeight, // Adjust for navbar height
+          behavior: "smooth"
+        });
+      } else {
+        alert("No matching section found for your search query.");
+      }
+    }
+  </script>
+
+
+
+</body>
+
+</html>

@@ -36,23 +36,6 @@
             /* Header text color */
         }
 
-        .sign-in-button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 30px;
-            background-color: #010101;
-            /* Button color */
-            color: #f2f0e4;
-            /* Text color */
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            font-family: 'Archivo', sans-serif;
-        }
-
-        .sign-in-button:hover {
-            background-color: #333;
-            /* Darken button color on hover */
-        }
 
         .container {
             max-width: 1000px;
@@ -214,6 +197,26 @@
             margin-top: 50px;
             flex-wrap: wrap;
         }
+        .logout-button {
+            color: #ffffff;
+            text-align: center;
+            background-color: #000;
+            margin-bottom: 5px;
+            border: none;
+            outline: navajowhite;
+            border-radius: 25px;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            margin-top: 10px;
+
+        }
+
+        .profile_photos{
+            width: 100px;
+            height: 100px;
+        }
         
 
 
@@ -223,20 +226,18 @@
 <body>
     <header>
         <h1>LadyLeads</h1>
-        <button class="sign-in-button">Logout</button>
+        <a href="{% url 'homelogout' %}">
+            <button class="logout-button">Logout</button>
+        </a>
     </header>
 
 
 
     <div class="container">
-        <!-- <div class="profile-image">
-            {% if me.profile.photo %}
-            <img src="{{ me.profile.photo.url }}" alt="Profile Picture">
-            {% else %}
-            <img src="https://via.placeholder.com/150" alt="Profile Picture">
-            {% endif %}
-        </div>      -->
         
+
+        <img class="profile_photos" src="/media/{{ profile.profile_pic }}">
+
         <div class="profile-header">
 
             <div class="profile-details">
@@ -244,19 +245,21 @@
                 {% if profile.job %}<p>{{ profile.job}}</p>{% endif %}
                 {% if profile.location %}<p>{{ profile.location}}</p>{% endif %}
                 {% if profile.Yearofexp %}<p>year:{{ profile.Yearofexp}}</p>{% endif %}
-                <p>Joined Date: January 1, 2024</p>
             </div>
         </div>
+        
 
         <div class="containerbar">
             <div class="sidebar">
-                <a href="{% url 'homelogout' %}" class="sidebar-link">Home</a>
+                <a href="{% url 'gotohome' %}" class="sidebar-link">Home</a>
                 <a href="{% url 'shop' %}" class="sidebar-link">Shop</a>
                 <a href="{% url 'services' %}" class="sidebar-link">Services</a>
                 <a href="{% url 'cart' %}" class="sidebar-link">My Cart</a>
                 <a href="{% url 'contact' %}" class="sidebar-link">Contact</a>       
             </div>
         </div>
+        
+        
         <!-- <div class="star-rating">
             <input type="radio" id="star1" name="rating" value="1"><label for="star1"></label>
             <input type="radio" id="star2" name="rating" value="2"><label for="star2"></label>
@@ -271,6 +274,7 @@
 
             
         </div>
+    </div>    
 
 
 

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Archivo', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f0e4;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Header Styles */
+        .header {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            font-weight: 600;
+            color: #f2f0e4;
+        }
+
+        /* Container Styles */
+        .container {
+            text-align: center;
+            background-color: #000000;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 2px solid #f2f0e4;
+            width: 400px;
+            position: relative;
+        }
+
+        /* Heading Styles */
+        .container h3 {
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: #ffff;
+        }
+
+        /* Form Group Styles */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        /* Label Styles */
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #ffff;
+            text-align: left;
+            margin-left: 3.5%;
+        }
+
+        /* Input Styles */
+        .form-group input {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 2px solid #ffff;
+            border-radius: 12px;
+            box-sizing: border-box;
+            font-size: 16px;
+            color: #ffff;
+            background-color: #f2f0e43b;
+            /* Green background color */
+            margin-bottom: 10px;
+        }
+
+        /* Button Styles */
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            border: 3px solid #f2f0e4;
+            border-radius: 15px;
+            background-color: #0000;
+            color: #ffff;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group button:hover {
+            background-color: #ffff;
+            color: #0000;
+            box-shadow: 0 4px 10px rgba(242, 240, 228, 0.788);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <div class="header">LadyLeads</div>
+
+    <!-- Form Section -->
+    <form action="{% url 'clienteditprofile' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <!-- Container for Form -->
+        <div class="container">
+            <!-- Form Heading -->
+            <h3>Edit Profile</h3>
+
+            <!-- Job Input Field -->
+            <!-- Job Input Field -->
+            <div class="form-group">
+                <label for="phone">Phone No</label>
+                <input type="text" id="phoneno" name="phoneno" placeholder="{{profile.Phoneno}}" required>
+            </div>
+
+
+            <!-- Location Input Field -->
+            <div class="form-group">
+                <label for="location">Location</label>
+                <input type="text" id="location" name="location" placeholder="{{profile.location}}" required>
+            </div>
+
+
+            <!-- Year of Experience Input Field -->
+
+
+            <!-- Profile Photo Input Field -->
+            <!-- <div class="form-group">
+                <label for="photo">Profile Photo</label>
+                <input type="file" id="photo" name="photo" accept="image/*">
+            </div> -->
+
+            <!-- Submit Button -->
+            <div class="form-group">
+                <button type="submit">Submit</button>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>

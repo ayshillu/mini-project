@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
@@ -63,7 +64,8 @@
             border: 1px solid #dddddd8b;
             border-radius: 4px;
             box-sizing: border-box;
-            background-color: #f2f0e4; /* Changed background color */
+            background-color: #f2f0e4;
+            /* Changed background color */
         }
 
         input[type="password"]:focus,
@@ -130,7 +132,8 @@
                 oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');" required>
 
             <label for="email">Email Id</label>
-            <input type="email" id="email" name="email" placeholder="Enter Your Email Address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+            <input type="email" id="email" name="email" placeholder="Enter Your Email Address"
+                pattern="[a-z0-9._%+-]+[a-z]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
 
             <label for="pass1">Password</label>
             <input type="password" id="pass1" name="pass1" placeholder="Create a Password" minlength="8"
