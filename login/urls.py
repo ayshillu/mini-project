@@ -36,7 +36,7 @@ urlpatterns = [
     path('clienteditprofile', views.clienteditprofile, name='clienteditprofile'),
     path('clientshop', views.clientshop , name="clientshop"),
     path('clientprofile', views.clientprofile , name="clientprofile")
-    
+  
     
 ]
 

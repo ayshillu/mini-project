@@ -214,6 +214,19 @@
             margin-top: 10px;
 
         }
+
+        .profile_photos{
+            width: 180px;
+            height: 200px;
+            border-radius: 15px;
+        }
+        
+        .profile-details{
+            margin-left: 8px;
+            margin-top: 15px;
+
+        }
+        
     </style>
 </head>
 
@@ -226,8 +239,10 @@
     </header>
 
 
-
+    
     <div class="container">
+
+        <img class="profile_photos" src="/media/{{ profile.profile_pic }}">
 
         <div class="profile-header">
             <div class="profile-details">
@@ -241,7 +256,6 @@
                 {% endif %}
             </div>
         </div>
-        <img class="profile_photos" src="{{ profile.photos.url }}">
 
         <div class="containerbar">
             <div class="sidebar">

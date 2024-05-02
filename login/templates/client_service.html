@@ -124,7 +124,7 @@
 
         body {
             margin-top: 20px;
-            background: #eee;
+            background: #ffff;
         }
 
         .single_advisor_profile {
@@ -319,10 +319,10 @@
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="{% url 'homeclient' %}">Home</a></li>
+                            <li class="scroll-to-section"><a href="{% url 'gotohome' %}">Home</a></li>
                             <li class="scroll-to-section"><a href="{% url 'shop'%}">Shop</a></li>
-                            <li class="scroll-to-section"><a href="{% url 'clientservice'%}" class="active">Services</a></li>
-                            <li class="scroll-to-section"><a href="{% url 'clientprofile'%}">Profile</a></li>
+                            <li class="scroll-to-section"><a href="{% url 'services'%}" class="active">Services</a></li>
+                            <li class="scroll-to-section"><a href="{% url 'profile'%}">Profile</a></li>
                             <li class="scroll-to-section"><a href="{% url 'cart'%}">Cart</a></li>
 
                             <li><a href="home">
@@ -364,7 +364,7 @@
                         style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
                         <!-- Team Thumb-->
                        
-                            <div class="advisor_thumb"><img src="{% static 'hennaa.jpg' %}" alt="">
+                            <div class="advisor_thumb"><img src="/media/{{ profile.profile_pic }}" alt="">
                             </div>
                             <!-- Team Details-->
                             <div class="single_advisor_details_info">
@@ -397,7 +397,7 @@
                     <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
                         style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
 
-                        <div class="advisor_thumb"><img src="/static/hennaa.jpg" alt="">
+                        <div class="advisor_thumb"><img src="/media/{{ profile.profile_pic }}" alt="">
                         </div>
 
                         <div class="single_advisor_details_info">
@@ -428,7 +428,7 @@
                     <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
                         style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
 
-                        <div class="advisor_thumb"><img src="{% static 'ppic13.jpg' %}" alt="">
+                        <div class="advisor_thumb"><img src="/media/{{ profile.profile_pic }}" alt="">
                         </div>
                         <!-- Team Details-->
                         <div class="single_advisor_details_info">
@@ -460,7 +460,7 @@
                     <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
                         style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
                         <!-- Team Thumb-->
-                        <div class="advisor_thumb"><img src="{% static 'ppic12.jpg' %}" alt="">
+                        <div class="advisor_thumb"><img src="/media/{{ profile.profile_pic }}" alt="">
                         </div>
                         <!-- Team Details-->
                         <div class="single_advisor_details_info">
@@ -508,7 +508,7 @@
                 <div class="col-lg-3">
                     <h4>Help &amp; Information</h4>
                     <ul>
-                        <li><a href="services">Services</a></li>
+                        <li><a href="workers">Services</a></li>
                         <li><a href="shop">Shop</a></li>
                         <li><a href="profile">Profile</a></li>
                         <li><a href="cart">Cart</a></li>

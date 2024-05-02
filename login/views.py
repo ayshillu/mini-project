@@ -15,6 +15,7 @@ from cart.models import Notifications
 
 
 
+
 # Create your views here.
 
 def signup(request):
@@ -295,3 +296,4 @@ def apptailor(request):
 
 def dash(request):
     return render(request, 'dash.html')
+

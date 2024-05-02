@@ -124,7 +124,7 @@
 
     body {
       margin-top: 20px;
-      background: #eee;
+      background: #ffffff;
     }
 
 
@@ -265,14 +265,14 @@
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
-              <li class="scroll-to-section"><a href="#" class="active">Home</a></li>
-              <li class="scroll-to-section"><a href="{% url 'shop'%}">Shop</a></li>
+              <li class="scroll-to-section"><a href="gotohome">Home</a></li>
+              <li class="scroll-to-section"><a href="{% url 'shop'%}" class="active">Shop</a></li>
               <li class="scroll-to-section"><a href="{% url 'services'%}">Services</a></li>
               <li class="scroll-to-section"><a href="{% url 'profile'%}">Profile</a></li>
               <li class="scroll-to-section"><a href="{% url 'cart'%}">Cart</a></li>
-              <div class="notification-count">
+              <!-- <div class="notification-count">
                 Notifications: {{ notification_count }}
-              </div>
+              </div> -->
 
 
               <li><a href="signin">
