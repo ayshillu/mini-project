@@ -148,3 +148,21 @@ def delete_item(request):
         return redirect('cart')  # Replace 'cart_page' with your actual URL name    
 
 
+def sell_product(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        description = request.POST.get('description')
+        price = request.POST.get('price')
+        image = request.FILES.get('image')
+
+        product = Products()  # Instantiate a new Products object
+        product.name = name
+        product.desc = description
+        product.price = price
+        if image:
+            product.image = image
+        product.save()
+
+        return redirect('shop')  # Redirect to the shop page after adding the product
+
+    return render(request, 'sellproduct.html')

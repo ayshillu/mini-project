@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apphenna</title>
@@ -41,10 +42,11 @@
         }
 
         img {
-            width: 60px;
-            height: 60px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             cursor: pointer;
+
         }
 
         .left {
@@ -120,40 +122,41 @@
 </head>
 
 <body>
-    <div style="height: 100px;"></div>
+    <div style="height: 65px;"></div>
     <div class="container">
         <div class="card">
-            <div class="card-strip">
-                <div class="left">
-                    <h5 class="mb-1">Available from 10:00AM - 5:00 PM</h5>
-                    <p class="text-muted mb-1 sm-text">Monday, April 23</p>
-                </div>
+            <!-- <div class="card-strip">
+                
                 <div class="right">
-                    <img src="https://i.imgur.com/Mcd6HIg.jpg" alt="User Image">
+                    <img src="/media/{{ image }}" alt="User Image">
                 </div>
-            </div>
+            </div> -->
             <div class="card-strip">
-                {% for profile in profiles %}
+                
                 <div class="left">
-                    <h5 class="mb-1">{{ profile.user }}</h5>
+                    <h1 class="mb-1">{{ name }}</h1>
+                    <spans class="mb-1 text-muted">{{ job }}</spans>
                 </div>
 
                 <div class="right">
                     <div class="fa fa-comment-o"></div>
                     <div class="fa fa-phone"></div>
                 </div>
+                <div class="right">
+                    <img src="/media/{{ image }}" alt="User Image">
+                </div>
             </div>
             <div class="card-strip">
                 <div class="left">
-                    <h5 class="mb-1 text-muted">{{ profile.job }}</h5>
-                    <span class="time">1 hr</span>
+                    <h5 class="mb-1">Available from 10:00AM - 5:00 PM</h5>
+                    <p class="text-muted mb-1 sm-text">Monday, April 23</p>
                 </div>
-                {% endfor %}
 
-                <div class="right">
-                    <p class="mb-0 price"><strong class="text-muted">1hr - ₹500 <br>
-                        Rates depends on designs</strong></p>
-                </div>
+                
+            </div>
+
+            <div class="right">
+                <p class="mb-0 price"><strong class="text-muted">Rates depends as per designs</strong></p>
             </div>
 
             <div class="row justify-content-between mx-2 px-3">
@@ -168,7 +171,7 @@
     <script>
         function sendEmail(email) {
             var subject = "Appointment Approved";
-            var body = "Dear Customer,\n\nYou've an appointment from {{ me.first_name }}\n\nAt 6:00PM\n\nBest regards,\nYour Salon";
+            var body = "Dear Customer,\n\nYou've an appointment from {{ name }}\n\nAt 6:00PM\n\nBest regards,\nYour Salon";
             var mailtoLink = "mailto:" + email + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
             window.location.href = mailtoLink;
         }

@@ -42,10 +42,11 @@
         }
 
         img {
-            width: 60px;
-            height: 60px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             cursor: pointer;
+
         }
 
         .left {
@@ -56,7 +57,6 @@
             flex-shrink: 0;
             display: flex;
             flex-direction: column;
-            align-items: center;
         }
 
         .right .fa {
@@ -125,51 +125,51 @@
     <div style="height: 100px;"></div>
     <div class="container">
         <div class="card">
-            <div class="card-strip">
-                <div class="left">
-                    <p class="text-muted mb-1 sm-text">Monday, April 23</p>
-                </div>
+            <!-- <div class="card-strip">
+                
                 <div class="right">
-                    <img src="https://i.imgur.com/Mcd6HIg.jpg" alt="User Image">
+                    <img src="/media/{{ image }}" alt="User Image">
                 </div>
-            </div>
+            </div> -->
             <div class="card-strip">
-                {% for profil in profile %}
+                
                 <div class="left">
-                    <h5 class="mb-1">{{ profil.user.first_name }}</h5>
+                    <h1 class="mb-1">{{ name }}</h1>
+                    <spans class="mb-1 text-muted">{{ job }}</spans>
                 </div>
 
                 <div class="right">
                     <div class="fa fa-comment-o"></div>
                     <div class="fa fa-phone"></div>
                 </div>
+                <div class="right">
+                    <img src="/media/{{ image }}" alt="User Image">
+                </div>
             </div>
             <div class="card-strip">
                 <div class="left">
-                    <h5 class="mb-1 text-muted">{{ profile.job }}</h5>
-                    <span class="time">1 hr</span>
+                    <h5 class="mb-1">Available from 10:00AM - 5:00 PM</h5>
+                    <p class="text-muted mb-1 sm-text">Monday, April 23</p>
                 </div>
-                {% endfor %}
-            
-                <div class="right">
-                    <p>
-                        Saree with blouse - ₹ 500 <br>
-                        Kurta set - ₹ 600 <br>
-                        Top - ₹ 400<br>
-                        Extra charge will be added based on designs.
-                    </p>
-                </div>
-                
+
                 
             </div>
-            
+
+            <div class="right">
+                <p>
+                    Saree with blouse - ₹ 500 <br>
+                    Kurta set - ₹ 600 <br>
+                    Top - ₹ 400<br>
+                    Extra charge will be added based on designs.
+                </p>
+            </div>
 
             <div class="row justify-content-between mx-2 px-3">
                 <button class="btn btn-white" onclick="sendEmail('customer@example.com')">Reschedule</button>
                 <button class="btn btn-purple" onclick="sendEmail('sumoodameen@gmail.com')">Send Mail</button>
             </div>
         </div>
-
+                  
     </div>
 
     <!-- JavaScript to send email -->

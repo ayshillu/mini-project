@@ -5,13 +5,13 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect , HttpResponseBadRequest
 from django.urls import reverse
 from .models import EditProfile, EditProfileClient
 from cart.models import Products
 from django.core.files.storage import FileSystemStorage
 from django.conf import settings
-from cart.models import Notifications
+# from cart.models import Notifications
 
 
 
@@ -92,6 +92,7 @@ def profile(request):
         'profile' : profile,
 
     }
+    
     return render(request, 'profile.html', context)
 
 def clientprofile(request):
@@ -200,12 +201,13 @@ def chatprofile(request):
 def shop(request):
     products = Products.objects.all()
     # Fetch notifications count for the current user
-    notification_count = Notifications.objects.filter(user=request.user).count()
+    # notification_count = Notifications.objects.filter(user=request.user).count()
 
     context = {
         'products' : products,
-        'notification_count' : notification_count,
+        # 'notification_count' : notification_count,
     }
+
     return render(request, 'shop.html', context)
 
 def clientshop(request):
@@ -283,16 +285,68 @@ def maid(request):
     return render(request, 'maid.html', context)
 
 def apphenna(request):
-    return render(request, 'apphenna.html')
+    if request.method == 'POST':
+        image = request.POST.get('image', '')
+        name = request.POST.get('name', '')
+        job = request.POST.get('job', '')
+
+        context = {
+            'image': image,
+            'name': name,
+            'job': job,
+        }
+        return render(request, 'apphenna.html', context)
+    else:
+        # Handle cases where the view is accessed without POST data
+        return HttpResponseBadRequest("POST data not provided")
 
 def appnurse(request):
-    return render(request, 'appnurse.html')
+    if request.method == 'POST':
+        image = request.POST.get('image', '')
+        name = request.POST.get('name', '')
+        job = request.POST.get('job', '')
+
+        context = {
+            'image': image,
+            'name': name,
+            'job': job,
+        }
+        return render(request, 'appnurse.html', context)
+    else:
+        # Handle cases where the view is accessed without POST data
+        return HttpResponseBadRequest("POST data not provided")
 
 def appmaid(request):
-    return render(request, 'appmaid.html')
+    if request.method == 'POST':
+        image = request.POST.get('image', '')
+        name = request.POST.get('name', '')
+        job = request.POST.get('job', '')
+
+        context = {
+            'image': image,
+            'name': name,
+            'job': job,
+        }
+        return render(request, 'appmaid.html', context)
+    else:
+        # Handle cases where the view is accessed without POST data
+        return HttpResponseBadRequest("POST data not provided")
 
 def apptailor(request):
-    return render(request, 'apptailor.html')
+    if request.method == 'POST':
+        image = request.POST.get('image', '')
+        name = request.POST.get('name', '')
+        job = request.POST.get('job', '')
+
+        context = {
+            'image': image,
+            'name': name,
+            'job': job,
+        }
+        return render(request, 'apptailor.html', context)
+    else:
+        # Handle cases where the view is accessed without POST data
+        return HttpResponseBadRequest("POST data not provided")
 
 def dash(request):
     return render(request, 'dash.html')

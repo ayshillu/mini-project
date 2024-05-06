@@ -4,6 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&display=swap"
+        rel="stylesheet">
     <title>Login</title>
     {% load static %}
     <style>
@@ -30,8 +35,8 @@
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
-            margin-right: 20px;
             margin-right: 250px;
+            margin-top: 4%;
         }
 
         .container h3 {
@@ -91,7 +96,7 @@
             margin-top: 20px;
             align-items: center;
             border-radius: 15px;
-            border: 5px solid black;
+            border: 5px solid #eee;
             /* Added black border */
 
         }
@@ -103,13 +108,41 @@
             align-items: center;
             margin-bottom: 5px;
             border-radius: 15px;
-            border: 5px solid black;
+            border: 5px solid #eee;
             /* Added black border */
         }
+
+        .profile_image:hover,
+        .profile_image1:hover {
+            transform: scale(1.05);
+            /* Enlarge the image by 10% */
+            color: #000000;
+        }
+
+        .heading {
+            font-family: "Archivo";
+            position: absolute;
+            top: 32px;
+            left: 20px;
+            font-family: "Archivo";
+            margin-left: 42%;
+            font-size: 33px;
+        }
+
+
     </style>
 </head>
 
 <body>
+    <header class="header-area header-sticky" style="background-color: #ffffff;">
+        <nav class="main-nav">
+            <!-- ***** Logo Start ***** -->
+            <H1 class="heading">
+                LadyLeads
+            </H1>
+        </nav>
+    </header>
+
     <div class="container">
         <h3>Login</h3>
         <!-- Image buttons linking to profile.html -->
