@@ -5,12 +5,15 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect , HttpResponseBadRequest
+from django.http import HttpResponseRedirect , HttpResponseBadRequest, HttpResponse
 from django.urls import reverse
 from .models import EditProfile, EditProfileClient
-from cart.models import Products
+from cart.models import Products, CartItem
 from django.core.files.storage import FileSystemStorage
 from django.conf import settings
+from datetime import datetime
+from .models import RatingComment
+
 # from cart.models import Notifications
 
 
@@ -123,11 +126,15 @@ def services(request):
     return render(request, 'services.html' , context)
 
 def clientservice(request):
-    profiles = EditProfileClient.objects.all()
+    profiles = EditProfile.objects.all()
 
     context = {
         'profiles': profiles,
     }
+    for i in profiles:
+        # for j in i:
+        #     print(j)
+            print(i)
 
     return render(request, 'client_service.html' , context)
 
@@ -170,26 +177,31 @@ def clienteditprofile(request):
         profile = EditProfileClient.objects.get(user=request.user)
     except EditProfileClient.DoesNotExist:
         profile = EditProfileClient(user=request.user)
+ 
+    context = {
+        'profile': profile,
+    }
 
     if request.method == 'POST':
+        photo = request.FILES.get('photo')
         phoneno = request.POST.get('phoneno')
         location = request.POST.get('location')
 
-        try:
-            profile = EditProfileClient.objects.get(user=request.user)
-        except EditProfileClient.DoesNotExist:
-            profile = EditProfileClient(user=request.user)
+        if photo:
+            fs = FileSystemStorage()  # Use default storage
+            filename = fs.save(photo.name, photo)
+            profile.profile_pic = filename 
+
+        # try:
+        #     profile = EditProfileClient.objects.get(user=request.user)
+        # except EditProfileClient.DoesNotExist:
+        #     profile = EditProfileClient(user=request.user)
 
         profile.Phoneno = phoneno
         profile.location = location
         profile.save()
 
         return HttpResponseRedirect(reverse("clientprofile"))
-   
-    context = {
-        'profile': profile,
-    }
-   
     return render(request, 'editp_client.html', context)
 
 
@@ -223,8 +235,6 @@ def clientshop(request):
 # def cart(request):
 #       return render(request, 'cart.html')
 
-def checkout(request):
-      return render(request, 'checkout.html')
 
 def thankyou(request):
        
@@ -299,6 +309,27 @@ def apphenna(request):
     else:
         # Handle cases where the view is accessed without POST data
         return HttpResponseBadRequest("POST data not provided")
+    
+
+@login_required
+def rate_and_comment(request):
+    comments = RatingComment.objects.all()  # Fetch all comments
+    user = request.user
+    try:
+        profile = EditProfile.objects.get(user=user)  # Fetch associated EditProfile
+        job = profile.job
+        photo = profile.profile_pic.url if profile.profile_pic else None
+    except EditProfile.DoesNotExist:
+        job = None
+        photo = None
+
+    if request.method == 'POST':
+        rating = request.POST.get('rating')
+        comment_text = request.POST.get('msg')
+        RatingComment.objects.create(user=user, rating=rating, comment=comment_text)
+        comments = RatingComment.objects.all()  # Update comments after adding new one
+
+    return render(request, 'apphenna.html', {'comments': comments, 'name': user.first_name, 'job': job, 'image': photo})
 
 def appnurse(request):
     if request.method == 'POST':
@@ -350,4 +381,8 @@ def apptailor(request):
 
 def dash(request):
     return render(request, 'dash.html')
+
+def your_view(request):
+    current_day_and_date = datetime.now().strftime("%A, %B %d, %Y")  # Format the day and date
+    return render(request, 'apphenna.html', {'current_day_and_date': current_day_and_date})
 

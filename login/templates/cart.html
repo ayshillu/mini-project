@@ -302,7 +302,7 @@
         <div>ITEMS: {{ cart_items.count }}</div>
         <div>Subtotal: ₹ {{ subtotal }}</div>
         <hr>
-        <form action="{% url 'checkout' %}" method="post">
+        <form action="{% url 'passprice' %}" method="post">
           {% csrf_token %}
           <input type="hidden" name="subtotal" value="{{ subtotal }}">
           <p>SHIPPING</p>

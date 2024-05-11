@@ -285,6 +285,9 @@
             height: auto;
             /* Maintain aspect ratio */
         }
+        .name {
+            color: #000;
+        }
     </style>
 
 
@@ -362,7 +365,8 @@
                 <div class="col-12 col-sm-6 col-lg-3">
                     <a href="apphenna">
                         <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
-                            style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+                            style="visibility: visible; animation-delay: 0
+                            .4s; animation-name: fadeInUp;">
                             <form id="profileForm" action="{% url 'apphenna' %}" method="post">
                                 {% csrf_token %}
                                 <input type="hidden" name="image" value="{{ profile.profile_pic }}">
@@ -376,7 +380,7 @@
                             </div>
                             <!-- Team Details-->
                             <div class="single_advisor_details_info">
-                                <h6>{{ profile.user }}</h6>
+                                <h6 class="name">{{ profile.user }}</h6>
                                 <p class="designation">{{ profile.job }}</p>
                             </div>
 
@@ -418,7 +422,7 @@
                         </div>
                         <!-- Team Details-->
                         <div class="single_advisor_details_info">
-                            <h6>{{ profile.user }}</h6>
+                            <h6 class="name">{{ profile.user }}</h6>
                             <p class="designation">{{ profile.job }}</p>
                         </div>
 
@@ -458,7 +462,7 @@
                         </div>
                         <!-- Team Details-->
                         <div class="single_advisor_details_info">
-                            <h6>{{ profile.user }}</h6>
+                            <h6 class="name">{{ profile.user }}</h6>
                             <p class="designation">{{ profile.job }}</p>
                         </div>
 
@@ -499,7 +503,7 @@
                         </div>
                         <!-- Team Details-->
                         <div class="single_advisor_details_info">
-                            <h6>{{ profile.user }}</h6>
+                            <h6 class="name">{{ profile.user }}</h6>
                             <p class="designation">{{ profile.job }}</p>
                         </div>
 

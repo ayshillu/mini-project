@@ -289,13 +289,14 @@
                 </div>
 
             </div>
-            <form action="{% url 'thankyou' %}" method="POST">
+            <form action="{% url 'checkout' %}" method="POST">
                 {% csrf_token %}
-                <!-- Your form fields here -->
+                <input type="hidden" name="pay_and_clear_cart" value="true">
                 <div class="pay">
                     <button type="submit">Pay</button>
                 </div>
             </form>
+            
 
             <div class="secure">
                 <i class="fa fa-lock"></i>

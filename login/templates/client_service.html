@@ -285,6 +285,9 @@
             height: auto;
             /* Maintain aspect ratio */
         }
+        .name {
+            color: #000;
+        }
     </style>
 
 
@@ -319,11 +322,12 @@
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="{% url 'gotohome' %}">Home</a></li>
-                            <li class="scroll-to-section"><a href="{% url 'shop'%}">Shop</a></li>
-                            <li class="scroll-to-section"><a href="{% url 'services'%}" class="active">Services</a></li>
-                            <li class="scroll-to-section"><a href="{% url 'profile'%}">Profile</a></li>
-                            <li class="scroll-to-section"><a href="{% url 'cart'%}">Cart</a></li>
+                            <li class="scroll-to-section"><a href="{% url 'homeclient' %}">Home</a></li>
+                            <li class="scroll-to-section"><a href="{% url 'clientshop' %}">Shop</a></li>
+                            <li class="scroll-to-section"><a href="{% url 'clientservice' %}" class="active">Services</a>
+                            </li>
+                            <li class="scroll-to-section"><a href="{% url 'clientprofile' %}">Profile</a></li>
+                            <li class="scroll-to-section"><a href="{% url 'cart' %}">Cart</a></li>
 
                             <li><a href="home">
                                     <button class="signintext">Logout</button>
@@ -360,25 +364,34 @@
                 {% if profile.job == "Henna Artist" %}
                 <div class="col-12 col-sm-6 col-lg-3">
                     <a href="apphenna">
-                    <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
-                        style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
-                        <!-- Team Thumb-->
-                       
+                        <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
+                            style="visibility: visible; animation-delay: 0
+                            .4s; animation-name: fadeInUp;">
+                            <form id="profileForm" action="{% url 'apphenna' %}" method="post">
+                                {% csrf_token %}
+                                <input type="hidden" name="image" value="{{ profile.profile_pic }}">
+                                <input type="hidden" name="name" value="{{ profile.user }}">
+                                <input type="hidden" name="job" value="{{ profile.job }}">
+                                <button type="submit" style="border: none; background: none; cursor: pointer;">
+
+                            </form>
+
                             <div class="advisor_thumb"><img src="/media/{{ profile.profile_pic }}" alt="">
                             </div>
                             <!-- Team Details-->
                             <div class="single_advisor_details_info">
-                                    <h6>{{ profile.user }}</h6>
-                                    <p class="designation">{{ profile.job }}</p>
+                                <h6 class="name">{{ profile.user }}</h6>
+                                <p class="designation">{{ profile.job }}</p>
                             </div>
 
-                    </div>
+                        </div>
                     </a>
                 </div>
                 {% endif %}
 
 
                 {% endfor %}
+
     </section>
 
     <div style="height: 50px;"></div>
@@ -394,16 +407,25 @@
                 {% if profile.job == "Tailor" %}
                 <div class="col-12 col-sm-6 col-lg-3">
                     <a href="apptailor">
-                    <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
+                        <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
                         style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+                        <form id="profileForm" action="{% url 'apptailor' %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="image" value="{{ profile.profile_pic }}">
+                            <input type="hidden" name="name" value="{{ profile.user }}">
+                            <input type="hidden" name="job" value="{{ profile.job }}">
+                            <button type="submit" style="border: none; background: none; cursor: pointer;">
+
+                        </form>
 
                         <div class="advisor_thumb"><img src="/media/{{ profile.profile_pic }}" alt="">
                         </div>
-
+                        <!-- Team Details-->
                         <div class="single_advisor_details_info">
-                            <h6>{{ profile.user }}</h6>
+                            <h6 class="name">{{ profile.user }}</h6>
                             <p class="designation">{{ profile.job }}</p>
                         </div>
+
                     </div>
                     </a>
                 </div>
@@ -420,21 +442,30 @@
                 <h2>Maid</h2>
                 <span>Check out</span>
             </div>
-            <div class="row">    
+            <div class="row">
                 {% for profile in profiles %}
                 {% if profile.job == "Maid" %}
                 <div class="col-12 col-sm-6 col-lg-3">
                     <a href="appmaid">
-                    <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
+                        <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
                         style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+                        <form id="profileForm1" action="{% url 'appmaid' %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="image1" value="{{ profile.profile_pic }}">
+                            <input type="hidden" name="name1" value="{{ profile.user }}">
+                            <input type="hidden" name="job1" value="{{ profile.job }}">
+                            <button type="submit" style="border: none; background: none; cursor: pointer;">
+
+                        </form>
 
                         <div class="advisor_thumb"><img src="/media/{{ profile.profile_pic }}" alt="">
                         </div>
                         <!-- Team Details-->
                         <div class="single_advisor_details_info">
-                            <h6>{{ profile.user }}</h6>
+                            <h6 class="name">{{ profile.user }}</h6>
                             <p class="designation">{{ profile.job }}</p>
                         </div>
+
                     </div>
                     </a>
                 </div>
@@ -457,16 +488,25 @@
                 <!-- Single Advisor-->
                 <div class="col-12 col-sm-6 col-lg-3">
                     <a href="appnurse">
-                    <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
+                        <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
                         style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
-                        <!-- Team Thumb-->
+                        <form id="profileForm" action="{% url 'appnurse' %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="image" value="{{ profile.profile_pic }}">
+                            <input type="hidden" name="name" value="{{ profile.user }}">
+                            <input type="hidden" name="job" value="{{ profile.job }}">
+                            <button type="submit" style="border: none; background: none; cursor: pointer;">
+
+                        </form>
+
                         <div class="advisor_thumb"><img src="/media/{{ profile.profile_pic }}" alt="">
                         </div>
                         <!-- Team Details-->
                         <div class="single_advisor_details_info">
-                            <h6>{{ profile.user }}</h6>
+                            <h6 class="name">{{ profile.user }}</h6>
                             <p class="designation">{{ profile.job }}</p>
                         </div>
+
                     </div>
                     </a>
                 </div>
@@ -573,5 +613,3 @@
 </body>
 
 </html>
-
-  

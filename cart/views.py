@@ -90,7 +90,7 @@ def loss_product(request):
         # Redirect to the cart page or any other page as needed
     return redirect("cart")
 
-def checkout(request):
+def passprice(request):
         user_cart, created = Cart.objects.get_or_create(user=request.user)
         cart_items = user_cart.cartitem_set.all()
         subtotal = sum(item.product.price * item.quantity for item in cart_items)
@@ -166,3 +166,14 @@ def sell_product(request):
         return redirect('shop')  # Redirect to the shop page after adding the product
 
     return render(request, 'sellproduct.html')
+
+def checkout(request):
+    if request.method == 'POST':
+        pay_and_clear_cart = request.POST.get('pay_and_clear_cart')
+        if pay_and_clear_cart == 'true':
+            # Clear all cart items
+            CartItem.objects.all().delete()
+            # Redirect to the thank you page or any other page as needed
+            return redirect('thankyou')
+    return render(request, 'checkout.html')
+

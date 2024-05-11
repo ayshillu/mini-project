@@ -2,7 +2,7 @@ from django.urls import path
 from .views import  add_to_cart, cart, add_product, loss_product, checkout, payment_details
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import delete_item,sell_product
+from .views import delete_item,sell_product ,passprice
 
 urlpatterns = [
     # path('shop/', shop, name='shop'),
@@ -14,5 +14,7 @@ urlpatterns = [
     path('payment_details/', payment_details, name="payment_details" ),
     path('delete_item', delete_item, name='delete_item'),
     path('sell_product/', sell_product, name='sell_product'),
+     path('checkout/', checkout , name="checkout"),
+     path('passprice/', passprice , name="passprice"),
     # Other URL patterns...
 ]

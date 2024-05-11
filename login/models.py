@@ -23,3 +23,20 @@ class EditProfileClient(models.Model):
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     photo = models.ImageField(upload_to='profile_photos/', null=True, blank=True)
+
+class RatingComment(models.Model):
+    RATING_CHOICES = (
+        (1, '1 Star'),
+        (2, '2 Stars'),
+        (3, '3 Stars'),
+        (4, '4 Stars'),
+        (5, '5 Stars'),
+    )
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    rating = models.IntegerField(choices=RATING_CHOICES)
+    comment = models.TextField()
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    def _str_(self):
+        return f"Rating: {self.rating}, Comment: {self.comment}"

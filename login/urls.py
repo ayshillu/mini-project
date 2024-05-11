@@ -18,7 +18,7 @@ urlpatterns = [
     path('shop', views.shop , name="shop"),
     # path('cart', views.cart , name="cart"),
     path('thankyou', views.thankyou , name="thankyou"),
-    path('checkout', views.checkout , name="checkout"),
+    # path('checkout', views.checkout , name="checkout"),
     path('homelogout', views.homelogout , name="homelogout"),
     path('apphenna', views.apphenna , name="apphenna"),
     path('appnurse', views.appnurse , name="appnurse"),
@@ -35,7 +35,8 @@ urlpatterns = [
     path('clientservice', views.clientservice , name="clientservice"),
     path('clienteditprofile', views.clienteditprofile, name='clienteditprofile'),
     path('clientshop', views.clientshop , name="clientshop"),
-    path('clientprofile', views.clientprofile , name="clientprofile")
+    path('clientprofile', views.clientprofile , name="clientprofile"),
+    path('rate_and_comment', views.rate_and_comment , name="rate_and_comment"),
   
     
 ]

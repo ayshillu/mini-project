@@ -124,10 +124,14 @@
 
     body {
       margin-top: 20px;
-      background: #fff;
+      background: #ffffff;
     }
 
-
+    .upload_button{
+      color: #000;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
     .product-image {
       width: 100%;
       height: 300px;
@@ -151,6 +155,7 @@
       color: #424242;
       margin-bottom: 8px;
     }
+    
 
 
 
@@ -252,6 +257,7 @@
         justify-content: center;
         align-items: center;
       }
+      
     </style>
 
     <div class="container">
@@ -265,11 +271,15 @@
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
-              <li class="scroll-to-section"><a href="{% url 'homeclient' %}">Home</a></li>
-              <li class="scroll-to-section"><a href="#" class="active">Shop</a></li>
-              <li class="scroll-to-section"><a href="{% url 'clientservice'%}">Services</a></li>
-              <li class="scroll-to-section"><a href="{% url 'clientprofile'%}">Profile</a></li>
+              <li class="scroll-to-section"><a href="gotohome">Home</a></li>
+              <li class="scroll-to-section"><a href="{% url 'shop'%}" class="active">Shop</a></li>
+              <li class="scroll-to-section"><a href="{% url 'services'%}">Services</a></li>
+              <li class="scroll-to-section"><a href="{% url 'profile'%}">Profile</a></li>
               <li class="scroll-to-section"><a href="{% url 'cart'%}">Cart</a></li>
+              <!-- <div class="notification-count">
+                Notifications: {{ notification_count }}
+              </div> -->
+
 
               <li><a href="signin">
                   <button class="signintext">Logout</button>
@@ -292,13 +302,20 @@
 
   </nav> -->
 
-  <div style="height: 150px;"></div>
+  
 
+  <div class="upload-product" style="text-align: right; margin-right: 28px; margin-top: 130px;">
+    <a href="{% url 'sell_product' %}">
+      <button type="submit" class="upload_button" style="background-color: #f2f2f2; border: none; border-radius: 0px;">+ Upload product</button>
+    </a>
+  </div>
+  
+  <div style="height: 30px;"></div>
   <!-- for product cards -->
   <div class="product-container">
     {% for product in products %}
     <div class="product-card">
-  
+
       <div class="product-details">
         <h2 class="product-title">{{ product.name }}</h2>
         <p class="product-price">₹{{ product.price }}</p>
@@ -320,85 +337,32 @@
     </div>
     {% endfor %}
   </div>
-  <!-- <div class="product-card">
-      <img class="product-image" src="{% static 'image/shopic9.jpg' %}">
-      <div class="product-details">
-        <h2 class="product-title">Henna Stencil</h2>
-        <p class="product-price">$149.99</p>
-        <a href="cart" class="add-to-cart-btn">Add to Cart</a>
-      </div>
-    </div>
-    <div class="product-card">
-      <img class="product-image" src="{% static 'image/shopic8.jpg' %}">
-      <div class="product-details">
-        <h2 class="product-title">Flower cones</h2>
-        <p class="product-price">$99.99</p>
-        <a href="cart" class="add-to-cart-btn">Add to Cart</a>
-      </div>
-    </div>
-    <div class="product-card">
-      <img class="product-image" src="{% static 'image/shopic7.jpg' %}">
-      <div class="product-details">
-        <h2 class="product-title">Pastries</h2>
-        <p class="product-price">$78.99</p>
-        <a href="cart" class="add-to-cart-btn">Add to Cart</a>
-      </div>
-    </div>
-  </div>
-  <div class="product-container">
-    <div class="product-card">
-      <img class="product-image" src="{% static 'image/shopic1.jpg' %}">
-      <div class="product-details">
-        <h2 class="product-title">Diary</h2>
-        <p class="product-price">$65.99</p>
-        <a href="cart" class="add-to-cart-btn">Add to Cart</a>
-      </div>
-    </div>
-    <div class="product-card">
-      <img class="product-image" src="{% static 'image/shopic2.jpg' %}">
-      <div class="product-details">
-        <h2 class="product-title">Bracelet</h2>
-        <p class="product-price">$34.99</p>
-        <a href="cart" class="add-to-cart-btn">Add to Cart</a>
-      </div>
-    </div>
-    <div class="product-card">
-      <img class="product-image" src="{% static 'image/shopic3.jpg' %}">
-      <div class="product-details">
-        <h2 class="product-title">Decor</h2>
-        <p class="product-price">$179.99</p>
-        <a href="cart" class="add-to-cart-btn">Add to Cart</a>
-      </div>
-    </div>
-    <div class="product-card">
-      <img class="product-image" src="{% static 'image/shopic4.jpg' %}">
-      <div class="product-details">
-        <h2 class="product-title">Custom letter</h2>
-        <p class="product-price">$39.99</p>
-        <a href="cart" class="add-to-cart-btn">Add to Cart</a>
-      </div>
-    </div>
-  </div>
-  <div class="product-container">
-    <div class="product-card">
-      <img class="product-image" src="{% static 'image/shopic5.jpg' %}">
-      <div class="product-details">
-        <h2 class="product-title">Pottery</h2>
-        <p class="product-price">$99.99</p>
-        <a href="cart" class="add-to-cart-btn">Add to Cart</a>
-      </div>
-    </div>
-    <div class="product-card">
-      <img class="product-image" src="{% static 'image/shopic.jpg' %}">
-      <div class="product-details">
-        <h2 class="product-title">Custom Knit</h2>
-        <p class="product-price">$99.99</p>
-        <a href="cart" class="add-to-cart-btn">Add to Cart</a>
-      </div>
-    </div>
-  </div>-->
 
+  <div class="product-container">
+    {% for item in items %}
+    <div class="product-card">
 
+      <div class="product-details">
+        <h2 class="product-title">{{ item.name }}</h2>
+        <p class="product-price">₹{{ item.price }}</p>
+        {% if item.image %}
+        <td>
+          <img class="product-image" src="{{ item.image.url }}">
+        </td>
+        {% else %}
+        <td>
+          <img class="product-image" src="{% static 'image/shopic.7' %}">
+        </td>
+        {% endif %}
+        <form method="POST" action="{% url 'add_to_cart' %}">
+          {% csrf_token %}
+          <input type="hidden" name="product_id" value="{{ product.id }}">
+          <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+        </form>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
 
 
   <div style="height: 50px;"></div>
@@ -464,33 +428,6 @@
       });
     });
 
-  </script>
-
-
-
-  <script>
-    document.getElementById("searchBtn").addEventListener("click", handleSearch);
-
-    document.getElementById("search").addEventListener("keydown", function (event) {
-      if (event.key === "Enter") {
-        handleSearch();
-      }
-    });
-
-    function handleSearch() {
-      var searchQuery = document.getElementById("search").value.toLowerCase();
-      var sectionId = searchQuery.replace(/\s/g, '-'); // Replace spaces with hyphens
-      var section = document.getElementById(sectionId);
-      if (section) {
-        var navbarHeight = document.querySelector("nav").offsetHeight; // Get height of navbar
-        window.scrollTo({
-          top: section.offsetTop - navbarHeight, // Adjust for navbar height
-          behavior: "smooth"
-        });
-      } else {
-        alert("No matching section found for your search query.");
-      }
-    }
   </script>
 
 
