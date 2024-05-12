@@ -33,10 +33,24 @@ class RatingComment(models.Model):
         (5, '5 Stars'),
     )
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
     rating = models.IntegerField(choices=RATING_CHOICES)
     comment = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def _str_(self):
         return f"Rating: {self.rating}, Comment: {self.comment}"
+
+class ReviewRating(models.Model):
+    photo = models.ImageField(upload_to='profile_photos/', null=True, blank=True)
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    subject = models.CharField(max_length=100, blank=True)
+    review = models.TextField(max_length=500, blank=True)
+    rating = models.FloatField()
+    ip = models.CharField(max_length=20, blank=True)
+    status = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.subject

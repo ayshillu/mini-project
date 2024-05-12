@@ -299,11 +299,13 @@ def apphenna(request):
         image = request.POST.get('image', '')
         name = request.POST.get('name', '')
         job = request.POST.get('job', '')
+        comments = RatingComment.objects.all()  # Fetch all comments
 
         context = {
             'image': image,
             'name': name,
             'job': job,
+            'comments': comments,
         }
         return render(request, 'apphenna.html', context)
     else:
@@ -313,23 +315,26 @@ def apphenna(request):
 
 @login_required
 def rate_and_comment(request):
-    comments = RatingComment.objects.all()  # Fetch all comments
     user = request.user
-    try:
-        profile = EditProfile.objects.get(user=user)  # Fetch associated EditProfile
-        job = profile.job
-        photo = profile.profile_pic.url if profile.profile_pic else None
-    except EditProfile.DoesNotExist:
-        job = None
-        photo = None
 
     if request.method == 'POST':
         rating = request.POST.get('rating')
         comment_text = request.POST.get('msg')
-        RatingComment.objects.create(user=user, rating=rating, comment=comment_text)
-        comments = RatingComment.objects.all()  # Update comments after adding new one
+        # Create a new RatingComment object
+        # submitted_comment = RatingComment.objects.create(user=user, rating=rating, comment=comment_text)
+        comment = RatingComment(user = user)
+        comment.rating = rating 
+        comment.comment = comment_text
+        comment.save()
+        return redirect('apphenna')
+    # for i in comments:
+    #     print (i)
 
-    return render(request, 'apphenna.html', {'comments': comments, 'name': user.first_name, 'job': job, 'image': photo})
+    # context = { 'photo': photo, 
+    #             'submitted_comment': submitted_comment
+    #            }   
+
+    # return render(request, 'apphenna.html', context)
 
 def appnurse(request):
     if request.method == 'POST':

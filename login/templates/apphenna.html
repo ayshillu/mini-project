@@ -323,20 +323,7 @@
             <section>
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-5 col-md-6 col-12 pb-4">
-                            <h1 style="color: #000;">Comments</h1>
-                            {% for comment in comments %}
-                            <div class="comment mt-4 text-justify float-left">
-                                <img src="{{ comment.user.userprofile.photo.url }}" alt="" class="rounded-circle"
-                                    width="40" height="40">
-                                <h4>{{ comment.user.Username }}</h4>
-                                <span>- {{ comment.timestamp|date:"j F, Y" }}</span>
-                                <br>
-                                <p>{{ comment.comment }}</p>
-                                <p>Rating: {{ comment.get_rating_display }}</p>
-                            </div>
-                            {% endfor %}
-                        </div>
+                        
 
                         <div class="col-lg-4 col-md-5 col-sm-4 offset-md-1 offset-sm-1 col-12 mt-4">
                             <form id="algin-form">
@@ -353,21 +340,40 @@
                 <div class="row justify-content-between mx-2 px-3">
                     <button type="submit" class="btn btn-white">Submit Rating & Comment</button>
                 </div>
-                <div class="submitted-comment">
-                    {% if submitted_comment %}
-                        <div class="card-strip">
-                            <div class="left">
-                                <p>Rating: {{ submitted_comment.rating }}</p>
-                                <p>{{ submitted_comment.comment }}</p>
-                            </div>
-                        </div>
-                    {% endif %}
-                </div>
+                
             </section>
         </div>
 
     </form>
+    <div class="col-sm-5 col-md-6 col-12 pb-4">
+        <h1 style="color: #000;">Comments</h1>
+        {% for comment in comments %}
+        {% if comment.user == name %}
+        <!-- Display individual comment -->
+        <div>
+            <!-- <img src="{{ comment.user.userprofile.photo.url }}" alt="" class="rounded-circle" width="40" height="40"> -->
+            <h4>{{ comment.user.Username }}</h4>
+            <!-- Display comment content -->
+            <p>{{ comment.comment }}</p>
+            <!-- Display comment rating -->
+            <p>Rating: {{ comment.rating }}</p>
+            <!-- Display timestamp -->
+            <p>{{ comment.timestamp }}</p>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
 
+    <!-- <div class="submitted-comment">
+        {% if submitted_comment %}
+        <div class="card-strip">
+            <div class="left">
+                <p>Rating: {{ submitted_comment.rating }}</p>
+                <p>{{ submitted_comment.comment }}</p>
+            </div>
+        </div>
+        {% endif %}
+    </div> -->
     <script>
         const stars = document.querySelectorAll('.star');
         const ratingValue = document.getElementById('ratingValue');
