@@ -33,7 +33,8 @@ class RatingComment(models.Model):
         (5, '5 Stars'),
     )
 
-    user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, null=True, on_delete=models.CASCADE, related_name='sent_rating')
+    to_user = models.ForeignKey(User, null=True, on_delete=models.CASCADE, related_name='received_recieved')
     rating = models.IntegerField(choices=RATING_CHOICES)
     comment = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)

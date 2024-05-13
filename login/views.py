@@ -119,6 +119,7 @@ def blog(request):
 def services(request):
     profiles = EditProfile.objects.all()
 
+
     context = {
         'profiles': profiles,
     }
@@ -295,11 +296,12 @@ def maid(request):
     return render(request, 'maid.html', context)
 
 def apphenna(request):
+    comments = RatingComment.objects.all()  # Fetch all comments
     if request.method == 'POST':
         image = request.POST.get('image', '')
         name = request.POST.get('name', '')
         job = request.POST.get('job', '')
-        comments = RatingComment.objects.all()  # Fetch all comments
+        
 
         context = {
             'image': image,
@@ -320,9 +322,12 @@ def rate_and_comment(request):
     if request.method == 'POST':
         rating = request.POST.get('rating')
         comment_text = request.POST.get('msg')
+        name = request.POST.get('name', '')
+        to_user = User.objects.get(username=name)
         # Create a new RatingComment object
         # submitted_comment = RatingComment.objects.create(user=user, rating=rating, comment=comment_text)
         comment = RatingComment(user = user)
+        comment.to_user = to_user
         comment.rating = rating 
         comment.comment = comment_text
         comment.save()

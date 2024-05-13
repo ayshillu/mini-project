@@ -338,6 +338,7 @@
                     </div>
                 </div>
                 <div class="row justify-content-between mx-2 px-3">
+                    <input type="hidden" name="name" value="{{ name }}">
                     <button type="submit" class="btn btn-white">Submit Rating & Comment</button>
                 </div>
                 
@@ -347,18 +348,14 @@
     </form>
     <div class="col-sm-5 col-md-6 col-12 pb-4">
         <h1 style="color: #000;">Comments</h1>
-        {% for comment in comments %}
-        {% if comment.user == name %}
-        <!-- Display individual comment -->
         <div>
+        {% for i in comments %}
+        {% if i.to_user.username == name %}
             <!-- <img src="{{ comment.user.userprofile.photo.url }}" alt="" class="rounded-circle" width="40" height="40"> -->
-            <h4>{{ comment.user.Username }}</h4>
-            <!-- Display comment content -->
-            <p>{{ comment.comment }}</p>
-            <!-- Display comment rating -->
-            <p>Rating: {{ comment.rating }}</p>
-            <!-- Display timestamp -->
-            <p>{{ comment.timestamp }}</p>
+            <h4>{{ i.user.username }}</h4>
+            <p>{{i.comment}}</p>
+            <p>Rating: {{ i.rating }}</p>
+            <p>{{ i.timestamp }}</p>
         </div>
         {% endif %}
         {% endfor %}
