@@ -296,12 +296,17 @@ def maid(request):
     return render(request, 'maid.html', context)
 
 def apphenna(request):
-    comments = RatingComment.objects.all()  # Fetch all comments
     if request.method == 'POST':
         image = request.POST.get('image', '')
         name = request.POST.get('name', '')
         job = request.POST.get('job', '')
         
+        comments = RatingComment.objects.all()  # Fetch all comments
+        for comment in comments:
+            filled_stars = range(1, comment.rating + 1)
+            empty_stars = range(comment.rating + 1, 6)
+            setattr(comment, 'filled_stars', filled_stars)
+            setattr(comment, 'empty_stars', empty_stars)
 
         context = {
             'image': image,
@@ -311,9 +316,9 @@ def apphenna(request):
         }
         return render(request, 'apphenna.html', context)
     else:
-        # Handle cases where the view is accessed without POST data
+        # Handle GET requests
         return HttpResponseBadRequest("POST data not provided")
-    
+
 
 @login_required
 def rate_and_comment(request):
