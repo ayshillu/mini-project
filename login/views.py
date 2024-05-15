@@ -382,48 +382,216 @@ def appnurse(request):
         image = request.POST.get('image', '')
         name = request.POST.get('name', '')
         job = request.POST.get('job', '')
+        id = request.POST.get('id')
+
+        request.session['profile_id'] = {
+            'id': id,
+        }
+        
+        comments = RatingComment.objects.all()  # Fetch all comments
+        for comment in comments:
+            filled_stars = range(1, comment.rating + 1)
+            empty_stars = range(comment.rating + 1, 6)
+            setattr(comment, 'filled_stars', filled_stars)
+            setattr(comment, 'empty_stars', empty_stars)
 
         context = {
             'image': image,
             'name': name,
             'job': job,
+            'comments': comments,
         }
         return render(request, 'appnurse.html', context)
     else:
-        # Handle cases where the view is accessed without POST data
-        return HttpResponseBadRequest("POST data not provided")
+        # Handle GET requests
+        # return HttpResponseBadRequest("POST data not provided")
+        profile_id = request.session.pop('profile_id')
+        if profile_id:
+            # Extract data
+            id = profile_id.get('id')
+
+        request.session['profile_id'] = {
+            'id': id,
+        }
+        profile = EditProfile.objects.get(id=id)
+
+
+        comments = RatingComment.objects.all()  # Fetch all comments
+        for comment in comments:
+            filled_stars = range(1, comment.rating + 1)
+            empty_stars = range(comment.rating + 1, 6)
+            setattr(comment, 'filled_stars', filled_stars)
+            setattr(comment, 'empty_stars', empty_stars)
+
+        context = {
+            'image': profile.profile_pic,
+            'name': profile.user.username,
+            'job': profile.job,
+            'comments': comments,
+        }
+        return render(request, 'appnurse.html', context)
+    
+@login_required
+def nurse_comment(request):
+    user = request.user
+
+    if request.method == 'POST':
+        rating = request.POST.get('rating')
+        comment_text = request.POST.get('msg')
+        name = request.POST.get('name', '')
+        to_user = User.objects.get(username=name)
+        # Create a new RatingComment object
+        # submitted_comment = RatingComment.objects.create(user=user, rating=rating, comment=comment_text)
+        comment = RatingComment(user = user)
+        comment.to_user = to_user
+        comment.rating = rating 
+        comment.comment = comment_text
+        comment.save()
+        return redirect('appnurse')    
 
 def appmaid(request):
     if request.method == 'POST':
         image = request.POST.get('image', '')
         name = request.POST.get('name', '')
         job = request.POST.get('job', '')
+        id = request.POST.get('id')
+
+        request.session['profile_id'] = {
+            'id': id,
+        }
+        
+        comments = RatingComment.objects.all()  # Fetch all comments
+        for comment in comments:
+            filled_stars = range(1, comment.rating + 1)
+            empty_stars = range(comment.rating + 1, 6)
+            setattr(comment, 'filled_stars', filled_stars)
+            setattr(comment, 'empty_stars', empty_stars)
 
         context = {
             'image': image,
             'name': name,
             'job': job,
+            'comments': comments,
         }
         return render(request, 'appmaid.html', context)
     else:
-        # Handle cases where the view is accessed without POST data
-        return HttpResponseBadRequest("POST data not provided")
+        # Handle GET requests
+        # return HttpResponseBadRequest("POST data not provided")
+        profile_id = request.session.pop('profile_id')
+        if profile_id:
+            # Extract data
+            id = profile_id.get('id')
+
+        request.session['profile_id'] = {
+            'id': id,
+        }
+        profile = EditProfile.objects.get(id=id)
+
+
+        comments = RatingComment.objects.all()  # Fetch all comments
+        for comment in comments:
+            filled_stars = range(1, comment.rating + 1)
+            empty_stars = range(comment.rating + 1, 6)
+            setattr(comment, 'filled_stars', filled_stars)
+            setattr(comment, 'empty_stars', empty_stars)
+
+        context = {
+            'image': profile.profile_pic,
+            'name': profile.user.username,
+            'job': profile.job,
+            'comments': comments,
+        }
+        return render(request, 'appmaid.html', context)
+
+@login_required
+def maid_comment(request):
+    user = request.user
+
+    if request.method == 'POST':
+        rating = request.POST.get('rating')
+        comment_text = request.POST.get('msg')
+        name = request.POST.get('name', '')
+        to_user = User.objects.get(username=name)
+        # Create a new RatingComment object
+        # submitted_comment = RatingComment.objects.create(user=user, rating=rating, comment=comment_text)
+        comment = RatingComment(user = user)
+        comment.to_user = to_user
+        comment.rating = rating 
+        comment.comment = comment_text
+        comment.save()
+        return redirect('appmaid')   
 
 def apptailor(request):
     if request.method == 'POST':
         image = request.POST.get('image', '')
         name = request.POST.get('name', '')
         job = request.POST.get('job', '')
+        id = request.POST.get('id')
+
+        request.session['profile_id'] = {
+            'id': id,
+        }
+        
+        comments = RatingComment.objects.all()  # Fetch all comments
+        for comment in comments:
+            filled_stars = range(1, comment.rating + 1)
+            empty_stars = range(comment.rating + 1, 6)
+            setattr(comment, 'filled_stars', filled_stars)
+            setattr(comment, 'empty_stars', empty_stars)
 
         context = {
             'image': image,
             'name': name,
             'job': job,
+            'comments': comments,
         }
         return render(request, 'apptailor.html', context)
     else:
-        # Handle cases where the view is accessed without POST data
-        return HttpResponseBadRequest("POST data not provided")
+        # Handle GET requests
+        # return HttpResponseBadRequest("POST data not provided")
+        profile_id = request.session.pop('profile_id')
+        if profile_id:
+            # Extract data
+            id = profile_id.get('id')
+
+        request.session['profile_id'] = {
+            'id': id,
+        }
+        profile = EditProfile.objects.get(id=id)
+
+
+        comments = RatingComment.objects.all()  # Fetch all comments
+        for comment in comments:
+            filled_stars = range(1, comment.rating + 1)
+            empty_stars = range(comment.rating + 1, 6)
+            setattr(comment, 'filled_stars', filled_stars)
+            setattr(comment, 'empty_stars', empty_stars)
+
+        context = {
+            'image': profile.profile_pic,
+            'name': profile.user.username,
+            'job': profile.job,
+            'comments': comments,
+        }
+        return render(request, 'apptailor.html', context)
+    
+@login_required
+def tailor_comment(request):
+    user = request.user
+
+    if request.method == 'POST':
+        rating = request.POST.get('rating')
+        comment_text = request.POST.get('msg')
+        name = request.POST.get('name', '')
+        to_user = User.objects.get(username=name)
+        # Create a new RatingComment object
+        # submitted_comment = RatingComment.objects.create(user=user, rating=rating, comment=comment_text)
+        comment = RatingComment(user = user)
+        comment.to_user = to_user
+        comment.rating = rating 
+        comment.comment = comment_text
+        comment.save()
+        return redirect('apptailor')  
 
 def dash(request):
     return render(request, 'dash.html')

@@ -2,20 +2,30 @@
 <html lang="en">
 
 <head>
-    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apptailor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-3BP5i6CeMb+zVsDAK0E+mSwb9m5mT5R35MwGP2XImYOVYx5I0e9s9CEwbw51kpt1vfKhb+ZtjZh7dnZ1XU5ZDg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        /* Global Styles */
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            color: #000;
-            font-family: Arial, sans-serif;
-            background-color: #eee;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            line-height: 1.6;
             margin: 0;
             padding: 0;
         }
 
+        /* Container Styles */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -29,132 +39,132 @@
             box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
             padding: 20px;
             margin: 20px auto;
-            max-width: 450px;
+            max-width: 100%;
             width: 100%;
         }
 
-        .card-strip {
-            border-bottom: 1px solid lightgray;
-            padding: 20px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            cursor: pointer;
-
-        }
-
-        .left {
-            flex: 1;
-        }
-
-        .right {
-            flex-shrink: 0;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .right .fa {
-            margin-left: 10px;
-        }
-
-        .fa {
-            font-size: 24px;
-            color: gray;
-            cursor: pointer;
-        }
-
-        .fa-phone {
-            color: #1E88E5;
-        }
-
-        .time {
-            border: 1px solid lightgray;
-            border-radius: 5px;
-            font-weight: bold;
-            padding: 2px 8px;
-            margin-left: 10px;
-        }
-
-        .price {
-            font-size: 20px;
-            font-weight: bold;
+        /* Heading Styles */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            margin-bottom: 10px;
         }
 
         /* Button Styles */
         .btn {
-            height: 50px;
-            width: 100%;
+            padding: 10px 20px;
             border: none;
             border-radius: 5px;
             font-weight: bold;
-            letter-spacing: 1px;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
         .btn-white {
             background-color: #fff;
-            color: #000;
-            border: 1px solid gray;
+            color: #333;
+            border: 1px solid #333;
             margin-top: 20px;
         }
 
         .btn-purple {
-            background-color: #000000;
+            background-color: #311B92;
             color: #fff;
-            border: 1px solid #000000;
+            border: 1px solid #311B92;
             margin-top: 20px;
         }
 
-        /* Button Hover Effects */
-        .btn-white:hover,
-        .btn-purple:hover {
-            background-color: #311B92;
+        .btn:hover {
+            background-color: #222;
             color: #fff;
+        }
+
+        /* Form Styles */
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Comment Section Styles */
+        .comment {
+            background-color: #ffffff;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            /* Add box shadow */
+        }
+
+
+        .comment h4 {
+            margin-bottom: 5px;
+        }
+
+        .comment p {
+            margin-bottom: 10px;
+        }
+
+        /* Star Rating Styles */
+        .rating-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .star {
+            color: #FFD700;
+            cursor: pointer;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+
+        .star:hover,
+        .star.active {
+            color: #FBC02D;
+        }
+
+        /* Media Queries */
+        @media screen and (max-width: 768px) {
+            .card {
+                padding: 15px;
+            }
         }
     </style>
 </head>
 
 <body>
-    <div style="height: 100px;"></div>
     <div class="container">
         <div class="card">
-            <!-- <div class="card-strip">
-                
-                <div class="right">
-                    <img src="/media/{{ image }}" alt="User Image">
-                </div>
-            </div> -->
             <div class="card-strip">
-                
                 <div class="left">
-                    <h1 class="mb-1">{{ name }}</h1>
-                    <spans class="mb-1 text-muted">{{ job }}</spans>
+                    <h1>{{ name }}</h1>
+                    <p class="text-muted">{{ job }}</p>
+                    <p class="text-muted">Available from 10:00AM - 5:00 PM</p>
                 </div>
-
                 <div class="right">
                     <div class="fa fa-comment-o"></div>
                     <div class="fa fa-phone"></div>
-                </div>
-                <div class="right">
-                    <img src="/media/{{ image }}" alt="User Image">
+                    <div class="right">
+                        <img src="/media/{{ image }}" alt="User Image"
+                            style="width: 100px; height: 100px; border-radius: 50%; cursor: pointer;">
+                    </div>
+
                 </div>
             </div>
-            <div class="card-strip">
-                <div class="left">
-                    <h5 class="mb-1">Available from 10:00AM - 5:00 PM</h5>
-                    <p class="text-muted mb-1 sm-text">Monday, April 23</p>
-                </div>
-
-                
-            </div>
-
             <div class="right">
                 <p>
                     Saree with blouse - ₹ 500 <br>
@@ -163,20 +173,80 @@
                     Extra charge will be added based on designs.
                 </p>
             </div>
-
-            <div class="row justify-content-between mx-2 px-3">
+            <div class="row justify-content-between">
                 <button class="btn btn-white" onclick="sendEmail('customer@example.com')">Reschedule</button>
                 <button class="btn btn-purple" onclick="sendEmail('sumoodameen@gmail.com')">Send Mail</button>
             </div>
         </div>
-                  
+    </div>
+    <form id="ratingForm" method="post" action="{% url 'tailor_comment' %}">
+        {% csrf_token %}
+        <div class="card">
+            <div class="card-strip">
+                <div class="left">
+                    <h5>Rate this service:</h5>
+                    <div class="rating-container">
+                        <input type="hidden" name="rating" id="ratingValue" value="0">
+                        <span class="star" data-value="1">☆</span>
+                        <span class="star" data-value="2">☆</span>
+                        <span class="star" data-value="3">☆</span>
+                        <span class="star" data-value="4">☆</span>
+                        <span class="star" data-value="5">☆</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <h4>Leave a comment</h4>
+                <textarea name="msg" id="msg" cols="30" rows="5" placeholder="Enter your comment" required></textarea>
+            </div>
+            <input type="hidden" name="name" value="{{ name }}">
+            <button type="submit" class="btn btn-white">Submit Rating & Comment</button>
+        </div>
+    </form>
+    {% load custom_filters %}
+
+    <div class="container">
+        <h2>Comments</h2>
+        {% for i in comments %}
+        {% if i.to_user.username == name %}
+        <div class="comment">
+            <h4>{{ i.user.username }}</h4>
+            <p>{{ i.comment }}</p>
+            <p>Rating: {{ i.rating|star_rating }}</p>
+            <p>{{ i.timestamp }}</p>
+        </div>
+        {% endif %}
+        {% endfor %}
     </div>
 
+
+
+
+    <script>
+        const stars = document.querySelectorAll('.star');
+        const ratingValue = document.getElementById('ratingValue');
+
+        stars.forEach((star) => {
+            star.addEventListener('click', () => {
+                const value = parseInt(star.getAttribute('data-value'));
+                ratingValue.value = value;
+                stars.forEach((s, index) => {
+                    if (index < value) {
+                        s.textContent = '★';
+                        s.classList.add('active');
+                    } else {
+                        s.textContent = '☆';
+                        s.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
     <!-- JavaScript to send email -->
     <script>
         function sendEmail(email) {
             var subject = "Appointment Approved";
-            var body = "Dear Customer,\n\nYou've an appointment from {{ me.first_name }}\n\nAt 6:00PM\n\nBest regards,\nYour Salon";
+            var body = "Dear Customer,\n\nYou've an appointment from {{ name }}\n\nAt 6:00PM\n\nBest regards,\nYour Salon";
             var mailtoLink = "mailto:" + email + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
             window.location.href = mailtoLink;
         }
@@ -184,3 +254,7 @@
 </body>
 
 </html>
+
+
+
+

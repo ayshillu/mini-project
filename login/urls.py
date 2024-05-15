@@ -36,8 +36,10 @@ urlpatterns = [
     path('clienteditprofile', views.clienteditprofile, name='clienteditprofile'),
     path('clientshop', views.clientshop , name="clientshop"),
     path('clientprofile', views.clientprofile , name="clientprofile"),
+    path('nurse_comment', views.nurse_comment , name="nurse_comment"),
     path('rate_and_comment', views.rate_and_comment , name="rate_and_comment"),
-  
+    path('maid_comment', views.maid_comment , name="maid_comment"),
+    path('tailor_comment', views.tailor_comment , name="tailor_comment"), 
     
 ]
 
