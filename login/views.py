@@ -300,6 +300,11 @@ def apphenna(request):
         image = request.POST.get('image', '')
         name = request.POST.get('name', '')
         job = request.POST.get('job', '')
+        id = request.POST.get('id')
+
+        request.session['profile_id'] = {
+            'id': id,
+        }
         
         comments = RatingComment.objects.all()  # Fetch all comments
         for comment in comments:
@@ -317,7 +322,33 @@ def apphenna(request):
         return render(request, 'apphenna.html', context)
     else:
         # Handle GET requests
-        return HttpResponseBadRequest("POST data not provided")
+        # return HttpResponseBadRequest("POST data not provided")
+        profile_id = request.session.pop('profile_id')
+        if profile_id:
+            # Extract data
+            id = profile_id.get('id')
+
+        request.session['profile_id'] = {
+            'id': id,
+        }
+        profile = EditProfile.objects.get(id=id)
+
+
+        comments = RatingComment.objects.all()  # Fetch all comments
+        for comment in comments:
+            filled_stars = range(1, comment.rating + 1)
+            empty_stars = range(comment.rating + 1, 6)
+            setattr(comment, 'filled_stars', filled_stars)
+            setattr(comment, 'empty_stars', empty_stars)
+
+        context = {
+            'image': profile.profile_pic,
+            'name': profile.user.username,
+            'job': profile.job,
+            'comments': comments,
+        }
+        return render(request, 'apphenna.html', context)
+    
 
 
 @login_required
