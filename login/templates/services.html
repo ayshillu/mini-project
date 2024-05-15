@@ -455,9 +455,9 @@
                         style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
                         <form id="profileForm1" action="{% url 'appmaid' %}" method="post">
                             {% csrf_token %}
-                            <input type="hidden" name="image1" value="{{ profile.profile_pic }}">
-                            <input type="hidden" name="name1" value="{{ profile.user }}">
-                            <input type="hidden" name="job1" value="{{ profile.job }}">
+                            <input type="hidden" name="image" value="{{ profile.profile_pic }}">
+                            <input type="hidden" name="name" value="{{ profile.user }}">
+                            <input type="hidden" name="job" value="{{ profile.job }}">
                             <input type="hidden" name="id" value="{{ profile.id }}">
                             <button type="submit" style="border: none; background: none; cursor: pointer;">
 
